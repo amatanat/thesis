@@ -18,10 +18,6 @@ else:
 
 print "launching app..."
 
-# Installs the Android package. Notice that this method returns a boolean, so you can test
-# to see if the installation worked.
-#device.installPackage('/home/amatanat/Downloads/WhatsApp.apk')
-
 # sets a variable with the package's internal name
 package = 'com.whatsapp'
 
@@ -37,24 +33,21 @@ device.startActivity(component=runComponent)
 # wait for few seconds
 MonkeyRunner.sleep(5)
 
-# press eula button 
-#easy_device.touch(By.id('id/eula_accept'), MonkeyDevice.DOWN_AND_UP)
-#device.press("DPAD_CENTER",MonkeyDevice.DOWN_AND_UP)
-#MonkeyRunner.sleep(5)
-
-result = device.takeSnapshot()
-result.writeToFile('/home/amatanat/Desktop/home.png','png')
-
 # Click on FAB button to start a new conversation.
 easy_device.touch(By.id('id/fab'), MonkeyDevice.DOWN_AND_UP)
 MonkeyRunner.sleep(5)
 
+# Navigate down and click on the first available contact to start a conversation.
+device.press("DPAD_DOWN", MonkeyDevice.DOWN_AND_UP)
+device.press("DPAD_DOWN", MonkeyDevice.DOWN_AND_UP)
+device.press("DPAD_DOWN", MonkeyDevice.DOWN_AND_UP)
+device.press("DPAD_DOWN", MonkeyDevice.DOWN_AND_UP)
+device.press("DPAD_CENTER", MonkeyDevice.DOWN_AND_UP)
 
-# Presses the Menu button
-#device.press('KEYCODE_MENU', MonkeyDevice.DOWN_AND_UP)
+MonkeyRunner.sleep(5)
 
 # Takes a screenshot
 result = device.takeSnapshot()
 
 # Writes the screenshot to a file
-result.writeToFile('/home/amatanat/Desktop/fab.png','png')
+result.writeToFile('/home/amatanat/Desktop/conversation.png','png')
