@@ -39,20 +39,22 @@ MonkeyRunner.sleep(5)
 
 # press eula button 
 #easy_device.touch(By.id('id/eula_accept'), MonkeyDevice.DOWN_AND_UP)
-#easy_device.touch(By.id('id/dialog_button_more_info'), MonkeyDevice.DOWN_AND_UP)
 #device.press("DPAD_CENTER",MonkeyDevice.DOWN_AND_UP)
 #MonkeyRunner.sleep(5)
 
-#easy_device.touch(By.id('id/eula_accept'), MonkeyDevice.DOWN_AND_UP)
-#MonkeyRunner.sleep(5)
 result = device.takeSnapshot()
+result.writeToFile('/home/amatanat/Desktop/home.png','png')
+
+# Click on FAB button to start a new conversation.
+easy_device.touch(By.id('id/fab'), MonkeyDevice.DOWN_AND_UP)
+MonkeyRunner.sleep(5)
 
 
 # Presses the Menu button
 #device.press('KEYCODE_MENU', MonkeyDevice.DOWN_AND_UP)
 
 # Takes a screenshot
-#result = device.takeSnapshot()
+result = device.takeSnapshot()
 
 # Writes the screenshot to a file
-result.writeToFile('/home/amatanat/Desktop/home.png','png')
+result.writeToFile('/home/amatanat/Desktop/fab.png','png')
