@@ -8,6 +8,7 @@ from com.android.monkeyrunner.easy import EasyMonkeyDevice, By
 device = MonkeyRunner.waitForConnection()
 easy_device = EasyMonkeyDevice(device)
 
+# Check if WhatsApp is already installed or not
 apk_path = device.shell('pm path com.whatsapp')
 if apk_path.startswith('package:'):
     print "app already installed."
@@ -16,9 +17,6 @@ else:
     device.installPackage('/home/amatanat/Downloads/WhatsApp.apk')
 
 print "launching app..."
-
-
-
 
 # Installs the Android package. Notice that this method returns a boolean, so you can test
 # to see if the installation worked.
