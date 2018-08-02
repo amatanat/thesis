@@ -51,3 +51,15 @@ result = device.takeSnapshot()
 
 # Writes the screenshot to a file
 result.writeToFile('/home/amatanat/Desktop/conversation.png','png')
+
+easy_device.touch(By.id('id/entry'), MonkeyDevice.DOWN_AND_UP)
+device.type('test')
+MonkeyRunner.sleep(5)
+easy_device.touch(By.id('id/send'), MonkeyDevice.DOWN_AND_UP)
+
+MonkeyRunner.sleep(5)
+result = device.takeSnapshot()
+result.writeToFile('/home/amatanat/Desktop/send.png','png')
+
+# close the app
+device.shell('am force-stop com.whatsapp')
