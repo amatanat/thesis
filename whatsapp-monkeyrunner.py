@@ -11,14 +11,6 @@ print("waiting for the connection..")
 MonkeyRunner.sleep(10)
 easy_device = EasyMonkeyDevice(device)
 
-# check if WhatsApp is already installed or not
-apk_path = device.shell('pm path com.whatsapp')
-if apk_path.startswith('package:'):
-    print "app already installed."
-else:
-    print "app not installed, installing APKs..."
-    device.installPackage('/home/amatanat/Downloads/WhatsApp.apk')
-
 print "launching app..."
 
 # set a variable with the package's internal name
@@ -49,20 +41,12 @@ device.press("DPAD_CENTER", MonkeyDevice.DOWN_AND_UP)
 
 MonkeyRunner.sleep(5)
 
-# take a screenshot
-result = device.takeSnapshot()
-
-# write the screenshot to a file
-result.writeToFile('/home/amatanat/Desktop/conversation.png','png')
-
 easy_device.touch(By.id('id/entry'), MonkeyDevice.DOWN_AND_UP)
 device.type('test')
 MonkeyRunner.sleep(5)
 easy_device.touch(By.id('id/send'), MonkeyDevice.DOWN_AND_UP)
 
 MonkeyRunner.sleep(5)
-result = device.takeSnapshot()
-result.writeToFile('/home/amatanat/Desktop/send.png','png')
 
 # close the app
 device.shell('am force-stop com.whatsapp')
