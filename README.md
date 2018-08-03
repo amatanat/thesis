@@ -1,9 +1,15 @@
 # Thesis related source codes and documentations. 
 
-## [monkeyrunner](https://developer.android.com/studio/test/monkeyrunner/)
+## WhatsApp: send a new message 
+  * [monkeyrunner](#monkeyrunner)
+  * [AndroidViewClient](#androidviewclient)
 
-monkeyrunner implementation can be found [here](https://github.com/amatanat/thesis/blob/master/whatsapp-monkeyrunner.py) and can only be used in the emulator.
+monkeyrunner
+============
 
-## [AndroidViewClient](https://github.com/dtmilano/AndroidViewClient/wiki)
+[monkeyrunner](https://developer.android.com/studio/test/monkeyrunner/) implementation can be found [here](https://github.com/amatanat/thesis/blob/master/whatsapp-monkeyrunner.py) and can only be used in the emulator.
 
-AndroidViewCleint implementation can be found [here](https://github.com/amatanat/thesis/blob/master/whatsapp-androidviewclient.py) and can be used in the emulator or a device.
+AndroidViewClient
+=================
+
+[AndroidViewClient](https://github.com/dtmilano/AndroidViewClient/wiki) implementation can be found [here](https://github.com/amatanat/thesis/blob/master/whatsapp-androidviewclient.py) and can be used in the emulator or a device.
