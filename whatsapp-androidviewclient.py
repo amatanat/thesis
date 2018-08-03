@@ -10,14 +10,6 @@ from com.dtmilano.android.viewclient import ViewClient
 device, serialno = ViewClient.connectToDeviceOrExit()
 vc = ViewClient(device,serialno)
 
-# check if WhatsApp is already installed or not
-apk_path = device.shell('pm path com.whatsapp')
-if apk_path.startswith('package:'):
-    print "app is already installed."
-else:
-    print "app not installed, installing app..."
-    vc.installPackage('/home/amatanat/Downloads/WhatsApp.apk')
-
 print "launching app..."
 
 # set a variable with the package's internal name
