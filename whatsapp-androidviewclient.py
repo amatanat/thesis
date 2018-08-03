@@ -42,7 +42,7 @@ if com_whatsapp___id_fab:
 	com_whatsapp___id_fab.touch()
 	vc.dump(window='0')
 
-	# find a view by text
+	# find a Contact by its text
 	com_whatsapp___id_contactpicker_row_name = vc.findViewWithTextOrRaise(u'Tomi')
 	if com_whatsapp___id_contactpicker_row_name:
 		com_whatsapp___id_contactpicker_row_name.touch()
