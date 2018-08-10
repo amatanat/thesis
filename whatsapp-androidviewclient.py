@@ -60,6 +60,6 @@ if com_whatsapp___id_fab:
 				# wait 
 				ViewClient.sleep(3)
 
-				# close the app
-				device.shell('am force-stop com.whatsapp')
+# close the app
+device.shell('am force-stop com.whatsapp')
 
