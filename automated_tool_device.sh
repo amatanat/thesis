@@ -1,21 +1,36 @@
 #!/bin/bash
 #!/usr/bin/env python
 # Author:       Matanat Ahmadova
-# Description:	Full automated tool for the Android device to perform app actions and generate FS dumps. 
+# Description:	Full automated tool for the Android device to perform app actions and extract FS structure and metadata. 
 # 
 #
 #
 
 nc=$(which nc)
+xnbdclient=$(which xnbd-client)
 
-echo "Number of FS dumps:" 
-read fsDumpCount
-echo "Name of the FS dump after the application run: "
-read filename_fs
-echo "Name of the FS dump before the application run: "
-read restored_filename_fs
+echo "Number of runs:" 
+read runCount
+echo "Name of the XML output before the application run: "
+read xml_output_name_1
+echo "Name of the XML output after the application run: "
+read xml_output_name_2
 echo "Directory of the twrp image: " 
 read twrp_image_directory
+echo "twrp image name for the backup creation: "
+read twrp_image_for_backup
+echo "twrp image name for the NBD use: "
+read twrp_image_for_nbd
+echo "Directory of the NBD server script: "
+read nbd_server_script_directory
+echo "Name of the NBD server script: "
+read nbd_server_script_name
+echo "FS metadata extractor directory: "
+read extractor_directory
+echo "FS metadata extractor name: "
+read extractor_filename
+echo "inode number: "
+read inode
 echo "Directory of the python script for the app automation: " 
 read python_script_directory
 echo "Name of the python script for the app automation: "
@@ -26,20 +41,29 @@ boot_twrp () {
 	until [ $(fastboot devices | grep -c 'fastboot') != 0 ]; do sleep 1s; done
 	echo "fastboot device is available.."
 	cd $twrp_image_directory
-	fastboot boot twrp-3.2.1-0-bullhead.img 
+	fastboot boot $1 
 }
 
-dump_FS () {
-	echo "Creating FS dump.."
-	boot_twrp
+extract_fs_metadata () {
+	echo "Extracting FS metadata.."
+	boot_twrp "$twrp_image_for_nbd"
 	until [ $(adb devices | sed -n '2p' | grep -c 'recovery') != 0 ]; do sleep 1s; done
 	echo "adb device is available.."
+	cd $nbd_server_script_directory
+	# TODO  check 
+	adb push $nbd_server_script_name /tmp/nbdserver.sh
+	adb shell "
+	cd /tmp/
+	chmod +x nbdserver.sh
+	./nbdserver.sh /dev/block/mmcblk0p45 8992 " &
+	# TODO check sleep
+	sleep 10s
 	adb forward tcp:8992 tcp:8992
 	until [ $(netstat -plnt | grep -c 8992) == 1 ]; do sleep 1s; done
-	adb shell "nc -l -p 8992 < /dev/block/mmcblk0p45" & 
-	sleep 10s
-	$nc localhost 8992 > $1 & 
-	wait	
+	$xnbdclient bs=4096 127.0.0.1 8992 /dev/nbd0
+	cd $extractor_directory
+	python $extractor_filename /dev/nbd0 $inode $1 FBE &
+	wait
 }
 
 wait_device () {
@@ -59,18 +83,18 @@ adb shell "
  ls /cache/recovery/'"
 
 # create a backup
-boot_twrp 
+boot_twrp "$twrp_image_for_backup"
 echo "Creating a backup.."
 
 wait_device
 
 counter=1
-while [ $counter -le $fsDumpCount ]
+while [ $counter -le $runCount ]
 do
-	# create FS dump
-	userdata_before_action=${restored_filename_fs}_${counter}
-	dump_FS "$userdata_before_action.img"
-	echo "FS dump end: before an app action.."
+	# extract FS metadata to an XML file
+	metadata_before_action=${xml_output_name_1}_${counter}
+	extract_fs_metadata "$metadata_before_action"
+	echo "extract_fs_metadata end: before an app action.."
 
 	# reboot system
 	adb shell "reboot system"
@@ -82,10 +106,10 @@ do
 	./$python_script_name
 	echo "python script end.."
 	
-	# create FS dump
-	userdata_after_action=${filename_fs}_${counter}
-	dump_FS "$userdata_after_action.img"
-	echo "FS dump end: after an app action.."
+	# extract FS metadata to an XML file after an app action 
+	metadata_after_action=${xml_output_name_2}_${counter}
+	extract_fs_metadata "$metadata_after_action"
+	echo "extract_fs_metadata end: after an app action.."
 
 	# copy openrecoveryscript 
 	adb shell "
@@ -96,7 +120,7 @@ do
 	# restore the backup
 	until [ $(fastboot devices | grep -c 'fastboot') != 0 ]; do sleep 1; done
 	cd $twrp_image_directory
-	fastboot boot twrp-3.2.1-0-bullhead.img
+	fastboot boot $twrp_image_for_backup
 	echo "Restoring a backup.."
 	
 	wait_device	
