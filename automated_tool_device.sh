@@ -1,7 +1,7 @@
 #!/bin/bash
 #!/usr/bin/env python
 # Author:       Matanat Ahmadova
-# Description:	Full automated tool for the Android device to perform app actions and extract FS structure and metadata. 
+# Description:	Full automated tool for the Android device to perform app actions and extract FS structure. 
 # 
 #
 #
