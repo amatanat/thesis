@@ -1,7 +1,7 @@
 #!/bin/bash
 #!/usr/bin/env python
 # Author:       Matanat Ahmadova
-# Description:	Full automated tool for the Android device to perform app actions and extract FS structure. 
+# Description:	Full automated tool for the Android device to perform app actions and extract FS metadata. 
 # 
 #
 #
@@ -11,29 +11,27 @@ xnbdclient=$(which xnbd-client)
 
 echo "Number of runs:" 
 read runCount
-echo "Name of the XML output before the application run: "
-read xml_output_name_1
-echo "Name of the XML output after the application run: "
-read xml_output_name_2
 echo "Directory of the twrp image: " 
 read twrp_image_directory
-echo "twrp image name for the backup creation: "
-read twrp_image_for_backup
-echo "twrp image name for the NBD use: "
-read twrp_image_for_nbd
+echo "twrp image name: "
+read twrp_image_name
 echo "Directory of the NBD server script: "
 read nbd_server_script_directory
 echo "Name of the NBD server script: "
 read nbd_server_script_name
 echo "FS metadata extractor directory: "
-read extractor_directory
+read metadata_extractor_directory
 echo "FS metadata extractor name: "
-read extractor_filename
+read metadata_extractor_filename
 echo "inode number: "
 read inode
-echo "Directory of the python script for the app automation: " 
+echo "Name of the XML output file before the application run: "
+read xml_output_name_1
+echo "Name of the XML output file after the application run: "
+read xml_output_name_2
+echo "Directory of the python script for the application automation: " 
 read python_script_directory
-echo "Name of the python script for the app automation: "
+echo "Name of the python script for the application automation: "
 read python_script_name
 
 boot_twrp () {
@@ -44,38 +42,66 @@ boot_twrp () {
 	fastboot boot $1 
 }
 
-extract_fs_metadata () {
-	echo "Extracting FS metadata.."
-	boot_twrp "$twrp_image_for_nbd"
-	until [ $(adb devices | sed -n '2p' | grep -c 'recovery') != 0 ]; do sleep 1s; done
-	echo "adb device is available.."
-	cd $nbd_server_script_directory
-	# TODO  check 
-	adb push $nbd_server_script_name /tmp/nbdserver.sh
-	adb shell "
-	cd /tmp/
-	chmod +x nbdserver.sh
-	./nbdserver.sh /dev/block/mmcblk0p45 8992 " &
-	# TODO check sleep
-	sleep 10s
-	adb forward tcp:8992 tcp:8992
-	until [ $(netstat -plnt | grep -c 8992) == 1 ]; do sleep 1s; done
-	$xnbdclient bs=4096 127.0.0.1 8992 /dev/nbd0
-	cd $extractor_directory
-	python $extractor_filename /dev/nbd0 $inode $1 FBE &
-	wait
+kill_process () {
+	PID=`ps -eaf | grep $1 | grep -v grep | awk '{print $2}'`
+	if [[ "" !=  "$PID" ]]; then
+  		echo "killing $PID"
+  		kill -9 $PID
+	fi
 }
 
-wait_device () {
-	#until [ $(adb devices | sed -n '2p' | grep -c 'device') != 0 ]; do sleep 1s; done
+check_file_existence () {
 	while true
-	 do 
-	   if [ "$(adb shell getprop sys.boot_completed | tr -d '\r')" == "1" ]; then 
+	do
+	  if [ -f $1 ] ; then
+    	  	echo "file exists.."
 		break
-           fi 
-        done
-	echo "device is available.."
+	  fi
+	done
 }
+
+wait_device_screen () {
+	adb wait-for-device
+	while true
+	do 
+	  if [ "$(adb shell dumpsys nfc | grep 'mScreenState=')" == "mScreenState=ON_UNLOCKED" ]; then 
+		break
+	  fi
+	done
+	echo "device screen is ON..."
+}
+
+extract_fs_metadata () {
+	echo "extracting FS metadata.."
+	boot_twrp "$twrp_image_name"
+	until [ $(adb devices | sed -n '2p' | grep -c 'recovery') != 0 ]; do sleep 1s; done
+	echo "adb device is available.."
+
+	cd $nbd_server_script_directory
+	adb push $nbd_server_script_name /tmp/nbdserver.sh
+	sleep 5s
+	echo "adb push is done..."	
+
+	adb shell "
+		cd /tmp/
+		chmod +x nbdserver.sh
+		./nbdserver.sh /dev/block/mmcblk0p45 8992 " &
+	# must sleep before the next command
+	sleep 5s
+
+	adb forward tcp:8992 tcp:8992 
+	until [ $(netstat -plnt | grep -c 8992) == 1 ]; do sleep 1s; done
+
+	$xnbdclient bs=4096 127.0.0.1 8992 /dev/nbd0 &
+
+	cd $metadata_extractor_directory
+	python $metadata_extractor_filename /dev/nbd0 $inode $1 FBE &
+
+	# wait until previous command ends, i.e metadata extraction 
+	# if an xml file exists then the extraction process is finished
+	check_file_existence "$1.xml"
+}
+
 
 # copy openrecoveryscript 
 adb shell "
@@ -83,14 +109,19 @@ adb shell "
  ls /cache/recovery/'"
 
 # create a backup
-boot_twrp "$twrp_image_for_backup"
-echo "Creating a backup.."
+boot_twrp "$twrp_image_name"
+echo "creating a backup.."
 
-wait_device
+wait_device_screen
 
 counter=1
 while [ $counter -le $runCount ]
 do
+	kill_process "adb" & 
+	wait
+	kill_process "xnbd-client" &
+	wait
+
 	# extract FS metadata to an XML file
 	metadata_before_action=${xml_output_name_1}_${counter}
 	extract_fs_metadata "$metadata_before_action"
@@ -99,7 +130,7 @@ do
 	# reboot system
 	adb shell "reboot system"
 	
-	wait_device
+	wait_device_screen
 
 	# run python script
 	cd $python_script_directory
@@ -111,21 +142,25 @@ do
 	extract_fs_metadata "$metadata_after_action"
 	echo "extract_fs_metadata end: after an app action.."
 
+	# reboot system
+	adb shell "reboot system"
+	
+	wait_device_screen 
+
 	# copy openrecoveryscript 
 	adb shell "
-	 cp /sdcard/Download/openrecoveryscript2 /cache/recovery/openrecoveryscript
+	 su -c 'cp /sdcard/Download/openrecoveryscript2 /cache/recovery/openrecoveryscript
 	 ls /cache/recovery/
-	 reboot bootloader"
+	 reboot bootloader'"
 	
 	# restore the backup
-	until [ $(fastboot devices | grep -c 'fastboot') != 0 ]; do sleep 1; done
-	cd $twrp_image_directory
-	fastboot boot $twrp_image_for_backup
-	echo "Restoring a backup.."
+	boot_twrp "$twrp_image_name"
+	echo "restoring a backup.."
 	
-	wait_device	
+	wait_device_screen	
 
 	echo $counter
 	((counter++))
 done
 echo "All done"
+
