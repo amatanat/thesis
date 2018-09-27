@@ -9,6 +9,10 @@
 ## Signal private messenger 
 * Send a new message action automation implementation
   * AndroidViewClient implementation can be found [here](https://github.com/amatanat/thesis/blob/master/signal-androidviewclient.py)
+  
+## Viber messenger 
+* Send a new message action automation implementation
+  * AndroidViewClient implementation can be found [here](https://github.com/amatanat/thesis/blob/master/viber-androidviewclient.py)  
 
 
 License
