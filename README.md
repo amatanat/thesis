@@ -13,6 +13,8 @@
 ## Viber messenger 
 * Send a new message action automation implementation
   * AndroidViewClient implementation can be found [here](https://github.com/amatanat/thesis/blob/master/viber-androidviewclient.py)  
+* Detect a new message
+  * AndroidViewClient implementation can be found [here](https://github.com/amatanat/thesis/blob/master/viber-receive-message-androidviewclient.py)  
 
 
 License
