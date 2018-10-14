@@ -10,7 +10,7 @@ def get_app_folder_inode ():
 def get_data_folder_inode ():
 	return root.find("./fileobject/[filename='data']").find('inode').text
 
-def get_folders_data (inode):
+def get_folder_data (inode):
 	"""Given root folder's inode number
 	Find children folders and return a dictionary containing 
 	generation id, creation date and inode number of found folders"""
@@ -58,13 +58,13 @@ if __name__ == "__main__":
 	e = ET.fromstring(xmlstr)
 	
 	app_folder_inode = get_app_folder_inode()
-	app_folders_data = get_folders_data(app_folder_inode)
+	app_folder_data = get_folder_data(app_folder_inode)
 
 	data_folder_inode = get_data_folder_inode()
-	data_folders_data = get_folders_data(data_folder_inode)
+	data_folder_data = get_folder_data(data_folder_inode)
 
 	threshold = 130
-	linked_folders = link_folders(app_folders_data,data_folders_data, threshold)
+	linked_folders = link_folders(app_folder_data,data_folder_data, threshold)
 	for k,v in linked_folders.items():
 		print k, v
 
