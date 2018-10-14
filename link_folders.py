@@ -8,37 +8,44 @@ def get_app_folder_inode ():
 	return root.find("./fileobject/[filename='app']").find('inode').text
 
 def get_data_folder_inode ():
-	return root.find("./fileobject/[filename='data']").find('inode').text		
+	return root.find("./fileobject/[filename='data']").find('inode').text
 
-def get_genId_crdate_dict (inode):
+def get_folders_data (inode):
 	"""Given root folder's inode number
 	Find children folders and return a dictionary containing 
-	generation id and creation date of found folders"""
-	genId_crdate_dict = {}
+	generation id, creation date and inode number of found folders"""
+	d = {}
 	for fileobject in e.findall('fileobject'):
 		# get parent's inode value
 		parent_inode = fileobject.find('parent_object').find('inode').text
 		name_type = fileobject.find('name_type').text 
 		if (parent_inode is not None and int(parent_inode) == int(inode) and str(name_type) == "d/d"):
-			# get folder's creation date
+			# get folder's creation date, inode and generation id
 			crdate = str(fileobject.find('crtime').text).split("T")
-			genId_crdate_dict[int(fileobject.find('genId').text)] = crdate[0]
+			i_node = int(fileobject.find('inode').text)
+			genId = int(fileobject.find('genId').text)
+			d[genId] = (crdate[0],i_node)
 	# sort a dictionary by key
-	return collections.OrderedDict(sorted(genId_crdate_dict.items()))
+	return collections.OrderedDict(sorted(d.items()))
 
-def link_folders(app_genId_crdate_dict, data_genId_crdate_dict):
-	"""Given generation id-creation date dictionary
-	of apps in data/app and data/data folders.
-	Link apps' data/app folder to data/data folder
-	return a generation id dictionary containing genIds of linked folders,
-	genIdAppFolder: genIdDataFolder"""
-	linked_genIds = {}
-	for key_a, value_a in app_genId_crdate_dict.items():
-		link_prev, link_next, key = app_genId_crdate_dict._OrderedDict__map[key_a] 
-		for key_d, value_d in data_genId_crdate_dict.items():
-			if key_d > key_a and key_d < link_next[2] and value_a == value_d:
-				linked_genIds[key_a] = key_d
-	return linked_genIds
+def link_folders(dict1, dict2,threshold):
+	"""Given folders' data
+	Link data/app folder to data/data folder
+	return a dictionary containing inodes of linked folders,
+	inodeAppFolder: inodeDataFolder"""
+	linked_inodes = {}
+	for key_a, value_a in dict1.items():
+		link_prev, link_next, key = dict1._OrderedDict__map[key_a] 
+		for key_d, value_d in dict2.items():
+			if 	(key_d > key_a 			and 	# genIdDataFolder > genIdAppFolder1
+				key_d < link_next[2] 		and	# genIdDataFolder < genIdAppFolder2 
+				#value_a[0] == value_d[0] 	and 	# crdateAppFolder == crdateDataFolder
+				key_d - key_a <= threshold):		# genIdDataFolder - genIdAppFolder1 <= threshold
+					linked_inodes[value_a[1]] = value_d[1]
+					break
+		if (value_a[1] not in linked_inodes):
+			linked_inodes[value_a[1]] = "unknown"
+	return collections.OrderedDict(sorted(linked_inodes.items()))
 
 if __name__ == "__main__":
 	if len(sys.argv) < 2:
@@ -51,12 +58,13 @@ if __name__ == "__main__":
 	e = ET.fromstring(xmlstr)
 	
 	app_folder_inode = get_app_folder_inode()
-	app_genId_crdate_dict = get_genId_crdate_dict(app_folder_inode)
+	app_folders_data = get_folders_data(app_folder_inode)
 
 	data_folder_inode = get_data_folder_inode()
-	data_genId_crdate_dict = get_genId_crdate_dict(data_folder_inode)
+	data_folders_data = get_folders_data(data_folder_inode)
 
-	linked_folders_genId = link_folders(app_genId_crdate_dict,data_genId_crdate_dict)
-	for k,v in linked_folders_genId.items():
+	threshold = 130
+	linked_folders = link_folders(app_folders_data,data_folders_data, threshold)
+	for k,v in linked_folders.items():
 		print k, v
 
