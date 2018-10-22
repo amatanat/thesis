@@ -1,7 +1,5 @@
 name-com.shazam.android
 14433854 base.apk
-4096 lib
-4096 lib/arm
 657200 lib/arm/libc++_shared.so
 325348 lib/arm/libsigx.so
 59904 lib/arm/librsjni.so
@@ -15,15 +13,11 @@ name-com.shazam.android
 437188 lib/arm/libDMSImageWatermark.so
 5788008 lib/arm/libscenegraph.so
 1649312 lib/arm/libDMSImageBarcode.so
-4096 oat
-4096 oat/arm
 6730152 oat/arm/base.odex
 12032879 oat/arm/base.vdex
 1228800 oat/arm/base.art
 name-com.viber.voip
 37651184 base.apk
-4096 lib
-4096 lib/arm
 325304 lib/arm/libViberRTC.so
 67048 lib/arm/libspeexjni.so
 169588 lib/arm/libvideoconvert.so
@@ -43,56 +37,38 @@ name-com.viber.voip
 30164 lib/arm/libnativehttp.so
 34336 lib/arm/libpl_droidsonroids_gif.so
 415848 lib/arm/liblinkparser.so
-4096 oat
-4096 oat/arm
 6267304 oat/arm/base.odex
 26835498 oat/arm/base.vdex
 1404928 oat/arm/base.art
 name-com.memrise.android.memrisecompanion
 21661997 base.apk
-4096 lib
-4096 lib/arm64
 498456 lib/arm64/libstatic-webp.so
 158264 lib/arm64/libgifimage.so
 387376 lib/arm64/libimagepipeline.so
-4096 oat
-4096 oat/arm64
 6038144 oat/arm64/base.odex
 9480943 oat/arm64/base.vdex
 856064 oat/arm64/base.art
 name-com.easybrain.sudoku.android
 16585338 base.apk
-4096 lib
-4096 lib/arm64
 55008 lib/arm64/libadcolony.so
 2184400 lib/arm64/libRSSupport.so
 72000 lib/arm64/librsjni.so
 1595456 lib/arm64/libjs.so
-4096 oat
-4096 oat/arm64
 5612160 oat/arm64/base.odex
 18635912 oat/arm64/base.vdex
 696320 oat/arm64/base.art
 name-com.dw.learngerman
 1855481 base.apk
-4096 lib
-4096 oat
-4096 oat/arm64
 463488 oat/arm64/base.odex
 3263244 oat/arm64/base.vdex
 40960 oat/arm64/base.art
 name-com.grovefx.mind
 3337189 base.apk
-4096 lib
-4096 oat
-4096 oat/arm64
 2163328 oat/arm64/base.odex
 6923748 oat/arm64/base.vdex
 372736 oat/arm64/base.art
 name-com.reddit.frontpage
 23575901 base.apk
-4096 lib
-4096 lib/arm
 922976 lib/arm/libicu_common.so
 9480 lib/arm/libprivatedata.so
 116036 lib/arm/libfolly_json.so
@@ -106,37 +82,25 @@ name-com.reddit.frontpage
 71008 lib/arm/libglog.so
 34336 lib/arm/libpl_droidsonroids_gif.so
 10108 lib/arm/libreddit-ndk.so
-4096 oat
-4096 oat/arm
 7152040 oat/arm/base.odex
 26405561 oat/arm/base.vdex
 1105920 oat/arm/base.art
 name-com.ted.android
 19045855 base.apk
-4096 lib
-4096 lib/arm64
 1033072 lib/arm64/libcomScore.so
 1500568 lib/arm64/libRSSupport.so
 63792 lib/arm64/librsjni.so
-4096 oat
-4096 oat/arm64
 6189696 oat/arm64/base.odex
 16043810 oat/arm64/base.vdex
 1134592 oat/arm64/base.art
 name-com.asji.kanjitree
 18658078 base.apk
-4096 lib
-4096 lib/arm
 18477292 lib/arm/libnative-lib.so
-4096 oat
-4096 oat/arm
 1221032 oat/arm/base.odex
 4855500 oat/arm/base.vdex
 139264 oat/arm/base.art
 name-com.twitter.android
 17388909 base.apk
-4096 lib
-4096 lib/arm64
 706344 lib/arm64/libbrotli.so
 1064144 lib/arm64/libtwittermedia.so
 399864 lib/arm64/libimagepipeline.so
@@ -146,8 +110,6 @@ name-com.twitter.android
 927648 lib/arm64/libopenclinformation.so
 427720 lib/arm64/libzstd.so
 1120248 lib/arm64/libsuperresolution.so
-4096 oat
-4096 oat/arm64
 9708160 oat/arm64/base.odex
 32768383 oat/arm64/base.vdex
 2023424 oat/arm64/base.art
@@ -156,38 +118,25 @@ name-com.twitter.android
 1839288 split_config.xxhdpi.apk
 name-com.formagrid.airtable
 12924889 base.apk
-4096 lib
-4096 lib/arm64
 5816 lib/arm64/libtool-checker.so
-4096 oat
-4096 oat/arm64
 1753728 oat/arm64/base.odex
 10823292 oat/arm64/base.vdex
 73728 oat/arm64/base.art
 name-com.medium.reader
 25479567 base.apk
-4096 lib
-4096 oat
-4096 oat/arm64
 1528448 oat/arm64/base.odex
 11132177 oat/arm64/base.vdex
 57344 oat/arm64/base.art
 name-com.spotify.music
 35156163 base.apk
-4096 lib
-4096 lib/arm
 215724 lib/arm/libmyspinnative.so
 33788400 lib/arm/liborbit-jni-spotify.so
 202584 lib/arm/libcrashlytics.so
-4096 oat
-4096 oat/arm
 3056040 oat/arm/base.odex
 24152608 oat/arm/base.vdex
 106496 oat/arm/base.art
 name-com.ubercab
 61667895 base.apk
-4096 lib
-4096 lib/arm
 9480 lib/arm/libprivatedata.so
 1050868 lib/arm/libcardioRecognizer.so
 4444476 lib/arm/libduktape.so
@@ -219,48 +168,32 @@ name-com.ubercab
 589424 lib/arm/libcardioRecognizer_tegra2.so
 71100 lib/arm/libunwind-crashlytics.so
 308724 lib/arm/libcrashlytics.so
-4096 oat
-4096 oat/arm
 12714408 oat/arm/base.odex
 65885792 oat/arm/base.vdex
 1400832 oat/arm/base.art
 name-com.linkedin.android
 45930107 base.apk
-4096 lib
-4096 lib/arm64
 5440 lib/arm64/libBitmapUtils.so
 96160 lib/arm64/libLMDBAndroid.so
 169896 lib/arm64/libndkCrashReporter.so
 5148184 lib/arm64/libcronet.60.0.3082.0.so
-4096 oat
-4096 oat/arm64
 5554816 oat/arm64/base.odex
 49987841 oat/arm64/base.vdex
 176128 oat/arm64/base.art
 name-com.trello
 12588522 base.apk
-4096 lib
-4096 lib/arm64
 731576 lib/arm64/libbypass.so
-4096 oat
-4096 oat/arm64
 5829248 oat/arm64/base.odex
 13212059 oat/arm64/base.vdex
 1224704 oat/arm64/base.art
 name-com.knudge.me
 12685079 base.apk
-4096 lib
-4096 lib/arm64
 3115232 lib/arm64/librealm-jni.so
-4096 oat
-4096 oat/arm64
 6890112 oat/arm64/base.odex
 13482548 oat/arm64/base.vdex
 888832 oat/arm64/base.art
 name-eu.chainfire.supersu
 6201401 base.apk
-4096 oat
-4096 oat/arm64
 172672 oat/arm64/base.odex
 698214 oat/arm64/base.vdex
 36864 oat/arm64/base.art
