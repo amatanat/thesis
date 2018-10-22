@@ -32,8 +32,8 @@ def find_files_size (inode, root_folder_inode):
 		i_node = fileobject.find('inode').text
 		if (parent_inode is not None and int(parent_inode) == int(inode) and 
 			str(name_type) == str("d/d") and filesize is not None):
+			
 
-			files_size_dict[root_folder_inode].append([int(i_node) , int(filesize)])
 			find_files_size(i_node, root_folder_inode)
 
 		elif (parent_inode is not None and int(parent_inode) == int(inode) and
