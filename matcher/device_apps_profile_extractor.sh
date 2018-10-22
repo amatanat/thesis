@@ -5,7 +5,7 @@ extract_apps_profile () {
 	R=$(adb shell "
 		su -c ' cd /data/app/
 			cd \$(ls -d * | grep \"$1\")
-			find * |xargs stat -c \"%s %n\" '")
+			find * -type f |xargs stat -c \"%s %n\" '")
 	echo "$R" >> "file.txt"
 }
 
