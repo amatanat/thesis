@@ -1,0 +1,3 @@
+wipe data
+restore /sdcard/TWRP/BACKUPS/024a5495487ed6a3/databackup
+reboot
