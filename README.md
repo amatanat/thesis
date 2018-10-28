@@ -1,21 +1,4 @@
-# Thesis related source codes and documentations. 
-
-
-## WhatsApp messenger
- * Send a new message action automation implementations
-   * [monkeyrunner](https://developer.android.com/studio/test/monkeyrunner/) implementation can be found [here](https://github.com/amatanat/thesis/blob/master/whatsapp-monkeyrunner.py) and can only be used in the emulator.
-   * [AndroidViewClient](https://github.com/dtmilano/AndroidViewClient/wiki) implementation can be found [here](https://github.com/amatanat/thesis/blob/master/whatsapp-androidviewclient.py) and can be used in the emulator or a real device.
-  
-## Signal private messenger 
-* Send a new message action automation implementation
-  * AndroidViewClient implementation can be found [here](https://github.com/amatanat/thesis/blob/master/signal-androidviewclient.py)
-  
-## Viber messenger 
-* Send a new message action automation implementation
-  * AndroidViewClient implementation can be found [here](https://github.com/amatanat/thesis/blob/master/viber-androidviewclient.py)  
-* Detect a new message
-  * AndroidViewClient implementation can be found [here](https://github.com/amatanat/thesis/blob/master/viber-receive-message-androidviewclient.py)  
-
+## Thesis related source codes and documentations. 
 
 License
 -------
