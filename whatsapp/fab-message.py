@@ -1,10 +1,6 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import re
-import sys
-import os
-
 from com.dtmilano.android.viewclient import ViewClient
 
 device, serialno = ViewClient.connectToDeviceOrExit()
@@ -24,7 +20,7 @@ runComponent = package + '/' + activity
 # run the component
 device.startActivity(component=runComponent)
 
-vc.dump(window='-1')
+vc.dump()
 
 # find a view by id
 com_whatsapp___id_fab = vc.findViewByIdOrRaise("com.whatsapp:id/fab")
@@ -32,12 +28,13 @@ if com_whatsapp___id_fab:
 
 	# click the view
 	com_whatsapp___id_fab.touch()
-	vc.dump(window='0')
+	vc.dump()
 
 	# find a Contact by its text
 	com_whatsapp___id_contactpicker_row_name = vc.findViewWithTextOrRaise(u'Tomi')
 	if com_whatsapp___id_contactpicker_row_name:
 		com_whatsapp___id_contactpicker_row_name.touch()
+		print "contact selected..."
 
 		vc.dump()
 		com_whatsapp___id_entry = vc.findViewByIdOrRaise("com.whatsapp:id/entry")

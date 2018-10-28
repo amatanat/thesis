@@ -1,10 +1,6 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import re
-import sys
-import os
-
 from com.dtmilano.android.viewclient import ViewClient
 
 device, serialno = ViewClient.connectToDeviceOrExit()
@@ -24,7 +20,7 @@ runComponent = package + '/' + activity
 # run the component
 device.startActivity(component=runComponent)
 
-vc.dump(window='-1')
+vc.dump()
 
 # find an existing conversation by text
 com_whatsapp___id_conversations_row_contact_name = vc.findViewWithTextOrRaise(u'Tomi')
