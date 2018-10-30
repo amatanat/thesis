@@ -2,11 +2,24 @@
 # -*- coding: utf-8 -*-
 
 from com.dtmilano.android.viewclient import ViewClient
+import logging
+import logging.config
+
+def get_first_contact_unique_id (unique_id):
+	unique_id = unique_id.split("/")
+	return unique_id[0] + "/" + unique_id[1] + "/" + str(int(unique_id[2])+5)
 
 device, serialno = ViewClient.connectToDeviceOrExit()
 vc = ViewClient(device,serialno)
 
-print "launching app..."
+# get application version and a device time
+app_version = device.shell("dumpsys package com.whatsapp | grep versionName").strip().split("=")[1]
+device_time = device.shell("date '+%F %X'").strip()
+
+# configure logging
+logging.config.fileConfig('logging.conf')
+logger = logging.getLogger('WhatsApp')
+d={'datetime': device_time, 'version': app_version, 'action': 'fab-message'}
 
 # set a variable with the package's internal name
 package = 'com.whatsapp'
@@ -19,44 +32,56 @@ runComponent = package + '/' + activity
 
 # run the component
 device.startActivity(component=runComponent)
+logger.info('open application',extra=d)
 
 vc.dump()
 
-# find a view by id
-com_whatsapp___id_fab = vc.findViewByIdOrRaise("com.whatsapp:id/fab")
-if com_whatsapp___id_fab:
-
+try:
+	# find a view by id
+	com_whatsapp___id_fab = vc.findViewByIdOrRaise("com.whatsapp:id/fab")
 	# click the view
 	com_whatsapp___id_fab.touch()
-	vc.dump()
+	logger.info('click fab',extra=d)
 
-	# find a Contact by its text
-	com_whatsapp___id_contactpicker_row_name = vc.findViewWithTextOrRaise(u'Tomi')
-	if com_whatsapp___id_contactpicker_row_name:
-		com_whatsapp___id_contactpicker_row_name.touch()
-		print "contact selected..."
+	dump = vc.dump()
+	for view in dump:
+		if view['text'] == "New contact":
+			new_contact_unique_id = view.uniqueId()
+			first_contact_id = get_first_contact_unique_id(new_contact_unique_id) 
 
-		vc.dump()
-		com_whatsapp___id_entry = vc.findViewByIdOrRaise("com.whatsapp:id/entry")
-		if com_whatsapp___id_entry:
-			com_whatsapp___id_entry.touch()
+			for v in dump:
+				if v.uniqueId() == first_contact_id:
+					v.touch()
+					logger.info('select first contact',extra=d)
 
-			print "typing..."
+					vc.dump()
+					com_whatsapp___id_entry = vc.findViewByIdOrRaise("com.whatsapp:id/entry")
+					com_whatsapp___id_entry.touch()
+					logger.info('click entry',extra=d)
 
-			# type in a device
-			device.type('Test')
-			vc.dump()
-			com_whatsapp___id_send = vc.findViewByIdOrRaise("com.whatsapp:id/send")
-			if com_whatsapp___id_send:
+					device.type('Test')
+					logger.info('type message',extra=d)
+
+					vc.dump()
+					com_whatsapp___id_send = vc.findViewByIdOrRaise("com.whatsapp:id/send")
+					com_whatsapp___id_send.touch()
+					logger.info('send message',extra=d)
 				
-				# send the text 
-				com_whatsapp___id_send.touch()
-
-				print "sending....."
-				
-				# wait 
-				ViewClient.sleep(3)
+					# wait 
+					ViewClient.sleep(3)
+					break
+			break
+except Exception as e:
+	logger.exception('Exception',extra=d)
 
 # close the app
 device.shell('am force-stop com.whatsapp')
+logger.info('stop the application',extra=d)
+
+# remove the app from the recent task list
+device.shell('input keyevent KEYCODE_APP_SWITCH')
+device.shell('input keyevent DEL')
+logger.info('remove an app from the recent list',extra=d)
+device.shell('input keyevent KEYCODE_HOME')
+logger.info('return HOME',extra=d)
 
