@@ -5,15 +5,19 @@ from com.dtmilano.android.viewclient import ViewClient
 import logging
 import logging.config
 
+def get_device_time ():
+	return device.shell("date '+%F %X'").strip()
+
+def get_extra_data ():
+	return {'datetime': get_device_time(), 'version': app_version, 'action': 'open-close'}
+
 device, serialno = ViewClient.connectToDeviceOrExit()
 vc = ViewClient(device,serialno)
 
 app_version = device.shell("dumpsys package com.whatsapp | grep versionName").strip().split("=")[1]
-device_time = device.shell("date '+%F %X'").strip()
 
 logging.config.fileConfig('logging.conf')
 logger = logging.getLogger('WhatsApp')
-d={'datetime': device_time, 'version': app_version, 'action': 'open-close'}
 
 # set a variable with the package's internal name
 package = 'com.whatsapp'
@@ -26,19 +30,19 @@ runComponent = package + '/' + activity
 
 # run the component
 device.startActivity(component=runComponent)
-logger.info('open application',extra=d)
+logger.info('open application',extra=get_extra_data())
 				
 # wait 
 ViewClient.sleep(3)
 
 # close the app
 device.shell('am force-stop com.whatsapp')
-logger.info('stop the application',extra=d)
+logger.info('stop the application',extra=get_extra_data())
 
 # remove the app from the recent task list
 device.shell('input keyevent KEYCODE_APP_SWITCH')
 device.shell('input keyevent DEL')
-logger.info('remove an app from the recent list',extra=d)
+logger.info('remove an app from the recent list',extra=get_extra_data())
 device.shell('input keyevent KEYCODE_HOME')
-logger.info('return HOME',extra=d)
+logger.info('return HOME',extra=get_extra_data())
 

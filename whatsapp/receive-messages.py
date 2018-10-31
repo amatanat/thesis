@@ -15,23 +15,27 @@ def find_message_type (dump, view_id):
 		if v.uniqueId() == view_id:
 			# for the photo message the view id before the emoji button is the 'forward' image's id.
 			if v['resource-id'] == "com.whatsapp:id/forward":
-				logger.info('last received message is a photo',extra=d)
+				logger.info('last received message is a photo',extra=get_extra_data())
 			else:
-				logger.info('last received message is a text',extra=d)
+				logger.info('last received message is a text',extra=get_extra_data())
 
-def get_device_time(ts):
-	return time.strftime("%FT%TZ",time.gmtime(ts))
+def get_device_time ():
+	return device.shell("date '+%F %X'").strip()
+
+def get_extra_data ():
+	return {'datetime': get_device_time(), 'version': app_version, 'action': 'receive-message'}
+
+#def get_device_time(ts):
+#	return time.strftime("%FT%TZ",time.gmtime(ts))
+#get_device_time(device.shell("echo $EPOCHREALTIME"))
 
 device, serialno = ViewClient.connectToDeviceOrExit()
 vc = ViewClient(device,serialno)
 
 app_version = device.shell("dumpsys package com.whatsapp | grep versionName").strip().split("=")[1]
-device_time = device.shell("date '+%F %X'").strip()
-#get_device_time(device.shell("echo $EPOCHREALTIME"))
 
 logging.config.fileConfig('logging.conf')
 logger = logging.getLogger('WhatsApp')
-d={'datetime': device_time, 'version': app_version, 'action': 'receive-message'}
 
 # set a variable with the package's internal name
 package = 'com.whatsapp'
@@ -44,13 +48,13 @@ runComponent = package + '/' + activity
 
 # run the component
 device.startActivity(component=runComponent)
-logger.info('open application',extra=d)
+logger.info('open application',extra=get_extra_data())
 
 dump=vc.dump()
 for view in dump:
 	if view['resource-id'] == "com.whatsapp:id/conversations_row_message_count":
 		view.touch()
-		logger.info('click new message received conversation',extra=d)
+		logger.info('click new message received conversation',extra=get_extra_data())
 		view_dump = vc.dump()
 		for v in view_dump:
 			if v['resource-id'] == "com.whatsapp:id/emoji_picker_btn":
@@ -61,7 +65,7 @@ for view in dump:
 				# Navigate up 
 				com_whatsapp___id_back = vc.findViewByIdOrRaise("com.whatsapp:id/back")
 				com_whatsapp___id_back.touch()
-				logger.info('navigate to main screen',extra=d)
+				logger.info('navigate to main screen',extra=get_extra_data())
 				
 				# update the dump
 				dump = vc.dump()
@@ -69,12 +73,12 @@ for view in dump:
 
 # close the app
 device.shell('am force-stop com.whatsapp')
-logger.info('stop the application',extra=d)
+logger.info('stop the application',extra=get_extra_data())
 
 # remove the app from the recent task list
 device.shell('input keyevent KEYCODE_APP_SWITCH')
 device.shell('input keyevent DEL')
-logger.info('remove an app from the recent list',extra=d)
+logger.info('remove an app from the recent list',extra=get_extra_data())
 device.shell('input keyevent KEYCODE_HOME')
-logger.info('return HOME',extra=d)
+logger.info('return HOME',extra=get_extra_data())
 
