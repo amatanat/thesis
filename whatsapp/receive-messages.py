@@ -20,14 +20,12 @@ def find_message_type (dump, view_id):
 				logger.info('last received message is a text',extra=get_extra_data())
 
 def get_device_time ():
-	return device.shell("date '+%F %X'").strip()
+	import time
+	ts = device.shell("echo $EPOCHREALTIME")
+	return time.strftime("%F %T",time.gmtime(float(ts)))
 
 def get_extra_data ():
 	return {'datetime': get_device_time(), 'version': app_version, 'action': 'receive-message'}
-
-#def get_device_time(ts):
-#	return time.strftime("%FT%TZ",time.gmtime(ts))
-#get_device_time(device.shell("echo $EPOCHREALTIME"))
 
 device, serialno = ViewClient.connectToDeviceOrExit()
 vc = ViewClient(device,serialno)

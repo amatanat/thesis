@@ -6,7 +6,9 @@ import logging
 import logging.config
 
 def get_device_time ():
-	return device.shell("date '+%F %X'").strip()
+	import time
+	ts = device.shell("echo $EPOCHREALTIME")
+	return time.strftime("%F %T",time.gmtime(float(ts)))
 
 def get_extra_data ():
 	return {'datetime': get_device_time(), 'version': app_version, 'action': 'push-notification'}
