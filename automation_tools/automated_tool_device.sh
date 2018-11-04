@@ -9,30 +9,20 @@
 nc=$(which nc)
 xnbdclient=$(which xnbd-client)
 
-echo "Number of runs:" 
-read runCount
-echo "Directory of the twrp image: " 
-read twrp_image_directory
-echo "twrp image name: "
-read twrp_image_name
-echo "Directory of the NBD server script: "
-read nbd_server_script_directory
-echo "Name of the NBD server script: "
-read nbd_server_script_name
-echo "FS metadata extractor directory: "
-read metadata_extractor_directory
-echo "FS metadata extractor name: "
-read metadata_extractor_filename
-echo "inode number: "
-read inode
-echo "Name of the XML output file before the application run: "
-read xml_output_name_1
-echo "Name of the XML output file after the application run: "
-read xml_output_name_2
-echo "Directory of the python script for the application automation: " 
-read python_script_directory
-echo "Name of the python script for the application automation: "
-read python_script_name
+source config.conf
+
+runCount=$RUN_COUNT 
+twrp_image_directory=$TWRP_DIR
+twrp_image_name=$TWRP_IMAGE_NAME
+nbd_server_script_directory=$NBD_SERVER_SCRIPT_DIR
+nbd_server_script_name=$NBD_SERVER_SCRIPT_NAME
+metadata_extractor_directory=$FBE_FIWALK_DIR
+metadata_extractor_filename=$FBE_FIWALK_NAME
+inode=$INODE_NUMBER
+xml_output_name_1=$OUTPUT_XML_DUMP_BEFORE
+xml_output_name_2=$OUTPUT_XML_DUMP_AFTER
+python_script_directory=$APP_AUTOMATION_SCRIPT_DIR
+python_script_name=$APP_AUTOMATION_SCRIPT_NAME
 
 boot_twrp () {
 	adb reboot bootloader
