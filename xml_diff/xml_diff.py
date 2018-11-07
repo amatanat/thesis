@@ -157,7 +157,7 @@ def append_to_output2 (key, value, output_data):
 				}
 		output_data[key].append(data)	
 
-def output_json() :
+def output_json(filename) :
 	
 	output_data = {}
 	append_to_output('New files', get_file_objects_data(new_files), output_data)
@@ -166,13 +166,13 @@ def output_json() :
 	append_to_output2("Moved files:", get_file_objects2_data(moved_files), output_data)
 	append_to_output2("Changed metadata:", get_file_objects2_data(changed_metadata), output_data)
 
-	with open('data.json', 'w+') as outfile:
+	with open(filename, 'w+') as outfile:
     		json.dump(output_data, outfile)
 	
 
 if __name__ == "__main__":
-	if len(sys.argv) < 3:
-		print "Usage: python pretty_print.py <first_xml_dump_name> <second_xml_dump_name>"
+	if len(sys.argv) < 4:
+		print "Usage: python pretty_print.py <first_xml_dump_name> <second_xml_dump_name> <output file name>"
 		print "<first_xml_dump_name> xml dump before an action" 
 		print "<second_xml_dump_name> xml dump after an action"
 		exit()
@@ -185,8 +185,10 @@ if __name__ == "__main__":
 	second_root = ET.parse(second_xml_dump).getroot()
 	new = get_file_objects_dict(second_root)
 
+	output_filename = sys.argv[3]
+
 	compare_dictionaries(old, new)
 
-	output_json()
+	output_json(output_filename + ".json")
 			
 
