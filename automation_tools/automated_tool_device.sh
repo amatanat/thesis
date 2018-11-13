@@ -8,6 +8,7 @@
 
 nc=$(which nc)
 xnbdclient=$(which xnbd-client)
+device_turned_on=false
 
 source config.conf
 
@@ -64,12 +65,21 @@ wait_device_screen () {
 extract_fs_metadata () {
 	echo "extracting FS metadata.."
 	boot_twrp "$twrp_image_name"
-	until [ $(adb devices | sed -n '2p' | grep -c 'recovery') != 0 ]; do sleep 1s; done
+	until [ $(adb devices | sed -n '2p' | grep -c 'recovery') != 0 ]; do 
+		sleep 1s
+		if [ $(adb devices | sed -n '2p' | grep -c 'device') == 1 ]; then
+			$device_turned_on=true
+			break
+		fi	
+	done
+	if [ "$device_turned_on" = true ] ; then
+		break
+	fi
 	echo "adb device is available.."
 
 	cd $nbd_server_script_directory
 	adb push $nbd_server_script_name /tmp/nbdserver.sh
-	sleep 5s
+	sleep 10s
 	echo "adb push is done..."	
 
 	adb shell "
@@ -116,6 +126,10 @@ do
 	metadata_before_action=${xml_output_name_1}_${counter}
 	extract_fs_metadata "$metadata_before_action"
 	echo "extract_fs_metadata end: before an app action.."
+	if [ "$device_turned_on" = true ] ; then
+		$device_turned_on=false
+		continue
+	fi
 
 	# reboot system
 	adb shell "reboot system"
@@ -131,6 +145,10 @@ do
 	metadata_after_action=${xml_output_name_2}_${counter}
 	extract_fs_metadata "$metadata_after_action"
 	echo "extract_fs_metadata end: after an app action.."
+	if [ "$device_turned_on" = true ] ; then
+		$device_turned_on=false
+		continue
+	fi
 
 	# reboot system
 	adb shell "reboot system"
@@ -141,7 +159,7 @@ do
 	adb shell "
 	 su -c 'cp /sdcard/Download/openrecoveryscript2 /cache/recovery/openrecoveryscript
 	 ls /cache/recovery/
-	 reboot bootloader'"
+	 '"
 	
 	# restore the backup
 	boot_twrp "$twrp_image_name"
