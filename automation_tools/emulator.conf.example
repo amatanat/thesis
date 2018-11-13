@@ -1,0 +1,4 @@
+APP_AUTOMATION_SCRIPT_DIR=...
+APP_AUTOMATION_SCRIPT_NAME=conversation-send-message.py
+EMULATOR_DIR=/home/username/Android/Sdk/emulator/
+AVD_NAME=Nexus_5X_API_25
