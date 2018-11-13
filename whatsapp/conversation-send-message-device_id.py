@@ -18,7 +18,6 @@ def get_device_time ():
 def get_extra_data ():
 	return {'datetime': get_device_time(), 'version': app_version, 'action': 'conversation-send-message'}
 
-#serialno = sys.argv[1]
 device, serialno = ViewClient.connectToDeviceOrExit(serialno = sys.argv[1])
 vc = ViewClient(device,serialno)
 
