@@ -78,17 +78,19 @@ try:
 					logger.info('click Camera folder',extra=get_extra_data())
 			
 					vc.dump()
-					no_id7 = vc.findViewByIdOrRaise("id/no_id/7")
+					no_id7 = vc.findViewWithContentDescriptionOrRaise(u'''Photo''')
 					no_id7.touch()
 					logger.info('select photo',extra=get_extra_data())
+					ViewClient.sleep(10)
 					
 					vc.dump()
+					ViewClient.sleep(10)
 					com_whatsapp___id_send = vc.findViewByIdOrRaise("com.whatsapp:id/send")
-					com_whatsapp___id_send.touch()	
+					com_whatsapp___id_send.touch()
 					logger.info('click send button',extra=get_extra_data())
 									
 					# wait 
-					ViewClient.sleep(3)
+					ViewClient.sleep(13)
 					break
 			break	
 except Exception as e:
