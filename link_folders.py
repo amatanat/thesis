@@ -17,7 +17,7 @@ def get_folder_data (inode):
 	d = {}
 	for fileobject in e.findall('fileobject'):
 		# get parent's inode value
-		parent_inode = fileobject.find('parent_object').find('inode').text
+		parent_inode = fileobject.find('parent_object').find('i_node').text
 		name_type = fileobject.find('name_type').text 
 		if (parent_inode is not None and int(parent_inode) == int(inode) and str(name_type) == "d/d"):
 			# get folder's creation date, inode and generation id
