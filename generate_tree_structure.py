@@ -83,7 +83,7 @@ def find_depth (fo_inode):
         	fo_inode = fo.find('parent_object').find('i_node').text
     	return depth
 
-def append_to_output (output_data, size_order, parent_gen_id, sibling_count, uncle_count, nephew_count, cousin_count, depth):
+def append_to_output (output_data, size_order, parent_gen_id, sibling_count, uncle_count, nephew_count, cousin_count, depth, mtime, ctime, atime, crtime):
 	data = {
 		'size order' : size_order,
 		'parent gen Id' : parent_gen_id,
@@ -91,9 +91,13 @@ def append_to_output (output_data, size_order, parent_gen_id, sibling_count, unc
 		'uncle count' : uncle_count,
 		'nephew count' : nephew_count,
 		'cousin count' : cousin_count,
-		'depth' : depth
+		'depth' : depth,
+		'mtime' : mtime,
+		'ctime' : ctime,
+		'atime' : atime,
+		'crtime' : crtime
 		}
-	output_data["Tree structure"].append(data)
+	output_data.append(data)
 
 
 def output_json(output_data, filename) :
@@ -113,6 +117,11 @@ def generate_structure (grandparent_inode, parent_inode, output):
 
 		elif (fo_parent_inode is not None and int(fo_parent_inode) == int(parent_inode) and 
 			str(fo_name_type) == str("r/r") and fo_inode is not None):
+
+			fo_mtime = get_timestamp (fileobject, 'mtime')
+			fo_ctime = get_timestamp (fileobject, 'ctime')
+			fo_atime = get_timestamp (fileobject, 'atime')
+			fo_crtime = get_timestamp (fileobject, 'crtime')
 			
 			size_order = find_size_order(fo_parent_inode, fo_inode)
 
@@ -129,7 +138,12 @@ def generate_structure (grandparent_inode, parent_inode, output):
 			
 			depth = find_depth(fo_inode)
 			
-			append_to_output(output, size_order, parent_gen_id, sibling_count, uncle_count, nephew_count, cousin_count, depth)
+			append_to_output(output, size_order, parent_gen_id, sibling_count, uncle_count, nephew_count, cousin_count, depth, fo_mtime, fo_ctime, fo_atime, fo_crtime)
+
+def get_timestamp (fo, name):
+	ts_name = fo.find(name)
+	if ts_name is not None:
+		return ts_name.text
 			
 
 if __name__ == '__main__':
@@ -145,8 +159,7 @@ if __name__ == '__main__':
 	root = ET.parse(xml_dump).getroot()
 	data_appname_folder_inode = int(inode)
 	
-	output = {}
-	output["Tree structure"] = []
+	output = []
 	generate_structure(parent_inode,inode, output)
 	output_json(output, output_filename + ".json")
 
