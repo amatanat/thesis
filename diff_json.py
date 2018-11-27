@@ -24,5 +24,5 @@ if __name__ == '__main__':
   			data2 = json.loads(f.read())
 
 	output = []
-	[[output.append({i:k}) for k in x if x[k] != y[k]] for i, (x, y) in enumerate(zip(data1,data2)) if x != y]
+	[[output.append((y, k)) for k in x if x[k] != y[k]] for i, (x, y) in enumerate(zip(data1,data2)) if x != y]
 	output_json(output, output_filename + ".json")
