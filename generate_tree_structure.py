@@ -5,6 +5,7 @@ import sys
 import json
 import operator 
 
+generation_id_list = []
 count = 0
 
 def reset_count () :
@@ -83,10 +84,10 @@ def find_depth (fo_inode):
         	fo_inode = fo.find('parent_object').find('i_node').text
     	return depth
 
-def append_to_output (output_data, size_order, parent_gen_id, sibling_count, uncle_count, nephew_count, cousin_count, depth, mtime, ctime, atime, crtime):
+def append_to_output (size_order, parent_gen_id_order, sibling_count, uncle_count, nephew_count, cousin_count, depth, mtime, ctime, atime, crtime):
 	data = {
 		'size order' : size_order,
-		'parent gen Id' : parent_gen_id,
+		'parent gen Id order' : parent_gen_id_order,
 		'sibling count' : sibling_count,
 		'uncle count' : uncle_count,
 		'nephew count' : nephew_count,
@@ -97,14 +98,14 @@ def append_to_output (output_data, size_order, parent_gen_id, sibling_count, unc
 		'atime' : atime,
 		'crtime' : crtime
 		}
-	output_data.append(data)
+	output.append(data)
 
 
-def output_json(output_data, filename) :
+def output_json(filename) :
 	with open(filename, 'w+') as outfile:
-    		json.dump(output_data, outfile)
+		json.dump(output, outfile)
 
-def generate_structure (grandparent_inode, parent_inode, output):
+def generate_structure (grandparent_inode, parent_inode):
 	for fileobject in root.findall('fileobject'):
 		fo_parent_inode = fileobject.find('parent_object').find('i_node').text
 		fo_name_type = fileobject.find('name_type').text 
@@ -113,7 +114,7 @@ def generate_structure (grandparent_inode, parent_inode, output):
 		if (fo_parent_inode is not None and int(fo_parent_inode) == int(parent_inode) and 
 			str(fo_name_type) == str("d/d") and fo_inode is not None): 
 			
-			generate_structure(fo_parent_inode, fo_inode, output)
+			generate_structure(fo_parent_inode, fo_inode)
 
 		elif (fo_parent_inode is not None and int(fo_parent_inode) == int(parent_inode) and 
 			str(fo_name_type) == str("r/r") and fo_inode is not None):
@@ -134,32 +135,52 @@ def generate_structure (grandparent_inode, parent_inode, output):
 			# because uncle files' count are also added to the result in the find_children_count function's 'elif' part
 			cousin_count = find_children_count(grandparent_inode, True) - sibling_count - uncle_count - 1
 
-			parent_gen_id = find_file_object(fo_parent_inode).find('genId').text
+			parent_gen_id_order = get_gen_id_order(find_file_object(fo_parent_inode).find('genId').text)
 			
 			depth = find_depth(fo_inode)
 			
-			append_to_output(output, size_order, parent_gen_id, sibling_count, uncle_count, nephew_count, cousin_count, depth, fo_mtime, fo_ctime, fo_atime, fo_crtime)
+			append_to_output(size_order, parent_gen_id_order, sibling_count, uncle_count, nephew_count, cousin_count, depth, fo_mtime, fo_ctime, fo_atime, fo_crtime)
 
 def get_timestamp (fo, name):
 	ts_name = fo.find(name)
 	if ts_name is not None:
 		return ts_name.text
-			
+
+def extract_gen_id (inode):
+	global generation_id_list
+	for fo in root.findall('fileobject'):
+		fo_parent_inode = fo.find('parent_object').find('i_node').text
+		fo_name_type = fo.find('name_type').text
+		fo_generation_id = fo.find('genId').text
+		fo_inode = fo.find('inode').text
+
+		if (fo_parent_inode is not None and int(fo_parent_inode) == int(inode) and
+			str(fo_name_type) == str("d/d") and fo_inode is not None and fo_generation_id is not None):
+				generation_id_list.append(fo_generation_id)
+				extract_gen_id(fo_inode)
+
+	generation_id_list.sort()
+
+def get_gen_id_order (generation_id):
+	global generation_id_list
+	return 	generation_id_list.index(generation_id)
 
 if __name__ == '__main__':
 	if len(sys.argv) < 5:
 		print "Usage: python generate_tree_structure.py <xml_dump_name> <inode> <parent_inode> <output_file_name>"
 		exit()
 
-	global data_appname_folder_inode
 	xml_dump = sys.argv[1]
 	inode = sys.argv[2]
 	parent_inode = sys.argv[3]
 	output_filename = sys.argv[4]
 	root = ET.parse(xml_dump).getroot()
 	data_appname_folder_inode = int(inode)
-	
+
+	# append data/com.appname folder's gen id to the generation id list
+	generation_id_list.append(find_file_object(inode).find('genId').text)
+	extract_gen_id(inode)
 	output = []
-	generate_structure(parent_inode,inode, output)
-	output_json(output, output_filename + ".json")
+	generate_structure(parent_inode,inode)
+	output_json(output_filename + ".json")
 
