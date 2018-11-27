@@ -24,10 +24,10 @@ def create_table (db, sql_create_table):
     	except Error as e:
         	print(e) 
 
-def insert_action_profiles (db, app_name, action_name, key, changed, inode, run):
-    	sql_insert = "INSERT INTO action_profiles (app_name, action_name, key, changed, inode, run) VALUES(?,?,?,?,?,?)"
+def insert_action_profiles (db, app_name, action_name, path, changed, run):
+    	sql_insert = "INSERT INTO action_profiles (app_name, action_name, path, changed, run) VALUES(?,?,?,?,?)"
    	cursor = db.cursor()
-    	cursor.execute(sql_insert, (app_name, action_name, key, changed, inode, run))
+    	cursor.execute(sql_insert, (app_name, action_name, path, changed, run))
 	print "insert into action_profiles table done.."
    	return cursor.lastrowid
 
@@ -38,12 +38,31 @@ def get_all_action_profiles (db):
     for row in rows:
 	print(row)
 
+def get_path (path_dictionary):
+	cousin_count = path_dictionary['cousin count']
+	sibling_count = path_dictionary['sibling count']
+	nephew_count = path_dictionary['nephew count']
+	uncle_count = path_dictionary['uncle count']
+	parent_gen_id_order = path_dictionary['parent gen Id order']
+	size_order = path_dictionary['size order']
+	depth = path_dictionary['depth']
+	path = {
+		'size order' : size_order,
+		'parent gen Id order' : parent_gen_id_order,
+		'sibling count' : sibling_count,
+		'uncle count' : uncle_count,
+		'nephew count' : nephew_count,
+		'cousin count' : cousin_count,
+		'depth' : depth
+		}
+	return str(path)
+
+
 def insert_into_db (db, data, app_name, action_name, run):
-	for key, value in data.items(): 
-		for j in value:
-			changed = j['action'] if 'action' in j else None
-			inode = j['inode']
-			insert_action_profiles(db, app_name, action_name, key, changed, inode, run)
+	for i in data:
+		path = get_path(i[0])
+		changed = i[1]
+		insert_action_profiles(db, app_name, action_name, path, changed, run)
 
 if __name__ == '__main__':
 	if len(sys.argv) < 6:
@@ -60,9 +79,8 @@ if __name__ == '__main__':
                                     ID INTEGER PRIMARY KEY NOT NULL,
 				    app_name TEXT NOT NULL,
                                     action_name TEXT NOT NULL,
-				    key TEXT NOT NULL,
-				    changed TEXT,
-				    inode INT NOT NULL,
+				    path TEXT NOT NULL,
+				    changed TEXT NOT NULL,
 				    run INT NOT NULL                                
                                 );"""
 
@@ -70,17 +88,15 @@ if __name__ == '__main__':
                                     ID INTEGER PRIMARY KEY NOT NULL,
 				    app_name TEXT NOT NULL,	
                                     action_name TEXT NOT NULL,
-				    key TEXT NOT NULL,
-				    changed TEXT,
-				    inode INT NOT NULL                              
+				    path TEXT NOT NULL,
+				    changed TEXT NOT NULL                              
                                 );"""
 	sql_create_action_cfingerprints_table = """create TABLE action_cfingerprints (
                                     ID INTEGER PRIMARY KEY NOT NULL,
 				    app_name TEXT NOT NULL,	
                                     action_name TEXT NOT NULL,
-				    key TEXT NOT NULL,
-				    changed TEXT,
-				    inode INT NOT NULL                              
+				    path TEXT NOT NULL,
+				    changed TEXT NOT NULL          
                                 );"""
 	
 
@@ -92,7 +108,7 @@ if __name__ == '__main__':
 		with open(json_dump, "r") as f:
   			data = json.loads(f.read())
 			insert_into_db(db, data, app_name, action_name, run)
-			db.commit()	
+		db.commit()	
 	else:
         	print("Error! Cannot connect to a DB")
 	
