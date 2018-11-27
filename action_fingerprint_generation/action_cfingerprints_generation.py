@@ -15,10 +15,10 @@ def connect_to_db (db_file):
         	print(e)
 	return None
 
-def insert_action_cfingerprints (db, app_name, action_name, key, changed, inode): 
-	sql_insert = "INSERT INTO action_cfingerprints (app_name, action_name, key, changed, inode) VALUES(?,?,?,?,?)"
+def insert_action_cfingerprints (db, app_name, action_name, path, changed): 
+	sql_insert = "INSERT INTO action_cfingerprints (app_name, action_name, path, changed) VALUES(?,?,?,?)"
    	cursor = db.cursor()
-    	cursor.execute(sql_insert, (app_name, action_name, key, changed, inode))
+    	cursor.execute(sql_insert, (app_name, action_name, path, changed))
    	return cursor.lastrowid
 
 def find_action_cfingerprints (db, sql_query, app_name, action_name):
@@ -35,17 +35,16 @@ if __name__ == '__main__':
 	app_name = sys.argv[2]
 	action_name = sys.argv[3]
 
-	query = """SELECT app_name, inode, changed, action_name, key 
+	query = """SELECT app_name, action_name, path, changed
 		        FROM action_fingerprints
 		        WHERE action_fingerprints.action_name = ? 
 			AND action_fingerprints.app_name = ?
-			AND action_fingerprints.inode NOT IN (
-				SELECT inode
-				FROM action_fingerprints AS profiles_1
-				WHERE profiles_1.action_name != ? 
-					AND profiles_1.app_name = ?
-					AND action_fingerprints.changed = profiles_1.changed
-					AND action_fingerprints.key = profiles_1.key
+			AND action_fingerprints.path NOT IN (
+				SELECT path
+				FROM action_fingerprints AS fingerprints
+				WHERE fingerprints.action_name != ? 
+					AND fingerprints.app_name = ?
+					AND action_fingerprints.changed = fingerprints.changed
 				)
 			ORDER BY id ASC;"""
 
@@ -53,7 +52,7 @@ if __name__ == '__main__':
 	if db is not None:
 		rows = find_action_cfingerprints(db, query, app_name, action_name)
 		for row in rows:
-			insert_action_cfingerprints (db, app_name, action_name, row[4], row[2], row[1])
+			insert_action_cfingerprints (db, app_name, action_name, row[2], row[3])
 		db.commit()
 		
 	else:
