@@ -31,7 +31,7 @@ echo $emulator_serialno
 sleep 5s
 
 adb start-server
-sleep 5s
+sleep 10s
 
 # run python script
 cd $python_script_directory
