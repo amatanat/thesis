@@ -4,6 +4,7 @@
 from com.dtmilano.android.viewclient import ViewClient
 import logging
 import logging.config
+import sys
 
 def get_device_time ():
 	import time
@@ -13,7 +14,7 @@ def get_device_time ():
 def get_extra_data ():
 	return {'datetime': get_device_time(), 'version': app_version, 'action': 'push-notification'}
 
-device, serialno = ViewClient.connectToDeviceOrExit()
+device, serialno = ViewClient.connectToDeviceOrExit(serialno = sys.argv[1])
 vc = ViewClient(device,serialno)
 
 app_version = device.shell("dumpsys package com.whatsapp | grep versionName").strip().split("=")[1]
