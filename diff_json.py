@@ -4,9 +4,9 @@ import sys
 import json
 
 
-def output_json(output_data, filename) :
+def output_json(filename) :
 	with open(filename, 'w+') as outfile:
-    		json.dump(output_data, outfile)
+    		json.dump(output, outfile)
 
 if __name__ == '__main__':
 	if len(sys.argv) < 4:
@@ -25,4 +25,4 @@ if __name__ == '__main__':
 
 	output = []
 	[[output.append((y, k)) for k in x if x[k] != y[k]] for i, (x, y) in enumerate(zip(data1,data2)) if x != y]
-	output_json(output, output_filename + ".json")
+	output_json(output_filename + ".json")
