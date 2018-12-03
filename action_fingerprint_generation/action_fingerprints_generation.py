@@ -47,7 +47,7 @@ if __name__ == '__main__':
 		        WHERE action_profiles.action_name = ? 
 			AND action_profiles.app_name = ?
 			GROUP BY path, changed
-			HAVING count (*) >= (
+			HAVING count (*) = (
 				SELECT MAX(run)
 				FROM action_profiles AS profiles
 				WHERE profiles.action_name = ?
