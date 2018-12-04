@@ -26,7 +26,7 @@ def create_table (db, sql_create_table):
 
 def insert_action_profiles (db, app_name, action_name, path, changed, run):
     	sql_insert = "INSERT INTO action_profiles (app_name, action_name, path, changed, run) VALUES(?,?,?,?,?)"
-   	cursor = db.cursor()
+	cursor = db.cursor()
     	cursor.execute(sql_insert, (app_name, action_name, path, changed, run))
 	print "insert into action_profiles table done.."
    	return cursor.lastrowid
