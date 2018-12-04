@@ -68,12 +68,17 @@ def find_size_order (parent_inode, file_inode):
 
 			inode_size_list.append((int(fo_inode.text),int(fo_filesize.text)))
 
+		elif (fo_parent_inode is not None and int(fo_parent_inode) == int(parent_inode) and
+			str(fo_name_type) == str("r/r") and fo_inode is not None and fo_filesize is not None and
+			fo_inode.text is not None and fo_filesize.text is None):
+
+			inode_size_list.append((int(fo_inode.text), 0))
+
+
 	# sort a list by a second value in tuples, i.e by size
 	sorted_list = sorted(inode_size_list, key=lambda tup: tup[1])
-	if int(file_inode) in dict(sorted_list):
-		return [t[0] for t in sorted_list].index(int(file_inode))
-	else:
-		return 0
+	#if int(file_inode) in dict(sorted_list):
+	return [t[0] for t in sorted_list].index(int(file_inode))
 
 def find_depth (fo_inode):
 	""" Return depth of the input inode from data/appname folder"""
@@ -182,5 +187,7 @@ if __name__ == '__main__':
 	extract_gen_id(inode)
 	output = []
 	generate_structure(parent_inode,inode)
+	# sort a final result by files' depth
+	output.sort(key = lambda k: k['depth'])
 	output_json(output_filename + ".json")
 
