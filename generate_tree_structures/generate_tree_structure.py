@@ -77,7 +77,7 @@ def find_size_order (parent_inode, file_inode):
 
 	# sort a list by a second value in tuples, i.e by size
 	sorted_list = sorted(inode_size_list, key=lambda tup: tup[1])
-	#if int(file_inode) in dict(sorted_list):
+	
 	return [t[0] for t in sorted_list].index(int(file_inode))
 
 def find_depth (fo_inode):
@@ -89,7 +89,7 @@ def find_depth (fo_inode):
         	fo_inode = fo.find('parent_object').find('i_node').text
     	return depth
 
-def append_to_output (size_order, parent_gen_id_order, sibling_count, uncle_count, nephew_count, cousin_count, depth, mtime, ctime, atime, crtime):
+def append_to_output (size_order, parent_gen_id_order, sibling_count, uncle_count, nephew_count, cousin_count, depth, mtime, ctime, atime, crtime, filename):
 	data = {
 		'size order' : size_order,
 		'parent gen Id order' : parent_gen_id_order,
@@ -101,7 +101,8 @@ def append_to_output (size_order, parent_gen_id_order, sibling_count, uncle_coun
 		'mtime' : mtime,
 		'ctime' : ctime,
 		'atime' : atime,
-		'crtime' : crtime
+		'crtime' : crtime,
+		'filename' : filename
 		}
 	output.append(data)
 
@@ -139,12 +140,17 @@ def generate_structure (grandparent_inode, parent_inode):
 			# we minus sibling files' count, uncle files' count and 1 for this file from result
 			# because uncle files' count are also added to the result in the find_children_count function's 'elif' part
 			cousin_count = find_children_count(grandparent_inode, True) - sibling_count - uncle_count - 1
-
+		
 			parent_gen_id_order = get_gen_id_order(find_file_object(fo_parent_inode).find('genId').text)
+
+			if fbe_encryption:
+				filename = None
+			else:
+				filename = get_filename(fo_inode)
 			
 			depth = find_depth(fo_inode)
 			
-			append_to_output(size_order, parent_gen_id_order, sibling_count, uncle_count, nephew_count, cousin_count, depth, fo_mtime, fo_ctime, fo_atime, fo_crtime)
+			append_to_output(size_order, parent_gen_id_order, sibling_count, uncle_count, nephew_count, cousin_count, depth, fo_mtime, fo_ctime, fo_atime, fo_crtime, filename)
 
 def get_timestamp (fo, name):
 	ts_name = fo.find(name)
@@ -170,24 +176,52 @@ def get_gen_id_order (generation_id):
 	global generation_id_list
 	return 	generation_id_list.index(generation_id)
 
+def extract_filename(inode):
+	for fo in root.findall('fileobject'):
+		fo_parent_inode = fo.find('parent_object').find('i_node').text
+		fo_name_type = fo.find('name_type').text
+		fo_inode = fo.find('inode').text
+		fo_name = fo.find('filename')
+
+		if (fo_parent_inode is not None and int(fo_parent_inode) == int(inode) and str(fo_name_type) == str("r/r") and 
+			fo_inode is not None and fo_name is not None and fo_name.text is not None):
+				filename_list.append((int(fo_inode), fo_name.text))
+
+		elif (fo_parent_inode is not None and int(fo_parent_inode) == int(inode) and 
+			str(fo_name_type) == str("d/d") and fo_inode is not None):
+				extract_filename(fo_inode)
+	
+def get_filename(inode):
+	for item in filename_list:
+		if item[0] == int(inode):
+			return item[1]
+
 if __name__ == '__main__':
-	if len(sys.argv) < 5:
-		print "Usage: python generate_tree_structure.py <xml_dump_name> <inode> <parent_inode> <output_file_name>"
+	if len(sys.argv) < 6:
+		print "Usage: python generate_tree_structure.py <xml_dump_name> <inode> <parent_inode> <output_file_name> <encryption>"
 		exit()
 
 	xml_dump = sys.argv[1]
 	inode = sys.argv[2]
 	parent_inode = sys.argv[3]
 	output_filename = sys.argv[4]
+	fbe_encryption = sys.argv[5] == 'FBE'
 	root = ET.parse(xml_dump).getroot()
 	data_appname_folder_inode = int(inode)
 
+	if not fbe_encryption:
+		filename_list = list()
+		extract_filename(inode)
+		
 	# append data/com.appname folder's gen id to the generation id list
 	generation_id_list.append(find_file_object(inode).find('genId').text)
 	extract_gen_id(inode)
+
 	output = []
 	generate_structure(parent_inode,inode)
+
 	# sort a final result by files' depth
 	output.sort(key = lambda k: k['depth'])
+
 	output_json(output_filename + ".json")
 
