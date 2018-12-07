@@ -24,6 +24,8 @@ xml_output_name_1=$OUTPUT_XML_DUMP_BEFORE
 xml_output_name_2=$OUTPUT_XML_DUMP_AFTER
 python_script_directory=$APP_AUTOMATION_SCRIPT_DIR
 python_script_name=$APP_AUTOMATION_SCRIPT_NAME
+encryption=$ENCRYPTION_NAME
+block=$BLOCK
 
 boot_twrp () {
 	adb reboot bootloader
@@ -85,7 +87,7 @@ extract_fs_metadata () {
 	adb shell "
 		cd /tmp/
 		chmod +x nbdserver.sh
-		./nbdserver.sh /dev/block/mmcblk0p45 8992 " &
+		./nbdserver.sh $block 8992 " &
 	# must sleep before the next command
 	sleep 5s
 
@@ -95,7 +97,7 @@ extract_fs_metadata () {
 	$xnbdclient bs=4096 127.0.0.1 8992 /dev/nbd0 &
 
 	cd $metadata_extractor_directory
-	python $metadata_extractor_filename /dev/nbd0 $inode $1 FBE &
+	python $metadata_extractor_filename /dev/nbd0 $inode $1 $encryption &
 
 	# wait until previous command ends, i.e metadata extraction 
 	# if an xml file exists then the extraction process is finished
@@ -117,6 +119,19 @@ wait_device_screen
 counter=1
 while [ $counter -le $runCount ]
 do
+
+	# copy openrecoveryscript
+	adb shell "
+	 su -c 'cp /sdcard/Download/openrecoveryscript2 /cache/recovery/openrecoveryscript
+	 ls /cache/recovery/
+	 '"
+
+	# restore the backup
+	boot_twrp "$twrp_image_name"
+	echo "restoring a backup.."
+
+	wait_device_screen
+
 	kill_process "adb" & 
 	wait
 	kill_process "xnbd-client" &
@@ -154,18 +169,6 @@ do
 	adb shell "reboot system"
 	
 	wait_device_screen 
-
-	# copy openrecoveryscript 
-	adb shell "
-	 su -c 'cp /sdcard/Download/openrecoveryscript2 /cache/recovery/openrecoveryscript
-	 ls /cache/recovery/
-	 '"
-	
-	# restore the backup
-	boot_twrp "$twrp_image_name"
-	echo "restoring a backup.."
-	
-	wait_device_screen	
 
 	echo $counter
 	((counter++))
