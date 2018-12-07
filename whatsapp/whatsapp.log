@@ -1871,3 +1871,133 @@
 2018-12-07 19:02:56 WhatsApp 2.18.223 receive-message INFO stop the application
 2018-12-07 19:02:59 WhatsApp 2.18.223 receive-message INFO remove an app from the recent list
 2018-12-07 19:03:01 WhatsApp 2.18.223 receive-message INFO return HOME
+2018-12-07 19:21:56 WhatsApp 2.18.327 conversation-send-photo INFO open application
+2018-12-07 19:21:59 WhatsApp 2.18.327 conversation-send-photo INFO click first conversation
+2018-12-07 19:22:02 WhatsApp 2.18.327 conversation-send-photo INFO click attachment button
+2018-12-07 19:22:04 WhatsApp 2.18.327 conversation-send-photo INFO click Gallery
+2018-12-07 19:22:07 WhatsApp 2.18.327 conversation-send-photo INFO click Camera folder
+2018-12-07 19:22:10 WhatsApp 2.18.327 conversation-send-photo INFO select photo
+2018-12-07 19:22:27 WhatsApp 2.18.327 conversation-send-photo INFO click send button
+2018-12-07 19:22:41 WhatsApp 2.18.327 conversation-send-photo INFO stop the application
+2018-12-07 19:22:42 WhatsApp 2.18.327 conversation-send-photo INFO remove an app from the recent list
+2018-12-07 19:22:42 WhatsApp 2.18.327 conversation-send-photo INFO return HOME
+2018-12-07 19:22:56 WhatsApp 2.18.223 push-notification INFO open Navigation Bar
+2018-12-07 19:23:00 WhatsApp 2.18.223 push-notification INFO A user received a new photo
+2018-12-07 19:23:01 WhatsApp 2.18.223 push-notification INFO return HOME
+2018-12-07 19:33:26 WhatsApp 2.18.327 conversation-send-photo INFO open application
+2018-12-07 19:33:28 WhatsApp 2.18.327 conversation-send-photo INFO click first conversation
+2018-12-07 19:33:31 WhatsApp 2.18.327 conversation-send-photo INFO click attachment button
+2018-12-07 19:33:34 WhatsApp 2.18.327 conversation-send-photo INFO click Gallery
+2018-12-07 19:33:37 WhatsApp 2.18.327 conversation-send-photo INFO click Camera folder
+2018-12-07 19:33:39 WhatsApp 2.18.327 conversation-send-photo INFO select photo
+2018-12-07 19:33:57 WhatsApp 2.18.327 conversation-send-photo INFO click send button
+2018-12-07 19:34:10 WhatsApp 2.18.327 conversation-send-photo INFO stop the application
+2018-12-07 19:34:12 WhatsApp 2.18.327 conversation-send-photo INFO remove an app from the recent list
+2018-12-07 19:34:12 WhatsApp 2.18.327 conversation-send-photo INFO return HOME
+2018-12-07 19:34:25 WhatsApp 2.18.223 push-notification INFO open Navigation Bar
+2018-12-07 19:34:29 WhatsApp 2.18.223 push-notification INFO A user received a new photo
+2018-12-07 19:34:31 WhatsApp 2.18.223 push-notification INFO return HOME
+2018-12-07 19:53:47 WhatsApp 2.18.327 conversation-send-photo INFO open application
+2018-12-07 19:53:51 WhatsApp 2.18.327 conversation-send-photo INFO click first conversation
+2018-12-07 19:53:54 WhatsApp 2.18.327 conversation-send-photo INFO click attachment button
+2018-12-07 19:53:56 WhatsApp 2.18.327 conversation-send-photo INFO click Gallery
+2018-12-07 19:53:59 WhatsApp 2.18.327 conversation-send-photo INFO click Camera folder
+2018-12-07 19:54:02 WhatsApp 2.18.327 conversation-send-photo INFO select photo
+2018-12-07 19:54:19 WhatsApp 2.18.327 conversation-send-photo INFO click send button
+2018-12-07 19:54:33 WhatsApp 2.18.327 conversation-send-photo INFO stop the application
+2018-12-07 19:54:34 WhatsApp 2.18.327 conversation-send-photo INFO remove an app from the recent list
+2018-12-07 19:54:35 WhatsApp 2.18.327 conversation-send-photo INFO return HOME
+2018-12-07 19:54:48 WhatsApp 2.18.223 push-notification INFO open Navigation Bar
+2018-12-07 19:54:52 WhatsApp 2.18.223 push-notification INFO A user received a new photo
+2018-12-07 19:54:53 WhatsApp 2.18.223 push-notification INFO return HOME
+2018-12-07 20:05:21 WhatsApp 2.18.327 conversation-send-photo INFO open application
+2018-12-07 20:05:24 WhatsApp 2.18.327 conversation-send-photo INFO click first conversation
+2018-12-07 20:05:27 WhatsApp 2.18.327 conversation-send-photo INFO click attachment button
+2018-12-07 20:05:30 WhatsApp 2.18.327 conversation-send-photo INFO click Gallery
+2018-12-07 20:05:32 WhatsApp 2.18.327 conversation-send-photo INFO click Camera folder
+2018-12-07 20:05:35 WhatsApp 2.18.327 conversation-send-photo INFO select photo
+2018-12-07 20:05:53 WhatsApp 2.18.327 conversation-send-photo INFO click send button
+2018-12-07 20:06:06 WhatsApp 2.18.327 conversation-send-photo INFO stop the application
+2018-12-07 20:06:07 WhatsApp 2.18.327 conversation-send-photo INFO remove an app from the recent list
+2018-12-07 20:06:08 WhatsApp 2.18.327 conversation-send-photo INFO return HOME
+2018-12-07 20:06:21 WhatsApp 2.18.223 push-notification INFO open Navigation Bar
+2018-12-07 20:06:24 WhatsApp 2.18.223 push-notification INFO A user received a new photo
+2018-12-07 20:06:26 WhatsApp 2.18.223 push-notification INFO return HOME
+2018-12-07 20:16:58 WhatsApp 2.18.327 conversation-send-photo INFO open application
+2018-12-07 20:17:00 WhatsApp 2.18.327 conversation-send-photo INFO click first conversation
+2018-12-07 20:17:03 WhatsApp 2.18.327 conversation-send-photo INFO click attachment button
+2018-12-07 20:17:06 WhatsApp 2.18.327 conversation-send-photo INFO click Gallery
+2018-12-07 20:17:08 WhatsApp 2.18.327 conversation-send-photo INFO click Camera folder
+2018-12-07 20:17:11 WhatsApp 2.18.327 conversation-send-photo INFO select photo
+2018-12-07 20:17:29 WhatsApp 2.18.327 conversation-send-photo INFO click send button
+2018-12-07 20:17:42 WhatsApp 2.18.327 conversation-send-photo INFO stop the application
+2018-12-07 20:17:43 WhatsApp 2.18.327 conversation-send-photo INFO remove an app from the recent list
+2018-12-07 20:17:44 WhatsApp 2.18.327 conversation-send-photo INFO return HOME
+2018-12-07 20:17:57 WhatsApp 2.18.223 push-notification INFO open Navigation Bar
+2018-12-07 20:18:01 WhatsApp 2.18.223 push-notification INFO A user received a new photo
+2018-12-07 20:18:03 WhatsApp 2.18.223 push-notification INFO return HOME
+2018-12-07 20:28:19 WhatsApp 2.18.327 conversation-send-photo INFO open application
+2018-12-07 20:28:22 WhatsApp 2.18.327 conversation-send-photo INFO click first conversation
+2018-12-07 20:28:25 WhatsApp 2.18.327 conversation-send-photo INFO click attachment button
+2018-12-07 20:28:28 WhatsApp 2.18.327 conversation-send-photo INFO click Gallery
+2018-12-07 20:28:30 WhatsApp 2.18.327 conversation-send-photo INFO click Camera folder
+2018-12-07 20:28:33 WhatsApp 2.18.327 conversation-send-photo INFO select photo
+2018-12-07 20:28:50 WhatsApp 2.18.327 conversation-send-photo INFO click send button
+2018-12-07 20:29:04 WhatsApp 2.18.327 conversation-send-photo INFO stop the application
+2018-12-07 20:29:05 WhatsApp 2.18.327 conversation-send-photo INFO remove an app from the recent list
+2018-12-07 20:29:05 WhatsApp 2.18.327 conversation-send-photo INFO return HOME
+2018-12-07 20:29:19 WhatsApp 2.18.223 push-notification INFO open Navigation Bar
+2018-12-07 20:29:22 WhatsApp 2.18.223 push-notification INFO A user received a new photo
+2018-12-07 20:29:24 WhatsApp 2.18.223 push-notification INFO return HOME
+2018-12-07 20:39:45 WhatsApp 2.18.327 conversation-send-photo INFO open application
+2018-12-07 20:39:48 WhatsApp 2.18.327 conversation-send-photo INFO click first conversation
+2018-12-07 20:39:51 WhatsApp 2.18.327 conversation-send-photo INFO click attachment button
+2018-12-07 20:39:54 WhatsApp 2.18.327 conversation-send-photo INFO click Gallery
+2018-12-07 20:39:56 WhatsApp 2.18.327 conversation-send-photo INFO click Camera folder
+2018-12-07 20:39:59 WhatsApp 2.18.327 conversation-send-photo INFO select photo
+2018-12-07 20:40:16 WhatsApp 2.18.327 conversation-send-photo INFO click send button
+2018-12-07 20:40:30 WhatsApp 2.18.327 conversation-send-photo INFO stop the application
+2018-12-07 20:40:31 WhatsApp 2.18.327 conversation-send-photo INFO remove an app from the recent list
+2018-12-07 20:40:31 WhatsApp 2.18.327 conversation-send-photo INFO return HOME
+2018-12-07 20:40:45 WhatsApp 2.18.223 push-notification INFO open Navigation Bar
+2018-12-07 20:40:48 WhatsApp 2.18.223 push-notification INFO A user received a new photo
+2018-12-07 20:40:50 WhatsApp 2.18.223 push-notification INFO return HOME
+2018-12-07 20:51:12 WhatsApp 2.18.327 conversation-send-photo INFO open application
+2018-12-07 20:51:15 WhatsApp 2.18.327 conversation-send-photo INFO click first conversation
+2018-12-07 20:51:18 WhatsApp 2.18.327 conversation-send-photo INFO click attachment button
+2018-12-07 20:51:21 WhatsApp 2.18.327 conversation-send-photo INFO click Gallery
+2018-12-07 20:51:24 WhatsApp 2.18.327 conversation-send-photo INFO click Camera folder
+2018-12-07 20:51:26 WhatsApp 2.18.327 conversation-send-photo INFO select photo
+2018-12-07 20:51:44 WhatsApp 2.18.327 conversation-send-photo INFO click send button
+2018-12-07 20:51:57 WhatsApp 2.18.327 conversation-send-photo INFO stop the application
+2018-12-07 20:51:58 WhatsApp 2.18.327 conversation-send-photo INFO remove an app from the recent list
+2018-12-07 20:51:59 WhatsApp 2.18.327 conversation-send-photo INFO return HOME
+2018-12-07 20:52:12 WhatsApp 2.18.223 push-notification INFO open Navigation Bar
+2018-12-07 20:52:15 WhatsApp 2.18.223 push-notification INFO A user received a new photo
+2018-12-07 20:52:17 WhatsApp 2.18.223 push-notification INFO return HOME
+2018-12-07 21:02:35 WhatsApp 2.18.327 conversation-send-photo INFO open application
+2018-12-07 21:02:38 WhatsApp 2.18.327 conversation-send-photo INFO click first conversation
+2018-12-07 21:02:41 WhatsApp 2.18.327 conversation-send-photo INFO click attachment button
+2018-12-07 21:02:43 WhatsApp 2.18.327 conversation-send-photo INFO click Gallery
+2018-12-07 21:02:46 WhatsApp 2.18.327 conversation-send-photo INFO click Camera folder
+2018-12-07 21:02:49 WhatsApp 2.18.327 conversation-send-photo INFO select photo
+2018-12-07 21:03:06 WhatsApp 2.18.327 conversation-send-photo INFO click send button
+2018-12-07 21:03:20 WhatsApp 2.18.327 conversation-send-photo INFO stop the application
+2018-12-07 21:03:21 WhatsApp 2.18.327 conversation-send-photo INFO remove an app from the recent list
+2018-12-07 21:03:22 WhatsApp 2.18.327 conversation-send-photo INFO return HOME
+2018-12-07 21:03:35 WhatsApp 2.18.223 push-notification INFO open Navigation Bar
+2018-12-07 21:03:39 WhatsApp 2.18.223 push-notification INFO A user received a new photo
+2018-12-07 21:03:41 WhatsApp 2.18.223 push-notification INFO return HOME
+2018-12-07 21:14:01 WhatsApp 2.18.327 conversation-send-photo INFO open application
+2018-12-07 21:14:04 WhatsApp 2.18.327 conversation-send-photo INFO click first conversation
+2018-12-07 21:14:06 WhatsApp 2.18.327 conversation-send-photo INFO click attachment button
+2018-12-07 21:14:09 WhatsApp 2.18.327 conversation-send-photo INFO click Gallery
+2018-12-07 21:14:12 WhatsApp 2.18.327 conversation-send-photo INFO click Camera folder
+2018-12-07 21:14:14 WhatsApp 2.18.327 conversation-send-photo INFO select photo
+2018-12-07 21:14:32 WhatsApp 2.18.327 conversation-send-photo INFO click send button
+2018-12-07 21:14:45 WhatsApp 2.18.327 conversation-send-photo INFO stop the application
+2018-12-07 21:14:46 WhatsApp 2.18.327 conversation-send-photo INFO remove an app from the recent list
+2018-12-07 21:14:47 WhatsApp 2.18.327 conversation-send-photo INFO return HOME
+2018-12-07 21:15:01 WhatsApp 2.18.223 push-notification INFO open Navigation Bar
+2018-12-07 21:15:04 WhatsApp 2.18.223 push-notification INFO A user received a new photo
+2018-12-07 21:15:06 WhatsApp 2.18.223 push-notification INFO return HOME
