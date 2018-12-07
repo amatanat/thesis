@@ -89,7 +89,7 @@ def find_depth (fo_inode):
         	fo_inode = fo.find('parent_object').find('i_node').text
     	return depth
 
-def append_to_output (size_order, parent_gen_id_order, sibling_count, uncle_count, nephew_count, cousin_count, depth, mtime, ctime, atime, crtime, filename):
+def append_to_output (size_order, parent_gen_id_order, sibling_count, uncle_count, nephew_count, cousin_count, depth, mtime, ctime, atime, crtime, filename, name_size, mode):
 	data = {
 		'size order' : size_order,
 		'parent gen Id order' : parent_gen_id_order,
@@ -102,7 +102,9 @@ def append_to_output (size_order, parent_gen_id_order, sibling_count, uncle_coun
 		'ctime' : ctime,
 		'atime' : atime,
 		'crtime' : crtime,
-		'filename' : filename
+		'filename' : filename,
+		'name_size' : int(name_size),
+		'mode' : int(mode)
 		}
 	output.append(data)
 
@@ -116,6 +118,8 @@ def generate_structure (grandparent_inode, parent_inode):
 		fo_parent_inode = fileobject.find('parent_object').find('i_node').text
 		fo_name_type = fileobject.find('name_type').text 
 		fo_inode =  fileobject.find('inode').text 
+		fo_name_size = fileobject.find('nameSize').text 
+		fo_mode = fileobject.find('mode').text
 
 		if (fo_parent_inode is not None and int(fo_parent_inode) == int(parent_inode) and 
 			str(fo_name_type) == str("d/d") and fo_inode is not None): 
@@ -150,7 +154,7 @@ def generate_structure (grandparent_inode, parent_inode):
 			
 			depth = find_depth(fo_inode)
 			
-			append_to_output(size_order, parent_gen_id_order, sibling_count, uncle_count, nephew_count, cousin_count, depth, fo_mtime, fo_ctime, fo_atime, fo_crtime, filename)
+			append_to_output(size_order, parent_gen_id_order, sibling_count, uncle_count, nephew_count, cousin_count, depth, fo_mtime, fo_ctime, fo_atime, fo_crtime, filename, fo_name_size, fo_mode)
 
 def get_timestamp (fo, name):
 	ts_name = fo.find(name)
@@ -167,14 +171,14 @@ def extract_gen_id (inode):
 
 		if (fo_parent_inode is not None and int(fo_parent_inode) == int(inode) and
 			str(fo_name_type) == str("d/d") and fo_inode is not None and fo_generation_id is not None):
-				generation_id_list.append(fo_generation_id)
+				generation_id_list.append(int(fo_generation_id))
 				extract_gen_id(fo_inode)
 
 	generation_id_list.sort()
 
 def get_gen_id_order (generation_id):
 	global generation_id_list
-	return 	generation_id_list.index(generation_id)
+	return 	generation_id_list.index(int(generation_id))
 
 def extract_filename(inode):
 	for fo in root.findall('fileobject'):
@@ -214,14 +218,14 @@ if __name__ == '__main__':
 		extract_filename(inode)
 		
 	# append data/com.appname folder's gen id to the generation id list
-	generation_id_list.append(find_file_object(inode).find('genId').text)
+	generation_id_list.append(int(find_file_object(inode).find('genId').text))
 	extract_gen_id(inode)
 
 	output = []
 	generate_structure(parent_inode,inode)
 
 	# sort a final result by files' depth
+	output.sort(key = lambda k: k['name_size'])
 	output.sort(key = lambda k: k['depth'])
-
 	output_json(output_filename + ".json")
 
