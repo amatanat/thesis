@@ -16,7 +16,7 @@ def compare_dictionaries (dict1, dict2):
 	return result
 
 def compare (data_before_action, data_after_action):
-	new_file = True
+	deleted_file = True
 	for data_ba in data_before_action:
 		for data_ac in data_after_action:
 			if (data_ac['depth'] == data_ba['depth'] and 
@@ -30,16 +30,16 @@ def compare (data_before_action, data_after_action):
 					# delete already processed file's data
 					del data_after_action[data_after_action.index(data_ac)]
 
-					new_file = False
+					deleted_file = False
 					break
-		if new_file:	
+		if deleted_file:	
 			# data is not present in data_after_action,
 			# which means this file is deleted	
 			append_to_output('Deleted files', data_ba)
 		else:
-			new_file = True
+			deleted_file = True
 	
-	# data present in data_before_action and not in data_after_action are deleted data
+	# data present in data_after_action and not in data_before_action are for new files
 	if len(data_after_action) > 0:
 		for item in data_after_action:
 			append_to_output('New files', item)
