@@ -16,37 +16,33 @@ def compare_dictionaries (dict1, dict2):
 	return result
 
 def compare (data_before_action, data_after_action):
-	deleted_file = True
 	for data_ba in data_before_action:
 		for data_ac in data_after_action:
-			if (data_ac['depth'] == data_ba['depth'] and 
-				data_ac['name_size'] == data_ba['name_size'] and 
-				data_ac['mode'] == data_ba['mode']):
-					# compare file's data before and after an action
-					result = compare_dictionaries(data_ba, data_ac)
-					# add file's data and comparison result to output
+			if (data_ac['depth'] == data_ba['depth'] and data_ac['name_size'] == data_ba['name_size']):
+				# compare file's data before and after an action
+				result = compare_dictionaries(data_ba, data_ac)
+
+				# add file's data and comparison result to output
+				if len(result) > 0:
 					append_to_output('Changed', (data_ac, result))
 
-					# delete already processed file's data
-					del data_after_action[data_after_action.index(data_ac)]
+				# delete already processed file's data
+				del data_after_action[data_after_action.index(data_ac)]
+				break
 
-					deleted_file = False
-					break
-		if deleted_file:	
-			# data is not present in data_after_action,
-			# which means this file is deleted	
-			append_to_output('Deleted files', data_ba)
-		else:
-			deleted_file = True
-	
-	# data present in data_after_action and not in data_before_action are for new files
-	if len(data_after_action) > 0:
-		for item in data_after_action:
-			append_to_output('New files', item)
-
-def output_json(filename) :
+def output_json (filename) :
 	with open(filename, 'w+') as outfile:
     		json.dump(output, outfile)
+
+def find_unique_name_size (data):
+	"""Find files those having unique 'name_size' in the same depth"""
+	result = list()
+	for item in data:
+		count = sum([1 for i in data if item["name_size"] == i["name_size"] and item["depth"] == i["depth"]])
+		if count == 1:
+			print item["depth"], item["name_size"], item["filename"]
+			result.append(item)
+	return result
 
 if __name__ == '__main__':
 	if len(sys.argv) < 4:
@@ -64,11 +60,12 @@ if __name__ == '__main__':
   			data_ac = json.loads(f.read())
 
 	output = {}
-	output['New files'] = list()
-	output['Deleted files'] = list()
 	output['Changed'] = list()
 
-	compare(data_ba, data_ac)
+	ba_unique_name_size = find_unique_name_size(data_ba)
+	ac_unique_name_size = find_unique_name_size(data_ac)
+
+	compare(ba_unique_name_size, ac_unique_name_size)
 	output_json(output_filename + ".json")
 
 
