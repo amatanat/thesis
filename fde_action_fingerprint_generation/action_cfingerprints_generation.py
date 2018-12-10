@@ -18,7 +18,7 @@ def connect_to_db (db_file):
 def insert_action_cfingerprints (db, app_name, action_name, path, changed): 
 	sql_insert = "INSERT INTO action_cfingerprints (app_name, action_name, path, changed) VALUES(?,?,?,?)"
    	cursor = db.cursor()
-    	cursor.execute(sql_insert, (app_name, action_name, path, changed))
+	cursor.execute(sql_insert, (app_name, action_name, path, changed))
    	return cursor.lastrowid
 
 def find_action_cfingerprints (db, sql_query, app_name, action_name):
