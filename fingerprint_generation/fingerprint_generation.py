@@ -25,13 +25,13 @@ def create_table (db, sql_create_table):
     	except Error as e:
         	print(e) 
 
-def insert_application (db, application):
+def insert_application (db, application, version):
     	"""Insert a new application into the 'applications' table
     	return an application id"""
 
-    	sql_insert = "INSERT INTO applications (name) VALUES(?)"
+	sql_insert = "INSERT INTO applications (name, version) VALUES(?,?)"
     	cursor = db.cursor()
-    	cursor.execute(sql_insert, [application]) 
+	cursor.execute(sql_insert, (application, version))
 	#print "insert into applications table done.."
     	return cursor.lastrowid
 
@@ -68,7 +68,9 @@ def insert_into_db (db, filename):
 			line = line.rstrip()
 			if "name-" in line:
 				app_name = line.split("name-")[1]
-				app_id = insert_application(db, app_name)
+			elif "versionName=" in line:
+				version = line.strip().split("=")[1]
+				insert_application(db, app_name, version)
 			else:
 				line = line.split(" ")
 				file_size = int(line[0])
@@ -89,7 +91,8 @@ if __name__ == '__main__':
 	
 	sql_create_applications_table = """ create TABLE applications (
                                         ID INTEGER PRIMARY KEY NOT NULL,
-                                        name TEXT NOT NULL
+                                        name TEXT NOT NULL,
+					version TEXT NOT NULL
                                         ); """
 
 	sql_create_fingerprints_table = """create TABLE fingerprints (
