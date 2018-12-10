@@ -8,8 +8,9 @@ def compare_dictionaries (dict1, dict2):
 	""" compare 2 dictionaries and return a list of 
 	keys having different values"""
 	result = list()
+	interesting_keys = ['mtime','atime','ctime','crtime']
 	for key in dict1.keys():
-		if dict1[key] != dict2[key]:
+		if key in interesting_keys and dict1[key] != dict2[key]:
 			result.append(key)
 	return result
 
