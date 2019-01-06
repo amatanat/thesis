@@ -89,7 +89,7 @@ def find_depth (fo_inode):
         	fo_inode = fo.find('parent_object').find('i_node').text
     	return depth
 
-def append_to_output (size_order, parent_gen_id_order, sibling_count, uncle_count, nephew_count, cousin_count, depth, mtime, ctime, atime, crtime, filename, name_size):
+def append_to_output (size_order, parent_gen_id_order, sibling_count, uncle_count, nephew_count, cousin_count, depth, mtime, ctime, atime, crtime, filename):
 	data = {
 		'size order' : size_order,
 		'parent gen Id order' : parent_gen_id_order,
@@ -102,8 +102,7 @@ def append_to_output (size_order, parent_gen_id_order, sibling_count, uncle_coun
 		'ctime' : ctime,
 		'atime' : atime,
 		'crtime' : crtime,
-		'filename' : filename,
-		'name_size' : int(name_size)
+		'filename' : filename
 		}
 	output.append(data)
 
@@ -117,7 +116,6 @@ def generate_structure (grandparent_inode, parent_inode):
 		fo_parent_inode = fileobject.find('parent_object').find('i_node').text
 		fo_name_type = fileobject.find('name_type').text 
 		fo_inode =  fileobject.find('inode').text 
-		fo_name_size = fileobject.find('nameSize').text 
 
 		if (fo_parent_inode is not None and int(fo_parent_inode) == int(parent_inode) and 
 			str(fo_name_type) == str("d/d") and fo_inode is not None): 
@@ -145,14 +143,11 @@ def generate_structure (grandparent_inode, parent_inode):
 		
 			parent_gen_id_order = get_gen_id_order(find_file_object(fo_parent_inode).find('genId').text)
 
-			if fbe_encryption:
-				filename = None
-			else:
-				filename = get_filename(fo_inode)
+			filename = get_filename(fo_inode)
 			
 			depth = find_depth(fo_inode)
 			
-			append_to_output(size_order, parent_gen_id_order, sibling_count, uncle_count, nephew_count, cousin_count, depth, fo_mtime, fo_ctime, fo_atime, fo_crtime, filename, fo_name_size)
+			append_to_output(size_order, parent_gen_id_order, sibling_count, uncle_count, nephew_count, cousin_count, depth, fo_mtime, fo_ctime, fo_atime, fo_crtime, filename)
 
 def get_timestamp (fo, name):
 	ts_name = fo.find(name)
@@ -222,8 +217,7 @@ if __name__ == '__main__':
 	output = []
 	generate_structure(parent_inode,inode)
 
-	# sort a final result by files' name_size and depth
-	output.sort(key = lambda k: k['name_size'])
+	# sort a final result by files' depth
 	output.sort(key = lambda k: k['depth'])
 	output_json(output_filename + ".json")
 
