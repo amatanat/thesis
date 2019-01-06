@@ -194,21 +194,20 @@ def get_filename(inode):
 			return item[1]
 
 if __name__ == '__main__':
-	if len(sys.argv) < 6:
-		print "Usage: python generate_tree_structure.py <xml_dump_name> <inode> <parent_inode> <output_file_name> <encryption>"
+	if len(sys.argv) < 5:
+		print "Usage: python generate_tree_structure.py <xml_dump_name> <inode> <parent_inode> <output_file_name>"
 		exit()
 
 	xml_dump = sys.argv[1]
 	inode = sys.argv[2]
 	parent_inode = sys.argv[3]
 	output_filename = sys.argv[4]
-	fbe_encryption = sys.argv[5] == 'FBE'
+	
 	root = ET.parse(xml_dump).getroot()
 	data_appname_folder_inode = int(inode)
 
-	if not fbe_encryption:
-		filename_list = list()
-		extract_filename(inode)
+	filename_list = list()
+	extract_filename(inode)
 		
 	# append data/com.appname folder's gen id to the generation id list
 	generation_id_list.append(int(find_file_object(inode).find('genId').text))
