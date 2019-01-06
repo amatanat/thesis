@@ -1,0 +1,190 @@
+  File: `com.whatsapp/'
+  Size: 4096	 Blocks: 16	 IO Blocks: 512	directory
+Device: 1030dh/66317d	 Inode: 401158	 Links: 9
+Access: (700/drwx------)	Uid: (10102/ u0_a102)	Gid: (10102/ u0_a102)
+Access: 2018-12-18 23:03:40.000000000
+Modify: 2018-12-19 15:16:07.329335325
+Change: 2018-12-19 15:16:07.329335325
+databases/_jobqueue-WhatsAppJobManager
+databases/_jobqueue-WhatsAppJobManager-journal
+databases/location.db
+databases/location.db-wal
+databases/location.db-shm
+databases/wa.db
+databases/wa.db-wal
+databases/wa.db-shm
+databases/axolotl.db
+databases/axolotl.db-wal
+databases/axolotl.db-shm
+databases/msgstore.db
+databases/msgstore.db-wal
+databases/msgstore.db-shm
+databases/web_sessions.db
+databases/web_sessions.db-journal
+databases/chatsettings.db
+databases/chatsettings.db-journal
+databases/media.db
+databases/media.db-wal
+databases/media.db-shm
+databases/emojidictionary.db
+databases/emojidictionary.db-journal
+databases/hsmpacks.db
+databases/hsmpacks.db-journal
+databases/chatsettingsbackup.db-journal
+files/Logs/whatsapp.log
+files/Logs/whatsapp-2018-12-19.1.log.gz
+files/wam.wam
+files/rc2
+files/me
+files/Avatars/994507227059@s.whatsapp.net.j
+files/Avatars/79775060109@s.whatsapp.net.j
+files/Avatars/994504308769@s.whatsapp.net.j
+files/Avatars/994513793458@s.whatsapp.net.j
+files/Avatars/994518726037@s.whatsapp.net.j
+files/Avatars/994517444195@s.whatsapp.net.j
+files/Avatars/994552622703@s.whatsapp.net.j
+files/Avatars/994558726358@s.whatsapp.net.j
+files/Avatars/994555095212@s.whatsapp.net.j
+files/key
+files/statistics
+files/invalid_numbers
+files/downloadable/manifest.json
+files/downloadable/filter_YHbwxhPS2U4WtSgbh9e47EKR_cmhYwWErgJoiPpIzuQ/filter_bw.png
+files/downloadable/filter_YHbwxhPS2U4WtSgbh9e47EKR_cmhYwWErgJoiPpIzuQ/filter_chrome.png
+files/downloadable/filter_YHbwxhPS2U4WtSgbh9e47EKR_cmhYwWErgJoiPpIzuQ/filter_cool.png
+files/downloadable/filter_YHbwxhPS2U4WtSgbh9e47EKR_cmhYwWErgJoiPpIzuQ/filter_film.png
+files/downloadable/filter_YHbwxhPS2U4WtSgbh9e47EKR_cmhYwWErgJoiPpIzuQ/filter_pop.png
+files/login_failed
+no_backup/com.google.android.gms.appid-no-backup
+shared_prefs/com.google.android.gms.measurement.prefs.xml
+shared_prefs/com.whatsapp_preferences.xml
+shared_prefs/_has_set_default_values.xml
+shared_prefs/com.google.android.gms.appid.xml
+shared_prefs/registration.RegisterPhone.xml
+shared_prefs/keystore.xml
+shared_prefs/registration.VerifySms.xml
+shared_prefs/com.whatsapp_payment_preferences.xml
+shared_prefs/chatCounts.xml
+shared_prefs/voip_prefs.xml
+shared_prefs/qr_data.xml
+.:
+total 60
+drwxrwx--x 2 u0_a102 u0_a102       4096 2018-12-11 17:31 app_minidumps
+drwxrws--x 5 u0_a102 u0_a102_cache 4096 2018-12-19 15:12 cache
+drwxrws--x 2 u0_a102 u0_a102_cache 4096 2018-12-11 17:31 code_cache
+drwxrwx--x 2 u0_a102 u0_a102       4096 2018-12-19 15:12 databases
+drwxrwx--x 6 u0_a102 u0_a102       4096 2018-12-19 15:12 files
+lrwxrwxrwx 1 root    root            58 2018-12-19 15:16 lib -> /data/app/com.whatsapp-gYeCYb_y03pZCrKHYvD7-Q==/lib/arm
+drwxrwx--x 2 u0_a102 u0_a102       4096 2018-12-19 15:12 no_backup
+drwxrwx--x 2 u0_a102 u0_a102       4096 2018-12-19 15:12 shared_prefs
+
+./app_minidumps:
+total 0
+
+./cache:
+total 24
+drwxrws--x 2 u0_a102 u0_a102_cache 4096 2018-12-18 10:44 Profile Pictures
+drwxrws--x 2 u0_a102 u0_a102_cache 4096 2018-12-13 11:41 ProfilePictureTemp
+drwxrws--x 2 u0_a102 u0_a102_cache 4096 2018-12-11 17:34 downloadable
+
+./cache/Profile Pictures:
+total 0
+
+./cache/ProfilePictureTemp:
+total 0
+
+./cache/downloadable:
+total 0
+
+./code_cache:
+total 0
+
+./databases:
+total 2724
+-rw-rw---- 1 u0_a102 u0_a102  16384 2018-12-18 16:31 _jobqueue-WhatsAppJobManager
+-rw-rw---- 1 u0_a102 u0_a102      0 2018-12-18 16:31 _jobqueue-WhatsAppJobManager-journal
+-rw-rw---- 1 u0_a102 u0_a102 270336 2018-12-14 08:15 axolotl.db
+-rw------- 1 u0_a102 u0_a102  32768 2018-12-19 00:00 axolotl.db-shm
+-rw------- 1 u0_a102 u0_a102 432632 2018-12-18 16:31 axolotl.db-wal
+-rw-rw---- 1 u0_a102 u0_a102  24576 2018-12-11 17:32 chatsettings.db
+-rw-rw---- 1 u0_a102 u0_a102      0 2018-12-11 17:32 chatsettings.db-journal
+-rw-rw---- 1 u0_a102 u0_a102      0 2018-12-19 02:00 chatsettingsbackup.db-journal
+-rw-rw---- 1 u0_a102 u0_a102 417792 2018-12-12 16:02 emojidictionary.db
+-rw-rw---- 1 u0_a102 u0_a102      0 2018-12-12 16:02 emojidictionary.db-journal
+-rw-rw---- 1 u0_a102 u0_a102  24576 2018-12-14 01:40 hsmpacks.db
+-rw-rw---- 1 u0_a102 u0_a102      0 2018-12-14 01:40 hsmpacks.db-journal
+-rw-rw---- 1 u0_a102 u0_a102   4096 2018-12-11 17:31 location.db
+-rw------- 1 u0_a102 u0_a102  32768 2018-12-19 07:05 location.db-shm
+-rw------- 1 u0_a102 u0_a102  53592 2018-12-11 17:31 location.db-wal
+-rw-rw---- 1 u0_a102 u0_a102   4096 2018-12-11 17:34 media.db
+-rw------- 1 u0_a102 u0_a102  32768 2018-12-19 00:00 media.db-shm
+-rw------- 1 u0_a102 u0_a102 407912 2018-12-14 15:45 media.db-wal
+-rw------- 1 u0_a102 u0_a102 262144 2018-12-19 02:00 msgstore.db
+-rw------- 1 u0_a102 u0_a102  32768 2018-12-19 07:05 msgstore.db-shm
+-rw------- 1 u0_a102 u0_a102  32992 2018-12-19 07:05 msgstore.db-wal
+-rw-rw---- 1 u0_a102 u0_a102 118784 2018-12-14 15:45 wa.db
+-rw------- 1 u0_a102 u0_a102  32768 2018-12-19 07:05 wa.db-shm
+-rw------- 1 u0_a102 u0_a102 412032 2018-12-18 10:45 wa.db-wal
+-rw-rw---- 1 u0_a102 u0_a102  24576 2018-12-18 09:25 web_sessions.db
+-rw-rw---- 1 u0_a102 u0_a102      0 2018-12-18 09:25 web_sessions.db-journal
+
+./files:
+total 268
+drwx------ 2 u0_a102 u0_a102   4096 2018-12-19 15:12 Avatars
+drwx------ 2 u0_a102 u0_a102   4096 2018-12-19 15:12 Logs
+drwx------ 3 u0_a102 u0_a102   4096 2018-12-19 15:12 downloadable
+-rw------- 1 u0_a102 u0_a102     53 2018-12-18 10:45 invalid_numbers
+-rw------- 1 u0_a102 u0_a102    158 2018-12-18 10:43 key
+-rw-rw---- 1 u0_a102 u0_a102      1 2018-12-18 09:25 login_failed
+-rw-rw---- 1 u0_a102 u0_a102    126 2018-12-18 10:43 me
+-rw------- 1 u0_a102 u0_a102     69 2018-12-11 17:31 rc2
+-rw------- 1 u0_a102 u0_a102    699 2018-12-19 07:05 statistics
+-rw------- 1 u0_a102 u0_a102 196608 2018-12-19 05:35 wam.wam
+
+./files/Avatars:
+total 72
+-rw------- 1 u0_a102 u0_a102 2504 2018-12-18 10:43 79775060109@s.whatsapp.net.j
+-rw------- 1 u0_a102 u0_a102 3747 2018-12-18 10:43 994504308769@s.whatsapp.net.j
+-rw------- 1 u0_a102 u0_a102 3423 2018-12-18 10:45 994507227059@s.whatsapp.net.j
+-rw------- 1 u0_a102 u0_a102 3629 2018-12-18 10:43 994513793458@s.whatsapp.net.j
+-rw------- 1 u0_a102 u0_a102 3008 2018-12-18 10:43 994517444195@s.whatsapp.net.j
+-rw------- 1 u0_a102 u0_a102 3095 2018-12-18 10:43 994518726037@s.whatsapp.net.j
+-rw------- 1 u0_a102 u0_a102 3643 2018-12-18 10:43 994552622703@s.whatsapp.net.j
+-rw------- 1 u0_a102 u0_a102 3100 2018-12-18 10:43 994555095212@s.whatsapp.net.j
+-rw------- 1 u0_a102 u0_a102 4016 2018-12-18 10:43 994558726358@s.whatsapp.net.j
+
+./files/Logs:
+total 520
+-rw------- 1 u0_a102 u0_a102 271341 2018-12-19 00:00 whatsapp-2018-12-19.1.log.gz
+-rw------- 1 u0_a102 u0_a102 248829 2018-12-19 07:05 whatsapp.log
+
+./files/downloadable:
+total 16
+drwx--S--- 2 u0_a102 u0_a102_cache 4096 2018-12-19 15:12 filter_YHbwxhPS2U4WtSgbh9e47EKR_cmhYwWErgJoiPpIzuQ
+-rw------- 1 u0_a102 u0_a102       1388 2018-12-11 17:34 manifest.json
+
+./files/downloadable/filter_YHbwxhPS2U4WtSgbh9e47EKR_cmhYwWErgJoiPpIzuQ:
+total 120
+-rw------- 1 u0_a102 u0_a102_cache 18367 2018-12-11 17:34 filter_bw.png
+-rw------- 1 u0_a102 u0_a102_cache  5501 2018-12-11 17:34 filter_chrome.png
+-rw------- 1 u0_a102 u0_a102_cache 33384 2018-12-11 17:34 filter_cool.png
+-rw------- 1 u0_a102 u0_a102_cache 12688 2018-12-11 17:34 filter_film.png
+-rw------- 1 u0_a102 u0_a102_cache 20461 2018-12-11 17:34 filter_pop.png
+
+./no_backup:
+total 4
+-rw------- 1 u0_a102 u0_a102 0 2018-12-11 17:31 com.google.android.gms.appid-no-backup
+
+./shared_prefs:
+total 96
+-rw-rw---- 1 u0_a102 u0_a102   130 2018-12-11 17:31 _has_set_default_values.xml
+-rw-rw---- 1 u0_a102 u0_a102   126 2018-12-19 00:00 chatCounts.xml
+-rw-rw---- 1 u0_a102 u0_a102  2826 2018-12-18 18:59 com.google.android.gms.appid.xml
+-rw-rw---- 1 u0_a102 u0_a102   712 2018-12-19 07:05 com.google.android.gms.measurement.prefs.xml
+-rw-rw---- 1 u0_a102 u0_a102    65 2018-12-11 17:32 com.whatsapp_payment_preferences.xml
+-rw-rw---- 1 u0_a102 u0_a102 11419 2018-12-19 07:05 com.whatsapp_preferences.xml
+-rw-rw---- 1 u0_a102 u0_a102   300 2018-12-11 17:32 keystore.xml
+-rw-rw---- 1 u0_a102 u0_a102    65 2018-12-18 09:25 qr_data.xml
+-rw-rw---- 1 u0_a102 u0_a102   707 2018-12-18 10:42 registration.RegisterPhone.xml
+-rw-rw---- 1 u0_a102 u0_a102   364 2018-12-18 10:43 registration.VerifySms.xml
+-rw-rw---- 1 u0_a102 u0_a102  1517 2018-12-13 15:01 voip_prefs.xml
