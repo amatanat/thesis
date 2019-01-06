@@ -39,6 +39,7 @@ runComponent = package + '/' + activity
 device.startActivity(component=runComponent)
 logger.info('open application',extra=get_extra_data())
 
+ViewClient.sleep(10)
 dump = vc.dump()
 try:
 	for view in dump:

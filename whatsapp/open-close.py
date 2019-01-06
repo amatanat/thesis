@@ -35,7 +35,7 @@ device.startActivity(component=runComponent)
 logger.info('open application',extra=get_extra_data())
 				
 # wait 
-ViewClient.sleep(3)
+ViewClient.sleep(5)
 
 # close the app
 device.shell('am force-stop com.whatsapp')

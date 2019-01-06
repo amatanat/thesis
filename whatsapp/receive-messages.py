@@ -49,6 +49,7 @@ runComponent = package + '/' + activity
 device.startActivity(component=runComponent)
 logger.info('open application',extra=get_extra_data())
 
+ViewClient.sleep(10)
 dump=vc.dump()
 for view in dump:
 	if view['resource-id'] == "com.whatsapp:id/conversations_row_message_count":
