@@ -6,21 +6,21 @@ import collections
 import json
 
 fingerprints = {}
-check_three = False
+check_oat = False
 
 def get_app_folder_inode ():
 	return root.find("./fileobject/[filename='app']").find('inode').text
 
 def create_dict (inode):
-	global check_three
-	check_three = False
+	global check_oat
+	check_oat = False
 
 	fingerprints[inode] = list()
 	find_fingerprints(inode, inode, 'root')
 
 def find_app_subfolders (inode):
 	for fileobject in e.findall('fileobject'):
-		parent_inode = fileobject.find('parent_object').find('inode').text
+		parent_inode = fileobject.find('parent_object').find('i_node').text
 		name_type = fileobject.find('name_type').text 
 		i_node = fileobject.find('inode').text
 		if (parent_inode is not None and int(parent_inode) == int(inode) and 
@@ -32,7 +32,7 @@ def find_children_count (inode):
 	""" Return children files' count in a given folder """
 	count = 0
 	for fileobject in e.findall('fileobject'):
-		parent_inode = fileobject.find('parent_object').find('inode').text
+		parent_inode = fileobject.find('parent_object').find('i_node').text
 		name_type = fileobject.find('name_type').text 
 		if (parent_inode is not None and int(parent_inode) == int(inode) and 
 			str(name_type) == str("r/r")):
@@ -40,12 +40,12 @@ def find_children_count (inode):
 	return count
 
 def find_type (count):
-	if count != 3:	
+	if not count in (2,3):
 		return 'lib'
 	else:	
-		global check_three
-		if not check_three:
-			check_three = True
+		global check_oat
+		if not check_oat:
+			check_oat = True
 			return 'oat'
 		else:
 			return 'unknown'
@@ -53,7 +53,7 @@ def find_type (count):
 
 def find_fingerprints (inode, root_folder_inode, file_type):
 	for fileobject in e.findall('fileobject'):
-		parent_inode = fileobject.find('parent_object').find('inode').text
+		parent_inode = fileobject.find('parent_object').find('i_node').text
 		name_type = fileobject.find('name_type').text 
 		filesize = fileobject.find('filesize').text 
 		i_node = fileobject.find('inode').text
