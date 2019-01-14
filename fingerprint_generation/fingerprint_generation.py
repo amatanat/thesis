@@ -70,7 +70,7 @@ def insert_into_db (db, filename):
 				app_name = line.split("name-")[1]
 			elif "versionName=" in line:
 				version = line.strip().split("=")[1]
-				insert_application(db, app_name, version)
+				app_id = insert_application(db, app_name, version)
 			else:
 				line = line.split(" ")
 				file_size = int(line[0])
