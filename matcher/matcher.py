@@ -14,7 +14,6 @@ def connect_to_db (db_file):
     	return: Connection object or None """
     	try:
         	conn = sqlite3.connect(db_file)
-		print "connected to db.."
         	return conn
     	except Error as e:
         	print(e)
@@ -87,7 +86,7 @@ def find_matches (fingerprints):
 	""" Return app name if match is found in a db for given fingerprints """
 	root_app_id = match_data(db, 'root', fingerprints, 'root') 	
 	
-	# if both 'lib' and 'oat' contain 3 files
+	# if both 'lib' and 'oat' contain 2 or 3 files
 	if (any(e[2] == 'unknown' for e in fingerprints)):
 	
 		oat_app_id_1 = match_data(db, 'oat', fingerprints, 'oat')
