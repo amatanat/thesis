@@ -76,56 +76,61 @@ def match_data (db, fingerprint_type, fingerprints, file_type):
 		if compare(db_app_fingerprints_size,fingerprints_size):
 			return app_id
 
-def get_app (db, oat_app_id, lib_app_id, root_app_id):
+def get_app (db, lib_app_id, root_app_id):
 	""" Return app_name if all app ids are equal,
 	i.e all fingerprints belong to the same app in a db """
-	if (oat_app_id == lib_app_id and oat_app_id == root_app_id):
+	if (lib_app_id == root_app_id):
 		return get_app_name(db, root_app_id)
 
 def find_matches (fingerprints):
-	""" Return app name if match is found in a db for given fingerprints """
+	""" Return an app name if match is found in a db for given fingerprints """
+
 	root_app_id = match_data(db, 'root', fingerprints, 'root') 	
 	
 	# if both 'lib' and 'oat' contain 2 or 3 files
 	if (any(e[2] == 'unknown' for e in fingerprints)):
 	
-		oat_app_id_1 = match_data(db, 'oat', fingerprints, 'oat')
-		lib_app_id_1 = match_data(db, 'unknown', fingerprints, 'lib')
+		# match 'unknown' with 'lib' files
+		lib_app_id_one = match_data(db, 'unknown', fingerprints, 'lib')
+		app_name_one = get_app(db, lib_app_id_one, root_app_id)
+		
+		# match 'oat' with 'lib' files			
+		lib_app_id_two = match_data(db, 'oat', fingerprints, 'lib')
+		app_name_two = get_app(db, lib_app_id_two, root_app_id) 
 
-		app_name_1 = get_app(db, oat_app_id_1, lib_app_id_1, root_app_id)
-					
-		oat_app_id_2 = match_data(db, 'unknown', fingerprints, 'oat')
-		lib_app_id_2 = match_data(db, 'oat', fingerprints, 'lib')
-					
-		app_name_2 = get_app(db, oat_app_id_2, lib_app_id_2, root_app_id) 
+		if app_name_one is not None and app_name_two is not None:
+			return (app_name_one, app_name_two)	
+		if app_name_one is None and app_name_two is None:
+			return None
+		if app_name_one is not None:
+			return app_name_one
+		if app_name_two is not None:
+			return app_name_two
+	 
+	# if any 'lib' file is available
+	if (any(e[2] == 'lib' for e in fingerprints)):	
+		lib_app_id = match_data(db, 'lib', fingerprints, 'lib')
 
-		if app_name_1 is not None:
-			return app_name_1
-		elif app_name_2 is not None:
-			return app_name_2
+		app_name = get_app(db, lib_app_id, root_app_id)
+		if app_name is not None:
+			return app_name
 
-	else: 
-		oat_app_id = match_data(db, 'oat', fingerprints, 'oat')
+	# no 'lib' file, only 'root' file is available
+	if (root_app_id is not None):
+		return get_app_name(db, root_app_id)
 
-		# if any 'lib' file is available
-		if (any(e[2] == 'lib' for e in fingerprints)):	
-			lib_app_id = match_data(db, 'lib', fingerprints, 'lib')
-
-			app_name = get_app(db, oat_app_id, lib_app_id, root_app_id)
-			if app_name is not None:
-				return app_name
-
-		elif (oat_app_id == root_app_id and root_app_id is not None):
-			return get_app_name(db, root_app_id)
-
+def output_result(result):
+	with open(output, 'w+') as f:
+     		f.write(json.dumps(result))
 
 if __name__ == '__main__':
-	if len(sys.argv) < 3:
-		print "Usage: python matcher.py <fingerprints_db_name> <xml_dump_name>"
+	if len(sys.argv) < 4:
+		print "Usage: python matcher.py <fingerprints_db_name> <xml_dump_name> <output_file_name>"
 		exit()
 
 	db_file_name = sys.argv[1] 
 	xml_dump = sys.argv[2]
+	output =  sys.argv[3] + ".txt"
  
 	subprocess.call(["python", "xml_fingerprints_extractor.py", xml_dump, "xml_extracted_fingerprints"])
 	xml_extracted_fingerprints = "xml_extracted_fingerprints.txt"
@@ -140,9 +145,11 @@ if __name__ == '__main__':
 				app_name = find_matches(value)
 				if app_name is not None:
 					app_name_dict[key] = app_name
-				
-			for k,v in app_name_dict.items():
-				print k,v
+
+			# if any match is found
+			if (len(app_name_dict)) > 0 :
+				# save result into a text file
+				output_result(app_name_dict)
 		
 	else:
         	print("Error! Cannot connect to a DB")
