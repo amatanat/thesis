@@ -6,7 +6,7 @@ extract_app_fingerprints () {
 	R=$(adb shell "
 		su -c ' cd /data/app/
 			cd \$(ls -d * | grep \"$1\")
-			find * -type f |xargs stat -c \"%s %n\" '")
+			find * -type f | egrep -v '^oat' |xargs stat -c \"%s %n\" '") 
 	echo "$R" >> "device_app_fingerprints.txt"
 }
 

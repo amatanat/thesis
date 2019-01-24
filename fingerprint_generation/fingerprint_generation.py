@@ -75,7 +75,7 @@ def insert_into_db (db, filename):
 				line = line.split(" ")
 				file_size = int(line[0])
 				file_name = line[1]
-				file_type = 'lib' if file_name.startswith('lib') else 'oat' if file_name.startswith('oat') else 'root'
+				file_type = 'lib' if file_name.startswith('lib') else 'root'
 				file_app_id = app_id
 				insert_fingerprint(db, file_name, file_size, file_type, file_app_id)	
 

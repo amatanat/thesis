@@ -1,37 +1,16 @@
-name-org.telegram.messenger
-versionName=4.9.0
-25871006 base.apk
-7591792 lib/arm64/libtmessages.28.so
-1426048 oat/arm64/base.odex
-11905554 oat/arm64/base.vdex
 name-com.whatsapp
-versionName=2.18.327
-23629985 base.apk
-4043432 lib/arm/libwhatsapp.so
-403400 lib/arm/libstatic-webp.so
-131584 lib/arm/libcurve25519.so
-227648 lib/arm/libcodec2.so
-13848 lib/arm/libvlc.so
-34336 lib/arm/libpl_droidsonroids_gif.so
-1327528 oat/arm/base.odex
-12570124 oat/arm/base.vdex
-name-com.spotify.music
-versionName=8.4.72.842
-35699075 base.apk
-215724 lib/arm/libmyspinnative.so
-37053584 lib/arm/liborbit-jni-spotify.so
-202584 lib/arm/libcrashlytics.so
-3031464 oat/arm/base.odex
-23975568 oat/arm/base.vdex
-name-com.trello
-versionName=5.0.1.11068-production
-12184017 base.apk
-731576 lib/arm64/libbypass.so
-1839744 oat/arm64/base.odex
-12144236 oat/arm64/base.vdex
+versionName=2.18.380
+24432614 base.apk
+5321808 lib/arm64/libwhatsapp.so
+268936 lib/arm64/libcodec2.so
+42864 lib/arm64/libpl_droidsonroids_gif.so
+514752 lib/arm64/libstatic-webp.so
+119520 lib/arm64/libcurve25519.so
+5752 lib/arm64/libvlc.so
+name-de.hafas.android.db
+versionName=18.12.p08.00
+21201127 base.apk
 name-eu.chainfire.supersu
 versionName=2.82
 6201401 base.apk
-123520 oat/arm64/base.odex
-699584 oat/arm64/base.vdex
-20480 oat/arm64/base.art
+
