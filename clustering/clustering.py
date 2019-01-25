@@ -10,11 +10,6 @@ from matplotlib import style
 import numpy as np
 from sklearn.cluster import KMeans
 
-def merge_two_dicts(dict_one, dict_two):
-    result = dict_one.copy()   
-    result.update(dict_two)    
-    return result
-		
 def total_seconds(time):
 	crtime = datetime.datetime.strptime(str(time),'%Y-%m-%dT%H:%M:%SZ')
 	epoch = datetime.datetime.strptime("1970-01-01T00:00:00Z",'%Y-%m-%dT%H:%M:%SZ')
@@ -46,7 +41,6 @@ def create_k_means_clusters(data_to_cluster, cluster_count):
 	
 	return labels
 
-
 def elbow_criterian(data_to_cluster):
 	sse = {}
 	for k in range(1, len(data_to_cluster)):
@@ -70,6 +64,7 @@ def plot_clusters(X, labels):
 def find_wa_root_folders(tree_root, wa_inode):
 	# extract genId and creation time of folders
 	wa_root_folders = extract_gen_id_and_creation_time(tree_root, wa_inode)
+	print wa_root_folders
 	
 	# /data/WA/files folder is in third place in the list
 	wa_files_folder_data = wa_root_folders[2]
@@ -87,25 +82,23 @@ def find_inode (root, generation_id):
 	text = "./fileobject/[genId=" + "'" + str(generation_id) + "'" + "]"
 	return root.find(text).find('inode').text
 
+def find_timestamp (root, inode, ts_name):
+	text = "./fileobject/[inode=" + "'" + str(inode) + "'" + "]"
+	return root.find(text).find(ts_name).text
+
 def match_wam_file(tree_root, files_folder_inode):
 	# get generation id and creation time of files inside this folder
 	files_gen_id_and_crtime = extract_gen_id_and_creation_time(tree_root, files_folder_inode)
-	# this file is located at the index 1
-	return {"wam.wam" : find_inode(tree_root,files_gen_id_and_crtime[1][1])}
+
+	wam_file_inode = find_inode(tree_root,files_gen_id_and_crtime[1][1])
+	append_to_output("wam.wam", wam_file_inode, find_timestamp(tree_root, wam_file_inode, 'mtime'),
+					 find_timestamp(tree_root, wam_file_inode, 'ctime'),
+					 find_timestamp(tree_root, wam_file_inode, 'atime'),
+					 find_timestamp(tree_root, wam_file_inode, 'crtime'))	
 
 def match_db_folder_files(tree_root, db_folder_inode):
 	db_files_genId_and_crtime = extract_gen_id_and_creation_time(tree_root, db_folder_inode)
 	
-	match = {}
-
-	match[1] =  find_inode(tree_root, db_files_genId_and_crtime[0][1])
-	match[2] =  find_inode(tree_root, db_files_genId_and_crtime[1][1])
-	match[3] =  find_inode(tree_root, db_files_genId_and_crtime[2][1])
-	match[4] =  find_inode(tree_root, db_files_genId_and_crtime[3][1])
-	match[5] =  find_inode(tree_root, db_files_genId_and_crtime[4][1])
-
-	print match
-			
 	# the first 19 files in /data/WA/databases/ folder are main DB files,
 	# created after registration
 	# remaining files should be clustered
@@ -120,38 +113,70 @@ def match_db_folder_files(tree_root, db_folder_inode):
 	
 	labels = create_k_means_clusters(data, cluster_count)
 	plot_clusters(data, labels)
-	media_db_matching = match_media_db(tree_root, data, labels)
+	
+	match_media_db(tree_root, data, labels)
 
 	# before registration 8 files are created, wa.db files are within them
-	wa_db_matching = match_wa_db(tree_root, db_files_genId_and_crtime[:8])
-
-	# if media database files are available
-	if media_db_matching is not None:
-		return merge_two_dicts(media_db_matching, wa_db_matching)
-	else: 
-		# no media_db file is available but wa_db files are always created 
-		return wa_db_matching
+	match_wa_db(tree_root, db_files_genId_and_crtime[:8])
 
 def match_wa_db(tree_root, data):
-	matching = {}
 	# creation order of wa.db files are 6-7-8.
-	matching["wa.db"] = find_inode(tree_root, data[5][1])
-	matching["wa.db-wal"] = find_inode(tree_root, data[6][1])
-	matching["wa.db-shm"] = find_inode(tree_root, data[7][1])
-	return matching	
+	wa_db_inode = find_inode(tree_root, data[5][1])
+	append_to_output("wa.db", wa_db_inode, find_timestamp(tree_root, wa_db_inode, 'mtime'),
+					 find_timestamp(tree_root, wa_db_inode, 'ctime'),
+					 find_timestamp(tree_root, wa_db_inode, 'atime'),
+					 find_timestamp(tree_root, wa_db_inode, 'crtime'))
+
+	wa_wal_inode = find_inode(tree_root, data[6][1])
+	append_to_output("wa.db-wal", wa_wal_inode, find_timestamp(tree_root, wa_wal_inode, 'mtime'),
+					 find_timestamp(tree_root, wa_wal_inode, 'ctime'),
+					 find_timestamp(tree_root, wa_wal_inode, 'atime'),
+					 find_timestamp(tree_root, wa_wal_inode, 'crtime'))	
+
+	wa_shm_inode = find_inode(tree_root, data[7][1])
+	append_to_output("wa.db-shm", wa_shm_inode, find_timestamp(tree_root, wa_shm_inode, 'mtime'),
+					 find_timestamp(tree_root, wa_shm_inode, 'ctime'),
+					 find_timestamp(tree_root, wa_shm_inode, 'atime'),
+					 find_timestamp(tree_root, wa_shm_inode, 'crtime'))	
 
 def match_media_db(tree_root, data, labels):
-	matching = {}
 	values = np.array(labels)
 	for i in list(set(labels)):
 		# array containing index of occurences of i in labels list
 		occurences = np.where(values == i)[0]
 		# the count of media files is 3
 		if len(occurences) == 3:
-			matching["media.db"] = find_inode(tree_root, data[occurences[0]][1])
-			matching["media.db-wal"] = find_inode(tree_root, data[occurences[1]][1])
-			matching["media.db-shm"] = find_inode(tree_root, data[occurences[2]][1])
-			return matching
+			
+			media_db_inode =  find_inode(tree_root, data[occurences[0]][1])
+			append_to_output("media.db", media_db_inode, find_timestamp(tree_root, media_db_inode, 'mtime'),
+					 find_timestamp(tree_root, media_db_inode, 'ctime'),
+					 find_timestamp(tree_root, media_db_inode, 'atime'),
+					 find_timestamp(tree_root, media_db_inode, 'crtime'))
+
+			media_wal_inode = find_inode(tree_root, data[occurences[1]][1])
+			append_to_output("media.db-wal", media_wal_inode, find_timestamp(tree_root, media_wal_inode, 'mtime'),
+					 find_timestamp(tree_root, media_wal_inode, 'ctime'),
+					 find_timestamp(tree_root, media_wal_inode, 'atime'),
+					 find_timestamp(tree_root, media_wal_inode, 'crtime'))
+
+			media_shm_inode = find_inode(tree_root, data[occurences[2]][1])
+			append_to_output("media.db-shm", media_shm_inode, find_timestamp(tree_root, media_shm_inode, 'mtime'),
+					 find_timestamp(tree_root, media_shm_inode, 'ctime'),
+					 find_timestamp(tree_root, media_shm_inode, 'atime'),
+					 find_timestamp(tree_root, media_shm_inode, 'crtime'))
+			
+			return 
+
+def append_to_output (filename, inode, mtime, ctime, atime, crtime):
+	
+	data = {
+		"inode" : inode,
+		"mtime" : mtime,
+		"ctime" : ctime, 
+		"atime" : atime,
+		"crtime": crtime		
+		}
+	output[filename] = data
 
 def output_result(result):
 	with open(output_filename, 'w+') as f:
@@ -164,22 +189,21 @@ if __name__ == '__main__':
 
 	xml_dump = sys.argv[1]
 	wa_inode = int(sys.argv[2])
-	output_filename = sys.argv[3] + ".txt"	
+	output_filename = sys.argv[3] + ".json"	
 
 	tree_root = ET.parse(xml_dump).getroot()
 
 	# get inode of /data/WA/files and /data/WA/databases folders
 	wa_root_folder_inodes = find_wa_root_folders(tree_root, wa_inode)
 
-	# identify files inside /data/WA/files folder
-	files_folder_match = match_wam_file(tree_root, wa_root_folder_inodes[0])
-	#print files_folder_match
+	output = {}
+
+	# identify file inside /data/WA/files folder
+	match_wam_file(tree_root, wa_root_folder_inodes[0])
 
 	# match files inside /data/WA/databases folder
-	db_folder_match = match_db_folder_files(tree_root, wa_root_folder_inodes[1])
-	#print db_folder_match
+	match_db_folder_files(tree_root, wa_root_folder_inodes[1])
 
-	final_result = merge_two_dicts(files_folder_match, db_folder_match)
-	output_result(final_result)
+	output_result(output)
 	
 
