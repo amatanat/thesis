@@ -3,13 +3,11 @@ from __future__ import division
 import xml.etree.ElementTree as ET
 import sys
 import datetime
-from collections import Counter
+import json
 
 import matplotlib.pyplot as plt
-#import matplotlib as mpl
-
-import numpy as np
 from matplotlib import style
+import numpy as np
 from sklearn.cluster import KMeans
 
 def merge_two_dicts(dict_one, dict_two):
@@ -92,18 +90,27 @@ def find_inode (root, generation_id):
 def match_wam_file(tree_root, files_folder_inode):
 	# get generation id and creation time of files inside this folder
 	files_gen_id_and_crtime = extract_gen_id_and_creation_time(tree_root, files_folder_inode)
-	# this file is created second in the list
-	return ("wam.wam", find_inode(tree_root,files_gen_id_and_crtime[1][1]))  
+	# this file is located at the index 1
+	return {"wam.wam" : find_inode(tree_root,files_gen_id_and_crtime[1][1])}
 
 def match_db_folder_files(tree_root, db_folder_inode):
 	db_files_genId_and_crtime = extract_gen_id_and_creation_time(tree_root, db_folder_inode)
-	print "main db files", db_files_genId_and_crtime
+	
+	match = {}
+
+	match[1] =  find_inode(tree_root, db_files_genId_and_crtime[0][1])
+	match[2] =  find_inode(tree_root, db_files_genId_and_crtime[1][1])
+	match[3] =  find_inode(tree_root, db_files_genId_and_crtime[2][1])
+	match[4] =  find_inode(tree_root, db_files_genId_and_crtime[3][1])
+	match[5] =  find_inode(tree_root, db_files_genId_and_crtime[4][1])
+
+	print match
 			
-	# the first 21 files in /data/WA/databases/ folder are main DB files,
+	# the first 19 files in /data/WA/databases/ folder are main DB files,
 	# created after registration
 	# remaining files should be clustered
 
-	data_to_cluster = db_files_genId_and_crtime[21:]
+	data_to_cluster = db_files_genId_and_crtime[19:]
 
 	data = np.array(data_to_cluster)
 	if len(data_to_cluster) > 4:
@@ -113,20 +120,24 @@ def match_db_folder_files(tree_root, db_folder_inode):
 	
 	labels = create_k_means_clusters(data, cluster_count)
 	plot_clusters(data, labels)
-	
 	media_db_matching = match_media_db(tree_root, data, labels)
-	wa_db_matching = match_wa_db(tree_root, db_files_genId_and_crtime[:11])
-	# media database files are available
+
+	# before registration 8 files are created, wa.db files are within them
+	wa_db_matching = match_wa_db(tree_root, db_files_genId_and_crtime[:8])
+
+	# if media database files are available
 	if media_db_matching is not None:
 		return merge_two_dicts(media_db_matching, wa_db_matching)
 	else: 
+		# no media_db file is available but wa_db files are always created 
 		return wa_db_matching
 
 def match_wa_db(tree_root, data):
 	matching = {}
-	matching["wa.db"] = find_inode(tree_root, data[7][1])
-	matching["wa.db-wal"] = find_inode(tree_root, data[8][1])
-	matching["wa.db-shm"] = find_inode(tree_root, data[9][1])
+	# creation order of wa.db files are 6-7-8.
+	matching["wa.db"] = find_inode(tree_root, data[5][1])
+	matching["wa.db-wal"] = find_inode(tree_root, data[6][1])
+	matching["wa.db-shm"] = find_inode(tree_root, data[7][1])
 	return matching	
 
 def match_media_db(tree_root, data, labels):
@@ -141,15 +152,20 @@ def match_media_db(tree_root, data, labels):
 			matching["media.db-wal"] = find_inode(tree_root, data[occurences[1]][1])
 			matching["media.db-shm"] = find_inode(tree_root, data[occurences[2]][1])
 			return matching
-			
+
+def output_result(result):
+	with open(output_filename, 'w+') as f:
+     		f.write(json.dumps(result))
+
 if __name__ == '__main__':
-	if len(sys.argv) < 2:
-		print "Usage: python clustering.py <xml_dump_name> <WA_inode>"
+	if len(sys.argv) < 3:
+		print "Usage: python clustering.py <xml_dump_name> </data/WA_inode> <output_filename>"
 		exit()
 
 	xml_dump = sys.argv[1]
 	wa_inode = int(sys.argv[2])
-	
+	output_filename = sys.argv[3] + ".txt"	
+
 	tree_root = ET.parse(xml_dump).getroot()
 
 	# get inode of /data/WA/files and /data/WA/databases folders
@@ -157,10 +173,13 @@ if __name__ == '__main__':
 
 	# identify files inside /data/WA/files folder
 	files_folder_match = match_wam_file(tree_root, wa_root_folder_inodes[0])
-	print files_folder_match
+	#print files_folder_match
 
 	# match files inside /data/WA/databases folder
 	db_folder_match = match_db_folder_files(tree_root, wa_root_folder_inodes[1])
-	print db_folder_match
+	#print db_folder_match
+
+	final_result = merge_two_dicts(files_folder_match, db_folder_match)
+	output_result(final_result)
 	
 
