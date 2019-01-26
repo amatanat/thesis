@@ -120,46 +120,47 @@ def match_db_folder_files(tree_root, db_folder_inode):
 	match_wa_db(tree_root, db_files_genId_and_crtime[:8])
 
 def match_wa_db(tree_root, data):
-	# creation order of wa.db files are 6-7-8.
-	wa_db_inode = find_inode(tree_root, data[5][1])
-	append_to_output("wa.db", wa_db_inode, find_timestamp(tree_root, wa_db_inode, 'mtime'),
-					 find_timestamp(tree_root, wa_db_inode, 'ctime'),
-					 find_timestamp(tree_root, wa_db_inode, 'atime'),
-					 find_timestamp(tree_root, wa_db_inode, 'crtime'))
+	# creation order of wa.db files are 6-7-8
+	# wa.db-wal is located at index 6
 
 	wa_wal_inode = find_inode(tree_root, data[6][1])
 	append_to_output("wa.db-wal", wa_wal_inode, find_timestamp(tree_root, wa_wal_inode, 'mtime'),
 					 find_timestamp(tree_root, wa_wal_inode, 'ctime'),
 					 find_timestamp(tree_root, wa_wal_inode, 'atime'),
-					 find_timestamp(tree_root, wa_wal_inode, 'crtime'))	
-
-	wa_shm_inode = find_inode(tree_root, data[7][1])
-	append_to_output("wa.db-shm", wa_shm_inode, find_timestamp(tree_root, wa_shm_inode, 'mtime'),
-					 find_timestamp(tree_root, wa_shm_inode, 'ctime'),
-					 find_timestamp(tree_root, wa_shm_inode, 'atime'),
-					 find_timestamp(tree_root, wa_shm_inode, 'crtime'))	
+					 find_timestamp(tree_root, wa_wal_inode, 'crtime'))		
 
 def match_media_db(tree_root, data, labels):
 	values = np.array(labels)
 	for i in list(set(labels)):
 		# array containing index of occurences of i in labels list
 		occurences = np.where(values == i)[0]
-		# the count of media files is 3
-		if len(occurences) == 3:
+		# the count of media files is 3, media.db, media.db-wal, media.db-shm
+		# if 5 files are created at one time then media files are created with the web_session files, 
+		# In this case, index 0-1 are web_session files, index 2-4 are media files
+		# if 3 files are created at once, then these are media files, index 0-2
+		if len(occurences) == 3 or len(occurences) == 5:
+			is_len_5 = True if len(occurences) == 5 else False
 			
-			media_db_inode =  find_inode(tree_root, data[occurences[0]][1])
+			if is_len_5:
+				media_db_inode =  find_inode(tree_root, data[occurences[2]][1])
+				media_wal_inode = find_inode(tree_root, data[occurences[3]][1])
+				media_shm_inode = find_inode(tree_root, data[occurences[4]][1])
+			else:
+				media_db_inode =  find_inode(tree_root, data[occurences[0]][1])
+				media_wal_inode = find_inode(tree_root, data[occurences[1]][1])
+				media_shm_inode = find_inode(tree_root, data[occurences[2]][1])
+
+			# extract inode, mtime, ctime, crtime of media.db file and append to output file
 			append_to_output("media.db", media_db_inode, find_timestamp(tree_root, media_db_inode, 'mtime'),
 					 find_timestamp(tree_root, media_db_inode, 'ctime'),
 					 find_timestamp(tree_root, media_db_inode, 'atime'),
 					 find_timestamp(tree_root, media_db_inode, 'crtime'))
-
-			media_wal_inode = find_inode(tree_root, data[occurences[1]][1])
+			
 			append_to_output("media.db-wal", media_wal_inode, find_timestamp(tree_root, media_wal_inode, 'mtime'),
 					 find_timestamp(tree_root, media_wal_inode, 'ctime'),
 					 find_timestamp(tree_root, media_wal_inode, 'atime'),
 					 find_timestamp(tree_root, media_wal_inode, 'crtime'))
 
-			media_shm_inode = find_inode(tree_root, data[occurences[2]][1])
 			append_to_output("media.db-shm", media_shm_inode, find_timestamp(tree_root, media_shm_inode, 'mtime'),
 					 find_timestamp(tree_root, media_shm_inode, 'ctime'),
 					 find_timestamp(tree_root, media_shm_inode, 'atime'),
