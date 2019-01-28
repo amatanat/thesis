@@ -21,7 +21,6 @@ def create_table (db, sql_create_table):
 	try:
         	cursor = db.cursor()
         	cursor.execute(sql_create_table)
-		#print "create table done.."
     	except Error as e:
         	print(e) 
 
@@ -29,20 +28,21 @@ def insert_application (db, application, version):
     	"""Insert a new application into the 'applications' table
     	return an application id"""
 
-	sql_insert = "INSERT INTO applications (name, version) VALUES(?,?)"
+	sql_insert = "INSERT OR IGNORE INTO applications (name, version) VALUES(?,?)"
     	cursor = db.cursor()
 	cursor.execute(sql_insert, (application, version))
-	#print "insert into applications table done.."
-    	return cursor.lastrowid
+	sql_select = "SELECT ID FROM applications WHERE name = ? AND version = ?"
+	rows = cursor.execute(sql_select, (application, version))
+	for row in rows:
+		return row[0]
 
 def insert_fingerprint (db, file_name, file_size, file_type, application_id):
     	"""Insert a new fingerprint data into the 'fingerprints' table
 	  return a fingerprint id"""
 
-    	sql_insert = "INSERT INTO fingerprints (file_name, file_size, file_type, application_id) VALUES(?,?,?,?)"
+	sql_insert = "INSERT OR IGNORE INTO fingerprints (file_name, file_size, file_type, application_id) VALUES(?,?,?,?)"
    	cursor = db.cursor()
     	cursor.execute(sql_insert, (file_name,file_size,file_type,application_id))
-	#print "insert into fingerprints table done.."
    	return cursor.lastrowid
 
 def get_all_fingerprints (db):
@@ -76,8 +76,7 @@ def insert_into_db (db, filename):
 				file_size = int(line[0])
 				file_name = line[1]
 				file_type = 'lib' if file_name.startswith('lib') else 'root'
-				file_app_id = app_id
-				insert_fingerprint(db, file_name, file_size, file_type, file_app_id)	
+				insert_fingerprint(db, file_name, file_size, file_type, app_id)
 
 if __name__ == '__main__':
 	if len(sys.argv) < 2:
@@ -89,18 +88,20 @@ if __name__ == '__main__':
 	db_file_name = sys.argv[1] 
 	app_fingerprints = "device_app_fingerprints.txt"
 	
-	sql_create_applications_table = """ create TABLE applications (
+	sql_create_applications_table = """CREATE TABLE IF NOT EXISTS applications (
                                         ID INTEGER PRIMARY KEY NOT NULL,
                                         name TEXT NOT NULL,
-					version TEXT NOT NULL
+					version TEXT NOT NULL,
+					UNIQUE(name, version)
                                         ); """
 
-	sql_create_fingerprints_table = """create TABLE fingerprints (
+	sql_create_fingerprints_table = """CREATE TABLE IF NOT EXISTS fingerprints (
                                     ID INTEGER PRIMARY KEY NOT NULL,
                                     file_name TEXT NOT NULL,
 				    file_size INT NOT NULL,
 				    file_type TEXT NOT NULL,
                                     application_id INTEGER NOT NULL,
+				    UNIQUE(file_name, file_size, file_type, application_id),
                                     FOREIGN KEY (application_id) REFERENCES applications (ID)
                                 );"""
 
