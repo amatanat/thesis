@@ -1,0 +1,143 @@
+name-air.de.fahren_lernen.app
+versionName=4.1.306
+30094134 base.apk
+1507824 lib/arm/libpanorenderer.so
+636520 lib/arm/libc++_shared.so
+19144284 lib/arm/libCore.so
+1239360 lib/arm/libpano_video_renderer.so
+1190092 lib/arm/libgvr.so
+275688 lib/arm/libysshared.so
+name-air.com.officemax.magicmirror.ElfYourSelf
+versionName=7.2.0
+83645231 base.apk
+378420 lib/arm/libjniopencv_photo.so
+62776 lib/arm/libopencv_videoio.so
+140844 lib/arm/libjniswresample.so
+308656 lib/arm/libopencv_shape.so
+165340 lib/arm/libjniswscale.so
+292284 lib/arm/libopencv_optflow.so
+591448 lib/arm/libjniopencv_features2d.so
+1710300 lib/arm/libopencv_core.so
+144632 lib/arm/libjniopencv_video.so
+1033668 lib/arm/libopencv_dnn.so
+390584 lib/arm/libopencv_objdetect.so
+648628 lib/arm/libopencv_ximgproc.so
+660920 lib/arm/libjniopencv_objdetect.so
+263604 lib/arm/libopencv_face.so
+955836 lib/arm/libopencv_calib3d.so
+579136 lib/arm/libjniopencv_ml.so
+570800 lib/arm/libopencv_ml.so
+538036 lib/arm/libopencv_features2d.so
+75100 lib/arm/libjniopencv_videoio.so
+337452 lib/arm/libjniopencv_flann.so
+542176 lib/arm/libjniavformat.so
+2225588 lib/arm/libjniopencv_core.so
+423292 lib/arm/libavutil.so
+95640 lib/arm/libjniopencv_superres.so
+136748 lib/arm/libjnipostproc.so
+1587716 lib/arm/libopencv_imgproc.so
+497084 lib/arm/libopencv_stitching.so
+419340 lib/arm/libjniopencv_optflow.so
+1009080 lib/arm/libjniopencv_stitching.so
+374120 lib/arm/libswscale.so
+79208 lib/arm/libswresample.so
+329244 lib/arm/libjniopencv_face.so
+3409536 lib/arm/libavformat.so
+259552 lib/arm/libjniavfilter.so
+7190388 lib/arm/libKudanCV.so
+70908 lib/arm/libjnicvkernels.so
+554464 lib/arm/libjniavcodec.so
+50536 lib/arm/libpostproc.so
+497116 lib/arm/libjniavutil.so
+378296 lib/arm/libopencv_videostab.so
+669112 lib/arm/libjniopencv_calib3d.so
+161248 lib/arm/libjniavdevice.so
+624312 lib/arm/libjniopencv_videostab.so
+21652 lib/arm/libopencv_highgui.so
+460328 lib/arm/libjniopencv_xfeatures2d.so
+1388212 lib/arm/libavfilter.so
+87440 lib/arm/libjniopencv_shape.so
+640432 lib/arm/libopencv_photo.so
+59352 lib/arm/libavdevice.so
+910772 lib/arm/libjniopencv_imgproc.so
+1967080 lib/arm/libopencv_imgcodecs.so
+349712 lib/arm/libjniopencv_imgcodecs.so
+15459840 lib/arm/libavcodec.so
+370096 lib/arm/libopencv_video.so
+460212 lib/arm/libopencv_xfeatures2d.so
+83316 lib/arm/libopencv_superres.so
+197936 lib/arm/libjniopencv_highgui.so
+505272 lib/arm/libjniopencv_ximgproc.so
+886912 lib/arm/libKudan.so
+431544 lib/arm/libopencv_flann.so
+415296 lib/arm/libjniopencv_dnn.so
+name-com.whatsapp
+versionName=2.18.377
+24432020 base.apk
+5321808 lib/arm64/libwhatsapp.so
+268936 lib/arm64/libcodec2.so
+42864 lib/arm64/libpl_droidsonroids_gif.so
+514752 lib/arm64/libstatic-webp.so
+119520 lib/arm64/libcurve25519.so
+5752 lib/arm64/libvlc.so
+name-air.nn.mobile.app.main
+versionName=3.0.58
+67180322 base.apk
+1045520 lib/arm64/libmono-btls-shared.so
+149976 lib/arm64/libmonodroid.so
+3282352 lib/arm64/libmonosgen-2.0.so
+815440 lib/arm64/libe_sqlite3.so
+name-all.video.downloader.allvideodownloader
+versionName=1.1.0
+6323735 base.apk
+156876 lib/arm/libjbigi.so
+name-air.com.kigorosa.hausmittel.kosmetik.ad
+versionName=1.0.4
+33258725 base.apk
+399620 lib/arm/libstlport_shared.so
+19554424 lib/arm/libCore.so
+275688 lib/arm/libysshared.so
+name-angry.german.kid
+versionName=1.0
+4576098 base.apk
+name-all.in.one.photo.math.calculator
+versionName=1.4.4
+11381736 base.apk
+18032 lib/arm/libja.so
+13936 lib/arm/libjb.so
+name-al.trigonom.zahlenschreiben
+versionName=1.5.3
+22919592 base.apk
+50592 lib/arm/libES3Renderer.so
+214268 lib/arm/libgdx.so
+38304 lib/arm/libES1Renderer.so
+58784 lib/arm/libRuntimeNative.so
+50592 lib/arm/libES2Renderer.so
+name-aplicacion.tiempo
+versionName=6.5.2_free
+8945054 base.apk
+1033072 lib/arm64/libcomScore.so
+name-anime.wallpapers.besthd
+versionName=2.2.9
+6845009 base.apk
+2184400 lib/arm64/libRSSupport.so
+72000 lib/arm64/librsjni.so
+62152 lib/arm64/librsjni_androidx.so
+name-abs.workout.home.belly.fat.loss.fitness
+versionName=1.0.9
+27073349 base.apk
+10756440 lib/arm64/libclassifier_jni.so
+name-androidgecko.com.himommy
+versionName=2.3.0
+29706009 base.apk
+2922688 lib/arm64/librealm-jni.so
+name-amuseworks.thermometer
+versionName=3.7
+3837975 base.apk
+name-abs.workout.sixparkabs.fit
+versionName=1.3.4
+7569062 base.apk
+14000 lib/arm64/libdaemon.so
+name-eu.chainfire.supersu
+versionName=2.82
+6201401 base.apk

@@ -1,0 +1,105 @@
+name-br.com.escolhatecnologia.vozdonarrador
+versionName=6.9.5
+7374014 base.apk
+name-codematics.universal.tv.remote.control
+versionName=1.0.61
+10962169 base.apk
+42776 lib/arm64/libpl_droidsonroids_gif.so
+name-canvasm.myo2
+versionName=7.3.2
+14719635 base.apk
+name-balls.arcademaker.bricks.breaker.brounce.ballz.puzzle
+versionName=1.27.150.1731
+26084250 base.apk
+17916 lib/arm/libmain.so
+12880744 lib/arm/libunity.so
+333864 lib/arm/libsqlite3.so
+28308788 lib/arm/libil2cpp.so
+name-com.whatsapp
+versionName=2.18.377
+24432020 base.apk
+5321808 lib/arm64/libwhatsapp.so
+268936 lib/arm64/libcodec2.so
+42864 lib/arm64/libpl_droidsonroids_gif.so
+514752 lib/arm64/libstatic-webp.so
+119520 lib/arm64/libcurve25519.so
+5752 lib/arm64/libvlc.so
+name-ch.threema.qrscannerplugin
+versionName=2.1
+161445 base.apk
+name-ch.ethz.im.codecheck
+versionName=5.1.19-503
+26212682 base.apk
+55008 lib/arm64/libadcolony.so
+4117880 lib/arm64/libscanditsdk-android-5.2.0.so
+1595456 lib/arm64/libjs.so
+440256 lib/arm64/libimagepipeline.so
+name-ch.publisheria.bring
+versionName=3.22.4
+24449802 base.apk
+name-br.com.youper
+versionName=6.06.007
+55525583 base.apk
+1220144 lib/arm64/libsqlc-native-driver.so
+name-best.photo.app.manhairstyles2018
+versionName=1.2.8
+67645860 base.apk
+13699840 lib/arm64/libopencv_java3.so
+1222560 lib/arm64/libprocessing.so
+name-cc.dict.dictcc
+versionName=8.0.5
+5334807 base.apk
+1466272 lib/arm64/libsqlc-evcore-native-driver.so
+name-calculator.scientific.math
+versionName=1.4.3
+7892148 base.apk
+14000 lib/arm64/libdaemon.so
+5824 lib/arm64/libcore_utils.so
+name-best2017translatorapps.all.language.translator.free
+versionName=1.21
+2329140 base.apk
+name-com.aak.drawfood
+versionName=1.2
+8244451 base.apk
+name-bumperbattle.io.game
+versionName=1.1.5
+29695389 base.apk
+17916 lib/arm/libmain.so
+18804636 lib/arm/libunity.so
+3791288 lib/arm/libmono.so
+name-camera.photo.beauty.editor
+versionName=1.8.2
+22287060 base.apk
+64512 lib/arm/libgpuimage-library.so
+34336 lib/arm/libpl_droidsonroids_gif.so
+17824 lib/arm/libdaemon.so
+name-cal.photo.math.calculator.plus.calculate.scan
+versionName=1.1.1
+11743614 base.apk
+18032 lib/arm/libmlog.so
+13936 lib/arm/libmblog.so
+name-com.accuweather.android
+versionName=5.7.0.12-free
+24165522 base.apk
+588868 lib/arm/libcomScore.so
+215724 lib/arm/libmyspinnative.so
+3564308 lib/arm/libmapbox-gl.so
+name-eu.chainfire.supersu
+versionName=2.82
+6201401 base.apk
+name-cast.video.screenmirroring.casttotv
+versionName=1.2.0
+9357158 base.apk
+190728 lib/arm64/libpg-lib.so
+name-brunnlechner.gps.zeiterfassung
+versionName=11.8
+2417572 base.apk
+name-co.gocrush
+versionName=1.5.1
+16447349 base.apk
+514752 lib/arm64/libstatic-webp.so
+158176 lib/arm64/libgifimage.so
+379048 lib/arm64/libimagepipeline.so
+name-call.flash.screen.app.phone
+versionName=1.1.0.3
+7056182 base.apk

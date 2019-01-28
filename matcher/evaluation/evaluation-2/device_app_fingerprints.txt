@@ -1,0 +1,168 @@
+name-air.de.fahren_lernen.app
+versionName=4.1.291
+29661158 base.apk
+636520 lib/arm/libc++_shared.so
+275688 lib/arm/libysshared.so
+19148380 lib/arm/libCore.so
+name-air.com.officemax.magicmirror.ElfYourSelf
+versionName=7.1.0
+83643991 base.apk
+378420 lib/arm/libjniopencv_photo.so
+62776 lib/arm/libopencv_videoio.so
+140844 lib/arm/libjniswresample.so
+308656 lib/arm/libopencv_shape.so
+165340 lib/arm/libjniswscale.so
+292284 lib/arm/libopencv_optflow.so
+591448 lib/arm/libjniopencv_features2d.so
+1710300 lib/arm/libopencv_core.so
+144632 lib/arm/libjniopencv_video.so
+1033668 lib/arm/libopencv_dnn.so
+390584 lib/arm/libopencv_objdetect.so
+648628 lib/arm/libopencv_ximgproc.so
+660920 lib/arm/libjniopencv_objdetect.so
+263604 lib/arm/libopencv_face.so
+955836 lib/arm/libopencv_calib3d.so
+579136 lib/arm/libjniopencv_ml.so
+570800 lib/arm/libopencv_ml.so
+538036 lib/arm/libopencv_features2d.so
+75100 lib/arm/libjniopencv_videoio.so
+337452 lib/arm/libjniopencv_flann.so
+542176 lib/arm/libjniavformat.so
+2225588 lib/arm/libjniopencv_core.so
+423292 lib/arm/libavutil.so
+95640 lib/arm/libjniopencv_superres.so
+136748 lib/arm/libjnipostproc.so
+1587716 lib/arm/libopencv_imgproc.so
+497084 lib/arm/libopencv_stitching.so
+419340 lib/arm/libjniopencv_optflow.so
+1009080 lib/arm/libjniopencv_stitching.so
+374120 lib/arm/libswscale.so
+79208 lib/arm/libswresample.so
+329244 lib/arm/libjniopencv_face.so
+3409536 lib/arm/libavformat.so
+259552 lib/arm/libjniavfilter.so
+7190388 lib/arm/libKudanCV.so
+70908 lib/arm/libjnicvkernels.so
+554464 lib/arm/libjniavcodec.so
+50536 lib/arm/libpostproc.so
+497116 lib/arm/libjniavutil.so
+378296 lib/arm/libopencv_videostab.so
+669112 lib/arm/libjniopencv_calib3d.so
+161248 lib/arm/libjniavdevice.so
+624312 lib/arm/libjniopencv_videostab.so
+21652 lib/arm/libopencv_highgui.so
+460328 lib/arm/libjniopencv_xfeatures2d.so
+1388212 lib/arm/libavfilter.so
+87440 lib/arm/libjniopencv_shape.so
+640432 lib/arm/libopencv_photo.so
+59352 lib/arm/libavdevice.so
+910772 lib/arm/libjniopencv_imgproc.so
+1967080 lib/arm/libopencv_imgcodecs.so
+349712 lib/arm/libjniopencv_imgcodecs.so
+15459840 lib/arm/libavcodec.so
+370096 lib/arm/libopencv_video.so
+460212 lib/arm/libopencv_xfeatures2d.so
+83316 lib/arm/libopencv_superres.so
+197936 lib/arm/libjniopencv_highgui.so
+505272 lib/arm/libjniopencv_ximgproc.so
+886912 lib/arm/libKudan.so
+431544 lib/arm/libopencv_flann.so
+415296 lib/arm/libjniopencv_dnn.so
+name-com.whatsapp
+versionName=2.18.377
+24432020 base.apk
+5321808 lib/arm64/libwhatsapp.so
+268936 lib/arm64/libcodec2.so
+42864 lib/arm64/libpl_droidsonroids_gif.so
+514752 lib/arm64/libstatic-webp.so
+119520 lib/arm64/libcurve25519.so
+5752 lib/arm64/libvlc.so
+name-air.nn.mobile.app.main
+versionName=3.0.54
+67130968 base.apk
+1045520 lib/arm64/libmono-btls-shared.so
+149976 lib/arm64/libmonodroid.so
+3282352 lib/arm64/libmonosgen-2.0.so
+815440 lib/arm64/libe_sqlite3.so
+name-at.ktaia
+versionName=1.0.45
+9641852 base.apk
+name-autoparts.shop
+versionName=1.3.1
+28073277 base.apk
+9904 lib/arm64/libcardioDecider.so
+3073088 lib/arm64/libopencv_core.so
+3135728 lib/arm64/librealm-jni.so
+1284840 lib/arm64/libcardioRecognizer.so
+267928 lib/arm64/libconceal.so
+864360 lib/arm64/libcardioRecognizer_tegra2.so
+2402408 lib/arm64/libopencv_imgproc.so
+name-au.com.tennis.ausopen
+versionName=10.0.6
+13805813 base.apk
+922976 lib/arm/libicu_common.so
+9480 lib/arm/libprivatedata.so
+226500 lib/arm/libaacdecoder.so
+111940 lib/arm/libfolly_json.so
+243220 lib/arm/libimagepipeline.so
+75108 lib/arm/libglog.so
+308560 lib/arm/libreactnativejni.so
+661132 lib/arm/libgnustl_shared.so
+79124 lib/arm/libfb.so
+1910900 lib/arm/libjsc.so
+17672 lib/arm/libglog_init.so
+124216 lib/arm/libyoga.so
+name-app.rsmobile.acecalculator
+versionName=1.019
+10165977 base.apk
+42984 lib/arm64/libpl_droidsonroids_gif.so
+name-al.trigonom.zahlenschreiben
+versionName=1.5.2
+22918190 base.apk
+50592 lib/arm/libES3Renderer.so
+214268 lib/arm/libgdx.so
+38304 lib/arm/libES1Renderer.so
+58784 lib/arm/libRuntimeNative.so
+50592 lib/arm/libES2Renderer.so
+name-askanimus.arbeitszeiterfassung2
+versionName=1.02.91
+4977349 base.apk
+name-abs.workout.home.belly.fat.loss.fitness
+versionName=1.1.0
+27116044 base.apk
+10756440 lib/arm64/libclassifier_jni.so
+name-ar.teovogel.yip
+versionName=2.4.1
+11019548 base.apk
+name-apps.one.learn.draw
+versionName=3.4
+10302027 base.apk
+name-app.qrcode
+versionName=0.99
+5789177 base.apk
+name-abs.workout.sixparkabs.fit
+versionName=1.3.3
+7569062 base.apk
+14000 lib/arm64/libdaemon.so
+name-at.oetker.android.rezeptideen
+versionName=3.1.1
+22729422 base.apk
+name-audio.sound.effect.bass.virtrualizer.equalizer
+versionName=1.3.9
+2745204 base.apk
+5116 lib/arm/libX86Bridge.so
+name-app.mywed.android
+versionName=1.12.36
+14862068 base.apk
+2184400 lib/arm64/libRSSupport.so
+72000 lib/arm64/librsjni.so
+62168 lib/arm64/librsjni_androidx.so
+name-eu.chainfire.supersu
+versionName=2.82
+6201401 base.apk
+name-at.eggerit.andreas.adventskalender
+versionName=1.0.1
+1501152 base.apk
+name-at.steirersoft.mydarttraining
+versionName=2.1.5.1
+11332422 base.apk
