@@ -1,0 +1,92 @@
+name-com.whatsapp
+versionName=2.18.377
+24432020 base.apk
+5321808 lib/arm64/libwhatsapp.so
+268936 lib/arm64/libcodec2.so
+42864 lib/arm64/libpl_droidsonroids_gif.so
+514752 lib/arm64/libstatic-webp.so
+119520 lib/arm64/libcurve25519.so
+5752 lib/arm64/libvlc.so
+name-de.tk.tkapp
+versionName=1.28
+37296715 base.apk
+2336928 lib/arm/libtess.so
+6961140 lib/arm/libnb.so
+10300 lib/arm/libnb2.so
+571240 lib/arm/libc++_shared.so
+1519636 lib/arm/liblept.so
+10348 lib/arm/libnb3.so
+206704 lib/arm/libjpgt.so
+6025460 lib/arm/libscanbotsdk.so
+name-de.tinolu.storchschwangerschaftsrechner
+versionName=1.9.3
+6265213 base.apk
+name-de.toggolino.videos
+versionName=1.1.3
+11561566 base.apk
+name-de.unifreiburg.offenetuer
+versionName=0.0.11
+20631438 base.apk
+name-de.transfermarkt.v2
+versionName=1.1.3
+12385907 base.apk
+1220144 lib/arm64/libsqlc-native-driver.so
+name-ml.moerlin.blaulicht
+versionName=2.3.5.1
+9331491 base.apk
+name-de.volkswagen.amarok
+versionName=1.7.3
+21061529 base.apk
+name-de.theorie24.fs.mofa
+versionName=2.6.2
+73170418 base.apk
+name-de.web.mobile.android.mail
+versionName=6.1.4
+39093273 base.apk
+name-de.thefrogger.timetable
+versionName=1.11
+1846514 base.apk
+name-de.tv.tvzeitung
+versionName=6.6.4
+16871836 base.apk
+2184400 lib/arm64/libRSSupport.so
+62168 lib/arm64/librsjni_androidx.so
+72000 lib/arm64/librsjni.so
+name-de.unister.aidu
+versionName=1.6.3
+10645942 base.apk
+name-abs.workout.sixparkabs.fit
+versionName=1.3.0
+7441852 base.apk
+14000 lib/arm64/libdaemon.so
+name-de.vflbochum.app
+versionName=1.0.1
+15951437 base.apk
+922976 lib/arm/libicu_common.so
+9480 lib/arm/libprivatedata.so
+111940 lib/arm/libfolly_json.so
+243220 lib/arm/libimagepipeline.so
+75108 lib/arm/libglog.so
+1013364 lib/arm/libRSSupport.so
+59904 lib/arm/librsjni.so
+308560 lib/arm/libreactnativejni.so
+661132 lib/arm/libgnustl_shared.so
+79124 lib/arm/libfb.so
+1910900 lib/arm/libjsc.so
+17672 lib/arm/libglog_init.so
+124216 lib/arm/libyoga.so
+name-de.volkswagen.vwconnect
+versionName=1.62.102
+73294804 base.apk
+18048 lib/arm64/libdongle.so
+646072 lib/arm64/libmbedtls.so
+145248 lib/arm64/libcommon.so
+1009768 lib/arm64/libdongles.so
+132944 lib/arm64/libprotobuf.so
+260176 lib/arm64/libdat.so
+name-eu.chainfire.supersu
+versionName=2.82
+6201401 base.apk
+name-de.thefoodguide.android
+versionName=1.1.4
+19668224 base.apk
