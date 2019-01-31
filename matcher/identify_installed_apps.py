@@ -7,6 +7,8 @@ import re
 from collections import Counter 
 import json
 import subprocess
+import os.path
+
 
 def connect_to_db (db_file):
 	""" create a database connection to the SQLite database
@@ -126,25 +128,26 @@ def find_matches (fingerprints):
 		return result
 
 def output_result(result):
-	with open(output, 'w+') as f:
+	with open(os.path.expanduser(os.path.join(xml_extracted_fingerprints_dir, output)), 'w+') as f:
      		f.write(json.dumps(result))
 
 if __name__ == '__main__':
-	if len(sys.argv) < 5:
-		print "Usage: python identify_installed_apps.py <fingerprints_db_name> <xml_dump_name> <xml_extracted_fingerprints_name> <output_file_name>"
+	if len(sys.argv) < 6:
+		print "Usage: python identify_installed_apps.py <fingerprints_db_name> <xml_dump_name> <xml_extracted_fingerprints_dir> <xml_extracted_fingerprints_name> <output_file_name>"
 		exit()
 
 	db_file_name = sys.argv[1] 
 	xml_dump = sys.argv[2]
-	xml_extracted_fingerprints_name = sys.argv[3]
-	output =  sys.argv[4] + ".json"
+	xml_extracted_fingerprints_dir = sys.argv[3]
+	xml_extracted_fingerprints_name = sys.argv[4]
+	output =  sys.argv[5] + ".json"
  
-	subprocess.call(["python", "xml_fingerprints_extractor.py", xml_dump, xml_extracted_fingerprints_name])
+	subprocess.call(["python", "xml_fingerprints_extractor.py", xml_dump, xml_extracted_fingerprints_name, xml_extracted_fingerprints_dir])
 	xml_extracted_fingerprints = xml_extracted_fingerprints_name + ".txt"
 	
 	db = connect_to_db(db_file_name)
 	if db is not None:
-		with open(xml_extracted_fingerprints, 'r') as f:
+		with open(os.path.expanduser(os.path.join(xml_extracted_fingerprints_dir, xml_extracted_fingerprints)), 'r') as f:
     			data = json.load(f)
 			app_name_dict = {}
 
@@ -160,7 +163,7 @@ if __name__ == '__main__':
 				else:
 					app_name_dict[key] = "unknown"
 
-			# if any match is found
+
 			if (len(app_name_dict)) > 0 :
 				# output result to json file
 				output_result(app_name_dict)
