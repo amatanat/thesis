@@ -5,7 +5,7 @@ nc=$(which nc)
 xnbdclient=$(which xnbd-client)
 device_turned_on=false
 
-source config.conf
+source matcher_config.conf
 
 twrp_image_directory=$TWRP_DIR
 twrp_image_name=$TWRP_IMAGE_NAME
@@ -22,6 +22,7 @@ matcher_script_name=$MATCHER_SCRIPT_NAME
 matcher_output_name=$MATCHER_OUTPUT_NAME
 app_fingerprints_db_dir=$APP_FING_DB_DIR
 app_fingerprints_db_name=$APP_FING_DB_NAME
+matcher_xml_extracted_fing_dir=$MATCHER_XML_EXTRACTED_FING_DIR
 matcher_xml_extracted_fing_name=$MATCHER_XML_EXTRACTED_FING_NAME
 
 
@@ -88,7 +89,7 @@ extract_fs_metadata "$xml_output_name"
 echo "extract_fs_metadata end.."
 
 cd $matcher_directory
-./$matcher_script_name "$app_fingerprints_db_dir/$app_fingerprints_db_name" "$xml_output_name.xml" "$matcher_xml_extracted_fing_name" "$matcher_output_name"
+./$matcher_script_name "$app_fingerprints_db_dir/$app_fingerprints_db_name" "$xml_output_name.xml" "$matcher_xml_extracted_fing_dir" "$matcher_xml_extracted_fing_name" "$matcher_output_name"
 echo "python script end.."
 
 
