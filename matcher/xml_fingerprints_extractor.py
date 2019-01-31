@@ -4,6 +4,8 @@ import xml.etree.ElementTree as ET
 import sys
 import collections
 import json
+import os.path
+
 
 fingerprints = {}
 check_oat = False
@@ -74,19 +76,20 @@ def find_fingerprints (inode, root_folder_inode, file_type):
 
 
 if __name__ == "__main__":
-	if len(sys.argv) < 3:
-		print "Usage: python xml_fingerprints_extractor.py <xml_dump_name> <output_filename>"
+	if len(sys.argv) < 4:
+		print "Usage: python xml_fingerprints_extractor.py <xml_dump_name> <output_filename> <output_file_dir>"
 		exit()
 
 	xml_dump = sys.argv[1] 
-	output = sys.argv[2] + ".txt"
+	output = sys.argv[2] 
+	output_dir = sys.argv[3]
 	root = ET.parse(xml_dump).getroot()
 	xmlstr = ET.tostring(root, encoding='utf8', method='xml')
 	e = ET.fromstring(xmlstr)
 
 	inode = get_app_folder_inode()
 	find_app_subfolders(inode)
-	with open(output, 'w+') as f:
+	with open(os.path.expanduser(os.path.join(output_dir, output + ".txt")), 'w+') as f:
      		f.write(json.dumps(fingerprints))
 
 
