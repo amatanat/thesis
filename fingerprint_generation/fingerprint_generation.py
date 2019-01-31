@@ -4,6 +4,7 @@ import sys
 import sqlite3
 from sqlite3 import Error
 import subprocess
+import os
 
 def connect_to_db (db_file):
 	""" create a database connection to the SQLite database
@@ -63,7 +64,7 @@ def get_all_applications (db):
 
 def insert_into_db (db, filename):
 	app_id = 0
-	with open(filename) as ins:
+	with open(filename, 'r') as ins:
     		for line in ins:
 			line = line.rstrip()
 			if "name-" in line:
@@ -79,14 +80,18 @@ def insert_into_db (db, filename):
 				insert_fingerprint(db, file_name, file_size, file_type, app_id)
 
 if __name__ == '__main__':
-	if len(sys.argv) < 2:
-		print "Usage: python fingerprint_generation.py <application_fingerprints_db_name>"
+	if len(sys.argv) < 4:
+		print "Usage: python fingerprint_generation.py <application_fingerprints_db_name> <output_file_dir> <output_filename>"
 		exit()
 
-	subprocess.call(['./device_app_fingerprints_extractor.sh'])
-
 	db_file_name = sys.argv[1] 
-	app_fingerprints = "device_app_fingerprints.txt"
+	output_file_dir = sys.argv[2]
+	output_filename = sys.argv[3]
+	if not os.path.exists(output_file_dir):
+    		os.makedirs(output_file_dir)
+	app_fingerprints = os.path.expanduser(os.path.join(output_file_dir, output_filename + ".txt" ))
+
+	subprocess.call(['./device_app_fingerprints_extractor.sh', app_fingerprints])
 	
 	sql_create_applications_table = """CREATE TABLE IF NOT EXISTS applications (
                                         ID INTEGER PRIMARY KEY NOT NULL,
