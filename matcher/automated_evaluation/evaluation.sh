@@ -3,6 +3,7 @@
 
 source evaluation_config.conf
 
+copy_apks_script_path=$COPY_APKS_SCRIPT_PATH
 apk_files_location=$APK_FILES_LOCATION
 fing_generation_app_dir=$FINGERPRINT_GENERATION_APP_DIR
 fing_generation_app_name=$FINGERPRINT_GENERATION_APP_NAME
@@ -16,6 +17,7 @@ count_result_output_dir=$COUNT_RESULT_OUTPUT_DIR
 count_result_output_filename=$COUNT_RESULT_OUTPUT_FILENAME
 matcher_report_dir=$MATCHER_REPORT_DIR
 matcher_report=$MATCHER_REPORT_NAME
+runCount=$RUN_COUNT
 
 
 list_app_inodes	() {
@@ -45,30 +47,45 @@ wait_device_screen () {
 	echo "device screen is ON..."
 }
 
-# install all apps in current directory
-cd $apk_files_location
-ls -1 *.apk | xargs -l adb install
-echo "installed apps to a device.."
+counter=11
+while [ $counter -le $runCount ]
+do
+	"$copy_apks_script_path"
+	echo "50 apk files are copied"
 
-# extract fingerprints for installed applications
-cd $fing_generation_app_dir
-./$fing_generation_app_name "$app_fingerprints_db_name" "$device_app_fingerprints_file_dir" "$device_app_fingerprints_filename"
-echo "fingerprint generation end.."
+	# install all apps in given directory
+	cd $apk_files_location
+	ls -1 *.apk | xargs -l adb install
+	echo "installed apps to a device.."
 
-"$matcher_script_path"
-echo "matcher script end.."
+	# extract fingerprints for installed applications
+	cd $fing_generation_app_dir
+	./$fing_generation_app_name "$app_fingerprints_db_name" "${device_app_fingerprints_file_dir}${counter}" "${device_app_fingerprints_filename}_${counter}"
+	echo "fingerprint generation end.."
 
-adb shell "reboot system"
+	"$matcher_script_path" "$counter"
+	echo "matcher script end.."
 
-wait_device_screen
+	adb shell "reboot system"
 
-list_app_inodes "$device_app_fingerprints_file_dir/$inode_output_filename"
-echo "apps inode extraction end.."
+	wait_device_screen
 
-uninstall_apps
-echo "uninstall apps from a device end.."
+	list_app_inodes "${device_app_fingerprints_file_dir}${counter}/${inode_output_filename}_${counter}"
+	echo "apps inode extraction end.."
 
-cd $count_result_output_dir
-./$count_matches_script_name "$matcher_report_dir" "$matcher_report" "$count_result_output_dir" "$count_result_output_filename"
-echo "count_matches end.."
+	uninstall_apps
+	echo "uninstall apps from a device end.."
+
+	cd $count_result_output_dir
+	./$count_matches_script_name "${matcher_report_dir}${counter}" "${matcher_report}_${counter}.json" "$count_result_output_dir" "${count_result_output_filename}"
+	echo "count_matches end.."
+
+	# remove all apks in given directory
+	rm $apk_files_location/*
+	echo "remove files from /apks dir. end.."
+
+	echo $counter
+	((counter++))
+done
+echo "All done.."
 
