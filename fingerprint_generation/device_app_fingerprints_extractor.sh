@@ -1,13 +1,14 @@
 #!/bin/bash
 
 extract_app_fingerprints () {
-	echo "name-"$1 >> $3
-	echo $2 >> $3
+	echo "name-"$1 >> $4
+	echo $2 >> $4
+	echo $3 >> $4
 	R=$(adb shell "
 		su -c ' cd /data/app/
-			cd \$(ls -d * | grep \"$1\")
+			cd \$(ls -d * | grep \"$1-\")
 			find * -type f | egrep -v '^oat' |xargs stat -c \"%s %n\" '") 
-	echo "$R" >> $3
+	echo "$R" >> $4
 }
 
 for app_name in $(adb shell "
@@ -16,7 +17,9 @@ for app_name in $(adb shell "
 	app_name=${app_name%$'\r'}
 	version_name=$(adb shell "
 		su -c 'dumpsys package \"$app_name\" | grep -i versionName'")
-	extract_app_fingerprints "$app_name" "$version_name" "$1"
+	version_code=$(adb shell "
+		su -c 'dumpsys package \"$app_name\" | grep -i versionCode'")
+	extract_app_fingerprints "$app_name" "$version_name" "$version_code" "$1"
 	
 done
 
