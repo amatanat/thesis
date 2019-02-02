@@ -25,15 +25,15 @@ def create_table (db, sql_create_table):
     	except Error as e:
         	print(e) 
 
-def insert_application (db, application, version):
+def insert_application (db, application, version, version_code):
     	"""Insert a new application into the 'applications' table
     	return an application id"""
 
-	sql_insert = "INSERT OR IGNORE INTO applications (name, version) VALUES(?,?)"
+	sql_insert = "INSERT OR IGNORE INTO applications (name, version, version_code) VALUES(?,?,?)"
     	cursor = db.cursor()
-	cursor.execute(sql_insert, (application, version))
-	sql_select = "SELECT ID FROM applications WHERE name = ? AND version = ?"
-	rows = cursor.execute(sql_select, (application, version))
+	cursor.execute(sql_insert, (application, version, version_code))
+	sql_select = "SELECT ID FROM applications WHERE name = ? AND version = ? AND version_code = ?"
+	rows = cursor.execute(sql_select, (application, version, version_code))
 	for row in rows:
 		return row[0]
 
@@ -71,7 +71,9 @@ def insert_into_db (db, filename):
 				app_name = line.split("name-")[1]
 			elif "versionName=" in line:
 				version = line.strip().split("=")[1]
-				app_id = insert_application(db, app_name, version)
+			elif "versionCode=" in line:
+				version_code = line.strip().split("=")[1].split()[0]
+				app_id = insert_application(db, app_name, version, version_code)
 			else:
 				line = line.split(" ")
 				file_size = int(line[0])
@@ -97,7 +99,8 @@ if __name__ == '__main__':
                                         ID INTEGER PRIMARY KEY NOT NULL,
                                         name TEXT NOT NULL,
 					version TEXT NOT NULL,
-					UNIQUE(name, version)
+					version_code TEXT NOT NULL,
+					UNIQUE(name, version, version_code)
                                         ); """
 
 	sql_create_fingerprints_table = """CREATE TABLE IF NOT EXISTS fingerprints (
