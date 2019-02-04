@@ -12,11 +12,6 @@ device_app_fingerprints_file_dir=$DEVICE_APP_FINGERPRINTS_DIR
 device_app_fingerprints_filename=$DEVICE_APP_FINGERPRINTS_NAME
 matcher_script_path=$MATCHER_SCRIPT_PATH
 inode_output_filename=$APP_INODES_OUTPUT_NAME
-count_matches_script_name=$COUNT_MATCHES_SCRIPT_NAME
-count_result_output_dir=$COUNT_RESULT_OUTPUT_DIR
-count_result_output_filename=$COUNT_RESULT_OUTPUT_FILENAME
-matcher_report_dir=$MATCHER_REPORT_DIR
-matcher_report=$MATCHER_REPORT_NAME
 runCount=$RUN_COUNT
 
 
@@ -47,11 +42,11 @@ wait_device_screen () {
 	echo "device screen is ON..."
 }
 
-counter=11
+counter=1
 while [ $counter -le $runCount ]
 do
 	"$copy_apks_script_path"
-	echo "50 apk files are copied"
+	echo "60 apk files are copied"
 
 	# install all apps in given directory
 	cd $apk_files_location
@@ -70,15 +65,11 @@ do
 
 	wait_device_screen
 
-	list_app_inodes "${device_app_fingerprints_file_dir}${counter}/${inode_output_filename}_${counter}"
+	list_app_inodes "${device_app_fingerprints_file_dir}${counter}/${inode_output_filename}_${counter}.txt"
 	echo "apps inode extraction end.."
 
 	uninstall_apps
 	echo "uninstall apps from a device end.."
-
-	cd $count_result_output_dir
-	./$count_matches_script_name "${matcher_report_dir}${counter}" "${matcher_report}_${counter}.json" "$count_result_output_dir" "${count_result_output_filename}"
-	echo "count_matches end.."
 
 	# remove all apks in given directory
 	rm $apk_files_location/*
