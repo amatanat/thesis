@@ -85,11 +85,11 @@ extract_fs_metadata () {
 
 
 # extract FS metadata to an XML file
-extract_fs_metadata "$xml_output_name" 
+extract_fs_metadata "${xml_output_name}${1}/fbe_xml_dump_${1}"
 echo "extract_fs_metadata end.."
 
 cd $matcher_directory
-./$matcher_script_name "$app_fingerprints_db_dir/$app_fingerprints_db_name" "$xml_output_name.xml" "$matcher_xml_extracted_fing_dir" "$matcher_xml_extracted_fing_name" "$matcher_output_name"
+./$matcher_script_name "$app_fingerprints_db_dir/$app_fingerprints_db_name" "${xml_output_name}${1}/fbe_xml_dump_${1}.xml" "${matcher_xml_extracted_fing_dir}${1}" "${matcher_xml_extracted_fing_name}_${1}" "${matcher_output_name}_${1}"
 echo "python script end.."
 
 
