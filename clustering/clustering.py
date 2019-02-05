@@ -15,6 +15,12 @@ def total_seconds(time):
 	epoch = datetime.datetime.strptime("1970-01-01T00:00:00Z",'%Y-%m-%dT%H:%M:%SZ')
 	return int((crtime - epoch).total_seconds())
 
+def get_date (seconds):
+	date_string = get_date_string(seconds)
+	return datetime.datetime.strptime(date_string,'%d-%b-%Y, %H:%M:%S').date()
+
+def get_date_string (seconds):
+	return datetime.datetime.fromtimestamp(seconds).strftime('%d-%b-%Y, %H:%M:%S')
 
 def extract_gen_id_and_creation_time (root, inode):
 	generation_id_crtime_list = list()
@@ -61,22 +67,24 @@ def plot_clusters(X, labels):
 	plt.scatter(X[:,0], X[:,1], c = labels, cmap = 'rainbow') 
 	plt.show()
 
-def find_wa_root_folders(tree_root, wa_inode):
+def find_wa_db_folder(tree_root, wa_inode):
 	# extract genId and creation time of folders
 	wa_root_folders = extract_gen_id_and_creation_time(tree_root, wa_inode)
 	print wa_root_folders
-	
-	# /data/WA/files folder is in third place in the list
-	wa_files_folder_data = wa_root_folders[2]
-	# find an inode of the /data/WA/files folder using its genID value
-	wa_files_folder_inode = find_inode(tree_root, wa_files_folder_data[1])
 
-	# /data/WA/databases folder is in fifth place in the list 
-	wa_db_folder_data = wa_root_folders[4]
-	# find an inode of the /data/WA/databases folder using its genID value
-	wa_db_folder_inode = find_inode(tree_root, wa_db_folder_data[1])
+	output["Installation date"] = get_date_string(wa_root_folders[0][0])
 
-	return (wa_files_folder_inode, wa_db_folder_inode)
+	if len(wa_root_folders) > 2:
+		# a user has opened WA after the app installation
+		# which means /data/WA/databases folder is created
+		# /data/WA/databases folder is in the fifth place in the list 
+		wa_db_folder_data = wa_root_folders[4]
+		# find an inode of the /data/WA/databases folder using its genID value
+		wa_db_folder_inode = find_inode(tree_root, wa_db_folder_data[1]) 
+
+		#output["First time opened WhatsApp after installation"] = get_date_string(wa_root_folders[3][0])
+
+		return wa_db_folder_inode
 
 def find_inode (root, generation_id):
 	text = "./fileobject/[genId=" + "'" + str(generation_id) + "'" + "]"
@@ -86,24 +94,22 @@ def find_timestamp (root, inode, ts_name):
 	text = "./fileobject/[inode=" + "'" + str(inode) + "'" + "]"
 	return root.find(text).find(ts_name).text
 
-def match_wam_file(tree_root, files_folder_inode):
-	# get generation id and creation time of files inside this folder
-	files_gen_id_and_crtime = extract_gen_id_and_creation_time(tree_root, files_folder_inode)
-
-	wam_file_inode = find_inode(tree_root,files_gen_id_and_crtime[1][1])
-	append_to_output("wam.wam", wam_file_inode, find_timestamp(tree_root, wam_file_inode, 'mtime'),
-					 find_timestamp(tree_root, wam_file_inode, 'ctime'),
-					 find_timestamp(tree_root, wam_file_inode, 'atime'),
-					 find_timestamp(tree_root, wam_file_inode, 'crtime'))	
-
-def match_db_folder_files(tree_root, db_folder_inode):
-	db_files_genId_and_crtime = extract_gen_id_and_creation_time(tree_root, db_folder_inode)
+def find_axolotl_db (root, axolotl_db_data):
+	# 1 element in tuple is the generation id of axolotl.db
+	axolotl_db_inode = find_inode(root, axolotl_db_data[1])
 	
-	# the first 19 files in /data/WA/databases/ folder are main DB files,
+	# append axolotl.db data to output 
+	append_to_output("axolotl.db", axolotl_db_inode, find_timestamp(root, axolotl_db_inode, 'mtime'),
+					 find_timestamp(root, axolotl_db_inode, 'ctime'),
+					 find_timestamp(root, axolotl_db_inode, 'atime'),
+					 find_timestamp(root, axolotl_db_inode, 'crtime'))
+
+def find_media_db (root, db_files_data):
+	# the first 19 files in /data/WA/databases folder are main DB files,
 	# created after registration
 	# remaining files should be clustered
 
-	data_to_cluster = db_files_genId_and_crtime[19:]
+	data_to_cluster = db_files_data[19:]
 
 	data = np.array(data_to_cluster)
 	if len(data_to_cluster) > 4:
@@ -116,26 +122,13 @@ def match_db_folder_files(tree_root, db_folder_inode):
 	
 	match_media_db(tree_root, data, labels)
 
-	# before registration 8 files are created, wa.db files are within them
-	match_wa_db(tree_root, db_files_genId_and_crtime[:8])
-
-def match_wa_db(tree_root, data):
-	# creation order of wa.db files are 6-7-8
-	# wa.db-wal is located at index 6
-
-	wa_wal_inode = find_inode(tree_root, data[6][1])
-	append_to_output("wa.db-wal", wa_wal_inode, find_timestamp(tree_root, wa_wal_inode, 'mtime'),
-					 find_timestamp(tree_root, wa_wal_inode, 'ctime'),
-					 find_timestamp(tree_root, wa_wal_inode, 'atime'),
-					 find_timestamp(tree_root, wa_wal_inode, 'crtime'))		
-
 def match_media_db(tree_root, data, labels):
 	values = np.array(labels)
 	for i in list(set(labels)):
 		# array containing index of occurences of i in labels list
 		occurences = np.where(values == i)[0]
 		# the count of media files is 3, media.db, media.db-wal, media.db-shm
-		# if 5 files are created at one time then media files are created with the web_session files, 
+		# if 5 files are created at once then media files are created with the web_session files, 
 		# In this case, index 0-1 are web_session files, index 2-4 are media files
 		# if 3 files are created at once, then these are media files, index 0-2
 		if len(occurences) == 3 or len(occurences) == 5:
@@ -143,30 +136,41 @@ def match_media_db(tree_root, data, labels):
 			
 			if is_len_5:
 				media_db_inode =  find_inode(tree_root, data[occurences[2]][1])
-				media_wal_inode = find_inode(tree_root, data[occurences[3]][1])
-				media_shm_inode = find_inode(tree_root, data[occurences[4]][1])
 			else:
 				media_db_inode =  find_inode(tree_root, data[occurences[0]][1])
-				media_wal_inode = find_inode(tree_root, data[occurences[1]][1])
-				media_shm_inode = find_inode(tree_root, data[occurences[2]][1])
 
-			# extract inode, mtime, ctime, crtime of media.db file and append to output file
+			# extract inode, mtime, atime, ctime, crtime of media.db file and append to output file
 			append_to_output("media.db", media_db_inode, find_timestamp(tree_root, media_db_inode, 'mtime'),
 					 find_timestamp(tree_root, media_db_inode, 'ctime'),
 					 find_timestamp(tree_root, media_db_inode, 'atime'),
 					 find_timestamp(tree_root, media_db_inode, 'crtime'))
-			
-			append_to_output("media.db-wal", media_wal_inode, find_timestamp(tree_root, media_wal_inode, 'mtime'),
-					 find_timestamp(tree_root, media_wal_inode, 'ctime'),
-					 find_timestamp(tree_root, media_wal_inode, 'atime'),
-					 find_timestamp(tree_root, media_wal_inode, 'crtime'))
 
-			append_to_output("media.db-shm", media_shm_inode, find_timestamp(tree_root, media_shm_inode, 'mtime'),
-					 find_timestamp(tree_root, media_shm_inode, 'ctime'),
-					 find_timestamp(tree_root, media_shm_inode, 'atime'),
-					 find_timestamp(tree_root, media_shm_inode, 'crtime'))
+def match_db_folder_files(tree_root, db_folder_inode):
+	db_files_genId_and_crtime = extract_gen_id_and_creation_time(tree_root, db_folder_inode)
+	
+	if len(db_files_genId_and_crtime) > 8:
+		# a user has registered
+		output["Registration date"] = get_date_string(db_files_genId_and_crtime[8][0])
+
+		# if the crtime of first file in list is today, then we say temporary files are not re-created
+		# all files are in the expected order
+		if (get_date(db_files_genId_and_crtime[0][0]) == datetime.datetime.today().date()):
+			# axolotl.db is in the index 8 in sorted list
+			find_axolotl_db(tree_root, db_files_genId_and_crtime[8])
+
+			# if the count of DB files is greater than 19 : media, web_session or emoji dbs are created
+			if len (db_files_genId_and_crtime) > 19:
+				find_media_db(tree_root, db_files_genId_and_crtime)
+		else: 
+			# all temporary files are re-created 
+			# axolotl.db is in the index 3 in sorted list
+			find_axolotl_db(tree_root, db_files_genId_and_crtime[3])
+			#TODO cluster web_session.db, media.db, stickers.db and emojidictionary.db
+		
+	else:
+		# a user did not register, just installed and opened WA
+		output["Info"] = "A user has installed WhatsApp, opened it but did not register."
 			
-			return 
 
 def append_to_output (filename, inode, mtime, ctime, atime, crtime):
 	
@@ -193,17 +197,14 @@ if __name__ == '__main__':
 	output_filename = sys.argv[3] + ".json"	
 
 	tree_root = ET.parse(xml_dump).getroot()
-
-	# get inode of /data/WA/files and /data/WA/databases folders
-	wa_root_folder_inodes = find_wa_root_folders(tree_root, wa_inode)
-
 	output = {}
 
-	# identify file inside /data/WA/files folder
-	match_wam_file(tree_root, wa_root_folder_inodes[0])
+	# get inode of /data/WA/databases folder
+	wa_db_folder_inode = find_wa_db_folder(tree_root, wa_inode)
 
-	# match files inside /data/WA/databases folder
-	match_db_folder_files(tree_root, wa_root_folder_inodes[1])
+	if wa_db_folder_inode is not None:
+		# match files inside /data/WA/databases folder
+		match_db_folder_files(tree_root, wa_db_folder_inode)
 
 	output_result(output)
 	
