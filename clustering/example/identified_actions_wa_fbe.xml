@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<xml>
+   <info>
+      <app_installation_date>05-Feb-2019, 08:28:09</app_installation_date>
+      <app_registration_date>05-Feb-2019, 09:16:36</app_registration_date>
+   </info>
+   <match>
+      <action_name>send_or_receive_text</action_name>
+      <date>05-Feb-2019, 08:58:00</date>
+      <accuracy_percentage>100</accuracy_percentage>
+      <correct_timestamps>
+         <correct_timestamp>
+            <filename>axolotl.db</filename>
+            <timestamp>2019-02-05T08:58:00Z</timestamp>
+         </correct_timestamp>
+      </correct_timestamps>
+      <wrong_timestamps/>
+   </match>
+   <match>
+      <action_name>send_or_receive_photo</action_name>
+      <date>05-Feb-2019, 08:47:21</date>
+      <accuracy_percentage>50</accuracy_percentage>
+      <correct_timestamps>
+         <correct_timestamp>
+            <filename>media.db</filename>
+            <timestamp>2019-02-05T08:47:21Z</timestamp>
+         </correct_timestamp>
+      </correct_timestamps>
+      <wrong_timestamps>
+         <wrong_timestamp>
+            <filename>axolotl.db</filename>
+            <timestamp>2019-02-05T08:58:00Z</timestamp>
+         </wrong_timestamp>
+      </wrong_timestamps>
+   </match>
+</xml>
