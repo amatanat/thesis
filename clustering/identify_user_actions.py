@@ -17,8 +17,8 @@ SEND_OR_RECEIVE_TEXT = "send_or_receive_text"
 
 def total_seconds (time):
 	"""Convert input time to seconds since epoch"""
-	input_time = datetime.strptime(str(time),'%Y-%m-%dT%H:%M:%SZ')
-	epoch = datetime.strptime("1970-01-01T00:00:00Z",'%Y-%m-%dT%H:%M:%SZ')
+	input_time = datetime.strptime(str(time),'%d-%b-%Y, %H:%M:%S')
+	epoch = datetime.strptime("01-Jan-1970, 00:00:00",'%d-%b-%Y, %H:%M:%S')
 	return int((input_time - epoch).total_seconds())
 
 def passes_threshold (time_one, time_two):
@@ -105,10 +105,6 @@ def create_timestamp_tag (parent, child_tag_name, key, value):
 	timestamp_tag = SubElement(child_tag, 'timestamp')
 	timestamp_tag.text = str(value)
 
-def convert_time_to_readable_format (date_string):
-	date_time = datetime.strptime(date_string,'%Y-%m-%dT%H:%M:%SZ')
-	return date_time.strftime('%d-%b-%Y, %H:%M:%S')
-
 def create_info_tag (top, input_data):
 	info = SubElement(top, 'info')
 	if "Installation date" in input_data:
@@ -125,7 +121,7 @@ def create_match_tag (top, result):
 		action_name = SubElement(match, 'action_name')
 		action_name.text = action[0]
 		action_date = SubElement(match, 'date')
-		action_date.text = convert_time_to_readable_format(str(action[1]))
+		action_date.text = str(action[1])
 		accuracy_percentage = SubElement(match, 'accuracy_percentage')
 		accuracy_percentage.text = str(action[2][0])
 
