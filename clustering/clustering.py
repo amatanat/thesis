@@ -99,10 +99,11 @@ def find_axolotl_db (root, axolotl_db_data):
 	axolotl_db_inode = find_inode(root, axolotl_db_data[1])
 	
 	# append axolotl.db data to output 
-	append_to_output("axolotl.db", axolotl_db_inode, find_timestamp(root, axolotl_db_inode, 'mtime'),
-					 find_timestamp(root, axolotl_db_inode, 'ctime'),
-					 find_timestamp(root, axolotl_db_inode, 'atime'),
-					 find_timestamp(root, axolotl_db_inode, 'crtime'))
+	append_to_output("axolotl.db", axolotl_db_inode, 
+					 get_date_string(total_seconds(find_timestamp(root, axolotl_db_inode, 'mtime'))),
+					 get_date_string(total_seconds(find_timestamp(root, axolotl_db_inode, 'ctime'))),
+					 get_date_string(total_seconds(find_timestamp(root, axolotl_db_inode, 'atime'))),
+					 get_date_string(total_seconds(find_timestamp(root, axolotl_db_inode, 'crtime'))))
 
 def find_media_db (root, db_files_data):
 	# the first 19 files in /data/WA/databases folder are main DB files,
@@ -140,10 +141,11 @@ def match_media_db(tree_root, data, labels):
 				media_db_inode =  find_inode(tree_root, data[occurences[0]][1])
 
 			# extract inode, mtime, atime, ctime, crtime of media.db file and append to output file
-			append_to_output("media.db", media_db_inode, find_timestamp(tree_root, media_db_inode, 'mtime'),
-					 find_timestamp(tree_root, media_db_inode, 'ctime'),
-					 find_timestamp(tree_root, media_db_inode, 'atime'),
-					 find_timestamp(tree_root, media_db_inode, 'crtime'))
+			append_to_output("media.db", media_db_inode, 
+					 get_date_string(total_seconds(find_timestamp(tree_root, media_db_inode, 'mtime'))),
+					 get_date_string(total_seconds(find_timestamp(tree_root, media_db_inode, 'ctime'))),
+					 get_date_string(total_seconds(find_timestamp(tree_root, media_db_inode, 'atime'))),
+					 get_date_string(total_seconds(find_timestamp(tree_root, media_db_inode, 'crtime'))))
 
 def match_db_folder_files(tree_root, db_folder_inode):
 	db_files_genId_and_crtime = extract_gen_id_and_creation_time(tree_root, db_folder_inode)
@@ -161,11 +163,6 @@ def match_db_folder_files(tree_root, db_folder_inode):
 			# if the count of DB files is greater than 19 : media, web_session or emoji dbs are created
 			if len (db_files_genId_and_crtime) > 19:
 				find_media_db(tree_root, db_files_genId_and_crtime)
-		else: 
-			# all temporary files are re-created 
-			# axolotl.db is in the index 3 in sorted list
-			find_axolotl_db(tree_root, db_files_genId_and_crtime[3])
-			#TODO cluster web_session.db, media.db, stickers.db and emojidictionary.db
 		
 	else:
 		# a user did not register, just installed and opened WA
