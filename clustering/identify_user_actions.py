@@ -7,8 +7,6 @@ import xml.etree.ElementTree as ET
 from xml.dom import minidom
 
 #constants
-SEND_OR_RECEIVE_PHOTO_FILES = ["axolotl.db", "media.db"]
-SEND_OR_RECEIVE_TEXT_FILES = ["axolotl.db"]
 MEDIA_DB_FILE = "media.db"
 AXOLOTL_DB_FILE = "axolotl.db"
 C_TIME = "ctime"
@@ -30,32 +28,24 @@ def is_file_available (data, filename):
 	"""Return True is the given file is available in the input data file, otherwise return False"""
 	return True if filename in data else False
 
-#TODO do we need to calculate accuracy?
-def find_accuracy (data, files, total_count):
-	"""data is the input data file. files is a list of file names. 
+def find_accuracy (data, passes_threshold, total_count):
+	"""data is the input data file. passes_threshold - is True if the diff of TS values is less than threshold
 	total_count - total count of files that should change its timestamps.""" 
-	file_name_and_ts = {}
-	correct_ts = {}
-	wrong_ts = {}
-	for file_name in files:
-		file_name_and_ts[file_name] = total_seconds(data[file_name][C_TIME])
-
-	max_ts = max([ts for ts in file_name_and_ts.values()]) 
-
-	# count of the changed timestamps
-	changed_ts = 0
-
-	for file_name, ts in file_name_and_ts.items():
-		# if the max timestamp minus timestamp is less that given threshold then 
-		# timestamp has changed.
-		if max_ts - ts < threshold:
-			changed_ts += 1
-			correct_ts[file_name] = (C_TIME, data[file_name][C_TIME])
+	correct_file_name_and_ts = {}
+	wrong_file_name_and_ts = {}
+	if total_count == 1:  # send_or_receive_text
+		accuracy_perc = 100
+		correct_file_name_and_ts[AXOLOTL_DB_FILE] = data[AXOLOTL_DB_FILE][C_TIME]
+	elif total_count == 2: # send_or_receive_photo
+		if passes_threshold: # ctime diff of media and axolotl db files is less than threshold
+			accuracy_perc = 100
+			correct_file_name_and_ts[AXOLOTL_DB_FILE] = data[AXOLOTL_DB_FILE][C_TIME]
 		else:
-			wrong_ts[file_name] = (C_TIME, data[file_name][C_TIME])
+			accuracy_perc = 50
+			wrong_file_name_and_ts[AXOLOTL_DB_FILE] = data[AXOLOTL_DB_FILE][C_TIME]
+		correct_file_name_and_ts[MEDIA_DB_FILE] = data[MEDIA_DB_FILE][C_TIME]
 
-	accuracy_perc = (changed_ts * 100) / total_count
-	return ( accuracy_perc, changed_ts, correct_ts, wrong_ts)
+	return (accuracy_perc, correct_file_name_and_ts, wrong_file_name_and_ts)
 
 def is_user_action (db_ctime, db_mtime):
 	# in user action ctime of db file is different from mtime of db file
@@ -78,16 +68,22 @@ def find_actions (data):
 
 	if axolotl_changed:
 		if media_changed:
-			if passes_threshold(data[AXOLOTL_DB_FILE][C_TIME], data[MEDIA_DB_FILE][C_TIME]):
-				result.append((SEND_OR_RECEIVE_PHOTO, data[MEDIA_DB_FILE][C_TIME]))
+			is_passes_threshold = passes_threshold(data[AXOLOTL_DB_FILE][C_TIME], data[MEDIA_DB_FILE][C_TIME])
+			if is_passes_threshold:
+				accuracy = find_accuracy(data, is_passes_threshold, 2)
+				result.append((SEND_OR_RECEIVE_PHOTO, data[MEDIA_DB_FILE][C_TIME], accuracy))
 			else:
-				result.append((SEND_OR_RECEIVE_TEXT, data[AXOLOTL_DB_FILE][C_TIME]))
-				result.append((SEND_OR_RECEIVE_PHOTO, data[MEDIA_DB_FILE][C_TIME]))
+				accuracy = find_accuracy(data, is_passes_threshold, 1)
+				result.append((SEND_OR_RECEIVE_TEXT, data[AXOLOTL_DB_FILE][C_TIME], accuracy))
+				accuracy = find_accuracy(data, is_passes_threshold, 2)
+				result.append((SEND_OR_RECEIVE_PHOTO, data[MEDIA_DB_FILE][C_TIME], accuracy))
 		else:
-			result.append((SEND_OR_RECEIVE_TEXT, data[AXOLOTL_DB_FILE][C_TIME]))
+			accuracy = find_accuracy(data, True, 1)
+			result.append((SEND_OR_RECEIVE_TEXT, data[AXOLOTL_DB_FILE][C_TIME], accuracy))
 
 	elif media_changed:
-		result.append((SEND_OR_RECEIVE_PHOTO, data[MEDIA_DB_FILE][C_TIME]))
+		accuracy = find_accuracy(data, False, 2)
+		result.append((SEND_OR_RECEIVE_PHOTO, data[MEDIA_DB_FILE][C_TIME], accuracy))
 	return result
 
 def generate_XML(result, output_filename, input_data):
@@ -104,10 +100,10 @@ def save_to_xml (output_filename, top):
 
 def create_timestamp_tag (parent, child_tag_name, key, value):
 	child_tag = SubElement(parent, child_tag_name)
-	file_name = SubElement(child_tag, 'filename')
-	file_name.text = key
-	timestamps = SubElement(child_tag, 'timestamps')
-	timestamps.text = str(value)
+	filename_tag = SubElement (child_tag, 'filename')
+	filename_tag.text = key
+	timestamp_tag = SubElement(child_tag, 'timestamp')
+	timestamp_tag.text = str(value)
 
 def convert_time_to_readable_format (date_string):
 	date_time = datetime.strptime(date_string,'%Y-%m-%dT%H:%M:%SZ')
@@ -130,19 +126,17 @@ def create_match_tag (top, result):
 		action_name.text = action[0]
 		action_date = SubElement(match, 'date')
 		action_date.text = convert_time_to_readable_format(str(action[1]))
-		#accuracy = SubElement(match, 'accuracy')
-		#percentage = SubElement(accuracy, 'percentage')
-		#percentage.text = str(action[2])
-		#timestamps = SubElement(accuracy, 'timestamps')
-		#timestamps.text = str(action[5]) + "/" + str(action[6])
-		#correct_timestamps = SubElement(accuracy, 'correct_timestamps')
-		
-		#for key, value in action[3].items():
-		#	create_timestamp_tag(correct_timestamps, 'correct_timestamp', key, value)
-		
-		#wrong_timestamps = SubElement(accuracy, 'wrong_timestamps')
-		#for key, value in action[4].items():
-		#	create_timestamp_tag(wrong_timestamps, 'wrong_timestamp', key, value)
+		accuracy_percentage = SubElement(match, 'accuracy_percentage')
+		accuracy_percentage.text = str(action[2][0])
+
+		correct_timestamps = SubElement(match, 'correct_timestamps')
+		for key, value in action[2][1].items():
+			create_timestamp_tag (correct_timestamps, 'correct_timestamp', key, value)
+
+		wrong_timestamps = SubElement(match, 'wrong_timestamps')
+		if len(action[2][2]) > 0:
+			for key, value in action[2][2].items():
+				create_timestamp_tag (wrong_timestamps, 'wrong_timestamp', key, value)
 		
 
 if __name__ == '__main__':
