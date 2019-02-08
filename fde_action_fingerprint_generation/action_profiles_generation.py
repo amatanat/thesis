@@ -97,6 +97,7 @@ if __name__ == '__main__':
 				    path TEXT NOT NULL,
 				    changed TEXT NOT NULL                              
                                 );"""
+
 	sql_create_action_cfingerprints_table = """create TABLE action_cfingerprints (
                                     ID INTEGER PRIMARY KEY NOT NULL,
 				    app_name TEXT NOT NULL,	
@@ -105,14 +106,14 @@ if __name__ == '__main__':
 				    changed TEXT NOT NULL          
                                 );"""
 
-	sql_create_action_subtraction_fingerprints_table = """create TABLE action_subtraction_fingerprints (
-                                    ID INTEGER PRIMARY KEY NOT NULL,
+	sql_create_action_combination_fingerprints_table = """create TABLE action_combination_fingerprints (
+				    ID INTEGER PRIMARY KEY NOT NULL,
 				    app_name TEXT NOT NULL,
-                                    first_action_name TEXT NOT NULL,
-				    second_action_name TEXT NOT NULL,
-				    path TEXT NOT NULL,
+				    action_name TEXT NOT NULL,
+				    included_actions TEXT NOT NULL,
+				    path TEXT NOT NULL, 
 				    changed TEXT NOT NULL
-                                );"""
+				);"""
 	
 
 	db = connect_to_db(db_filename)
@@ -120,7 +121,7 @@ if __name__ == '__main__':
 		create_table(db, sql_create_action_fingerprints_table)
 		create_table(db, sql_create_action_profiles_table)
 		create_table(db, sql_create_action_cfingerprints_table)
-		create_table(db, sql_create_action_subtraction_fingerprints_table)
+		create_table(db, sql_create_action_combination_fingerprints_table)
 		with open(json_dump, "r") as f:
   			data = json.loads(f.read())
 			insert_into_db(db, data, app_name, action_name, run)
