@@ -12,6 +12,7 @@ def connect_to_db (db_file):
     	return: Connection object or None"""
     	try:
         	conn = sqlite3.connect(db_file)
+		conn.text_factory = str
         	return conn
     	except Error as e:
         	print(e)
