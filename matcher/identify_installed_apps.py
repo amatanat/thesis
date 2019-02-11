@@ -37,7 +37,7 @@ def get_app_ids (db):
 def get_app_name (db, app_id):
 	""" Return application name with the given app_id """
 	cursor = db.cursor()
-	sql_select = "SELECT name, version FROM applications WHERE ID=?"
+	sql_select = "SELECT name, version, version_code FROM applications WHERE ID=?"
 	cursor.execute(sql_select, (app_id,))
 	rows = cursor.fetchall()
     	for row in rows:
@@ -148,7 +148,7 @@ if __name__ == '__main__':
 	db = connect_to_db(db_file_name)
 	if db is not None:
 		with open(os.path.expanduser(os.path.join(xml_extracted_fingerprints_dir, xml_extracted_fingerprints)), 'r') as f:
-    			data = json.load(f)
+			data = json.load(f)
 			app_name_dict = {}
 
 			for key, value in data.items():
@@ -169,6 +169,6 @@ if __name__ == '__main__':
 				output_result(app_name_dict)
 		
 	else:
-        	print("Error! Cannot connect to a DB")
+		print("Error! Cannot connect to a DB")
 	
 
