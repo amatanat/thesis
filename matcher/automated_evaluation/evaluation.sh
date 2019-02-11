@@ -13,7 +13,7 @@ device_app_fingerprints_filename=$DEVICE_APP_FINGERPRINTS_NAME
 matcher_script_path=$MATCHER_SCRIPT_PATH
 inode_output_filename=$APP_INODES_OUTPUT_NAME
 runCount=$RUN_COUNT
-
+evaluated_apks_dir=$EVALUATED_APKS_TXT_FILE_DIR
 
 list_app_inodes	() {
 	R=$(adb shell "
@@ -27,7 +27,7 @@ list_app_inodes	() {
 uninstall_apps () {
 	for x in $(adb shell "
 	    		    su -c '
-				pm list packages -3 | cut -f 2 -d \":\" | grep -v "^eu.chainfire.supersu" '"); do adb uninstall ${x%$'\r'};  done
+				pm list packages -3 | cut -f 2 -d \":\" | egrep -v "^eu.chainfire.supersu" | egrep -v "^com.whatsapp$" '"); do adb uninstall ${x%$'\r'};  done
 }
 
 
@@ -45,6 +45,7 @@ wait_device_screen () {
 counter=1
 while [ $counter -le $runCount ]
 do
+	cd $evaluated_apks_dir
 	"$copy_apks_script_path"
 	echo "60 apk files are copied"
 
