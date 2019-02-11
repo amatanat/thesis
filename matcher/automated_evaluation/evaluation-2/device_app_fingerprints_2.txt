@@ -1,0 +1,734 @@
+name-com.amazon.mShop.android.shopping
+versionName=16.21.0.100
+versionCode=1241151010 minSdk=19 targetSdk=28
+51272055 base.apk
+238740 lib/arm/libblueshift-audioprocessing.so
+7002124 lib/arm/libA9VSMobile.so
+42308 lib/arm/libspotify-wrapper-pcm.so
+42308 lib/arm/libspotify-wrapper-vorbis.so
+264816 lib/arm/libarcore_sdk_c.so
+243240 lib/arm/libimagepipeline.so
+152980 lib/arm/libA9VSAndroidNativeCodec.so
+72032 lib/arm/libarcore_sdk_jni.so
+414932 lib/arm/libblueshift-opus.so
+2955604 lib/arm/libreactnativejni.so
+name-com.apcoaflow.consumer
+versionName=1.0.10
+versionCode=43 minSdk=18 targetSdk=27
+23172840 base.apk
+name-com.amazon.clouddrive.photos
+versionName=AMAZON-PHOTOS-1.20-40677510g
+versionCode=40677510 minSdk=21 targetSdk=26
+27549561 base.apk
+9520 lib/arm/libprivatedata.so
+16524 lib/arm/librs.render_blur_v5_0_2.so
+13488 lib/arm/libpl_droidsonroids_gif_surface.so
+6224 lib/arm/librs.split_v5_0_2.so
+661132 lib/arm/libgnustl_shared.so
+79164 lib/arm/libfb.so
+17712 lib/arm/libglog_init.so
+103852 lib/arm/libyoga.so
+75148 lib/arm/libglog.so
+6552 lib/arm/librs.render_adjust_v5_0_2.so
+922976 lib/arm/libicu_common.so
+6588 lib/arm/librs.render_clarity_v5_0_2.so
+111980 lib/arm/libfolly_json.so
+243220 lib/arm/libimagepipeline.so
+18056 lib/arm/librs.render_blend_v5_0_2.so
+30784 lib/arm/librs.jpeg_v5_0_2.so
+59904 lib/arm/librsjni.so
+300404 lib/arm/libreactnativejni.so
+1910900 lib/arm/libjsc.so
+6448 lib/arm/librs.render_3d_lut_v5_0_2.so
+1013364 lib/arm/libRSSupport.so
+29884 lib/arm/libpl_droidsonroids_gif.so
+name-codematics.universal.tv.remote.control
+versionName=1.0.55
+versionCode=65 minSdk=16 targetSdk=27
+10072259 base.apk
+42776 lib/arm64/libpl_droidsonroids_gif.so
+name-com.alibaba.aliexpresshd
+versionName=6.22.1
+versionCode=249 minSdk=14 targetSdk=26
+47810811 base.apk
+849720 lib/arm/libFaceAREngine.so
+166456 lib/arm/libtbplayer.so
+5952396 lib/arm/libTaoLive.so
+5449824 lib/arm/libtbffmpeg.so
+22552 lib/arm/libweexjst.so
+1407536 lib/arm/libweexcore.so
+62560 lib/arm/libsgmisc.so
+525844 lib/arm/libweexjss.so
+672284 lib/arm/libtnet-3.1.15.so
+2658216 lib/arm/libijkffmpeg.so
+67272 lib/arm/libweexjsb.so
+194232 lib/arm/libuplayer24.so
+5534828 lib/arm/libJavaScriptCore.so
+286924 lib/arm/libFacebeauty.so
+405911 lib/arm/libsgmain.so
+1734968 lib/arm/libMediaEncode.so
+79561 lib/arm/libsgavmp.so
+104428 lib/arm/libnative.so
+117132 lib/arm/libsgsecuritybody.so
+1946456 lib/arm/libaliplayer.so
+189936 lib/arm/libtbsdl.so
+87640 lib/arm/libTMARCamera.so
+374948 lib/arm/libcrashsdk.so
+name-canvasm.myo2
+versionName=7.3.2
+versionCode=70302 minSdk=16 targetSdk=27
+14719635 base.apk
+name-com.andromo.dev552033.app565325
+versionName=2.0
+versionCode=6 minSdk=16 targetSdk=27
+9687736 base.apk
+name-com.appblockgames.freecraftexploration
+versionName=3.4.4
+versionCode=344 minSdk=14 targetSdk=27
+8814563 base.apk
+288224 lib/arm64/libgdx.so
+612536 lib/arm64/libleveldbjni.so
+name-com.app.deutschsprechenlernen
+versionName=1.0
+versionCode=2235 minSdk=19 targetSdk=26
+20579537 base.apk
+443268 lib/arm/libsqlc-native-driver.so
+226500 lib/arm/libaacdecoder.so
+name-balls.arcademaker.bricks.breaker.brounce.ballz.puzzle
+versionName=1.27.150.1731
+versionCode=1271501731 minSdk=16 targetSdk=27
+26084250 base.apk
+17916 lib/arm/libmain.so
+12880744 lib/arm/libunity.so
+333864 lib/arm/libsqlite3.so
+28308788 lib/arm/libil2cpp.so
+name-air.nn.mobile.app.main
+versionName=3.0.44
+versionCode=3000044 minSdk=16 targetSdk=28
+66592477 base.apk
+1049616 lib/arm64/libmono-btls-shared.so
+149976 lib/arm64/libmonodroid.so
+3279984 lib/arm64/libmonosgen-2.0.so
+815440 lib/arm64/libe_sqlite3.so
+name-com.appxy.tinyscanner
+versionName=4.0
+versionCode=31 minSdk=14 targetSdk=26
+45206618 base.apk
+7899844 lib/arm/libopencv_java3.so
+9296 lib/arm/libopencv_info.so
+4310700 lib/arm/libImgFun.so
+name-ch.publisheria.bring
+versionName=3.22.0
+versionCode=303220050 minSdk=19 targetSdk=28
+24132980 base.apk
+name-autoparts.shop
+versionName=1.3.1
+versionCode=131001 minSdk=21 targetSdk=28
+28073277 base.apk
+9904 lib/arm64/libcardioDecider.so
+3073088 lib/arm64/libopencv_core.so
+3135728 lib/arm64/librealm-jni.so
+1284840 lib/arm64/libcardioRecognizer.so
+267928 lib/arm64/libconceal.so
+864360 lib/arm64/libcardioRecognizer_tegra2.so
+2402408 lib/arm64/libopencv_imgproc.so
+name-com.app.phone.call.flash.screen
+versionName=1.1.0
+versionCode=34 minSdk=15 targetSdk=26
+12243033 base.apk
+42776 lib/arm64/libpl_droidsonroids_gif.so
+14240 lib/arm64/libAcbAppFrameworkGuard.so
+name-com.appmag.endless.temple.princessfinaljungleozrunfrozen
+versionName=1.0.2
+versionCode=2 minSdk=9 targetSdk=26
+47912547 base.apk
+27108 lib/arm/libmain.so
+3873316 lib/arm/libmono.so
+1572728 lib/arm/libgpg.so
+11088164 lib/arm/libunity.so
+name-com.application_4u.qrcode.barcode.scanner.reader.flashlight
+versionName=1.8.2
+versionCode=182 minSdk=19 targetSdk=27
+1366194 base.apk
+name-com.adobe.spark.post
+versionName=1.2.1
+versionCode=47 minSdk=21 targetSdk=28
+30784731 base.apk
+5880 lib/arm64/libgpuimage-library.so
+name-com.amanotes.beathopper
+versionName=2.5.6
+versionCode=42 minSdk=16 targetSdk=28
+49763307 base.apk
+18024 lib/arm/libmain.so
+114936 lib/arm/libFirebaseCppAuth.so
+49136 lib/arm/libFirebaseCppRemoteConfig.so
+3791288 lib/arm/libmono.so
+71292 lib/arm/libFirebaseCppMessaging.so
+1182020 lib/arm/libSuperpoweredPlay.so
+2790552 lib/arm/libFirebaseCppApp-5.2.1.so
+18819412 lib/arm/libunity.so
+120536 lib/arm/libFirebaseCppDatabase.so
+935488 lib/arm/libjs.so
+43828 lib/arm/libFirebaseCppAnalytics.so
+38244 lib/arm/libadcolony.so
+name-com.apps.security.master.antivirus.applock
+versionName=1.4.6
+versionCode=48 minSdk=16 targetSdk=26
+11676893 base.apk
+57032 lib/arm/libAcbAppFrameworkGuard.so
+42396 lib/arm/libavlm_test.so
+58932 lib/arm/libjdc.so
+13792 lib/arm/libProcessDaemon.so
+13840 lib/arm/libguard.so
+name-all.in.one.photo.math.calculator
+versionName=1.4.4
+versionCode=46 minSdk=16 targetSdk=26
+11381736 base.apk
+18032 lib/arm/libja.so
+13936 lib/arm/libjb.so
+name-com.amazon.mp3
+versionName=15.18.2
+versionCode=315180210 minSdk=21 targetSdk=26
+28817224 base.apk
+243080 lib/arm64/libblueshift-audioprocessing.so
+120576 lib/arm64/libpryon_lite.so
+5000640 lib/arm64/libiniaudio_l.so
+9608 lib/arm64/libpryon-lite-jni.so
+name-com.andropenoffice
+versionName=4.2.4
+versionCode=292 minSdk=15 targetSdk=26
+75510655 base.apk
+239812 lib/arm/libcalc.so
+71056 lib/arm/libdate.so
+9516 lib/arm/libplc4.so
+1871156 lib/arm/libfrm.so
+493244 lib/arm/libxstor.so
+181712 lib/arm/libflash.so
+54792 lib/arm/libres.so
+306572 lib/arm/libsot.so
+38308 lib/arm/libscd.so
+243900 lib/arm/libflat.so
+534052 lib/arm/libindex_data.so
+533500 lib/arm/libsqlite3.so
+17552 lib/arm/libepb.so
+182272 lib/arm/libsoftokn3.so
+3788408 lib/arm/libchart2.so
+444472 lib/arm/libxcr.so
+148596 lib/arm/liblocaledata_es.so
+268940 lib/arm/libio.so
+79356 lib/arm/libgcc3_uno.so
+354696 lib/arm/libdbase.so
+2590472 lib/arm/libucb.so
+222740 lib/arm/libsaxuno.so
+230804 lib/arm/libctl.so
+91352 lib/arm/libidx.so
+132712 lib/arm/libjavavm.uno.so
+222908 lib/arm/libuno_cppu.so
+280364 lib/arm/libfwl.so
+3079960 lib/arm/libxo.so
+62828 lib/arm/libupdatefeed.uno.so
+218628 lib/arm/libpdffilter.so
+50320 lib/arm/libime.so
+149008 lib/arm/libbinaryurp.so
+42148 lib/arm/libipt.so
+17552 lib/arm/libexp.so
+988820 lib/arm/libnss3.so
+1568464 lib/arm/libslideshow.so
+3029436 lib/arm/libdbu.so
+38352 lib/arm/libxmlfa.so
+982956 lib/arm/libsvl.so
+1155108 lib/arm/liblocaledata_others.so
+67164 lib/arm/libshell.so
+621492 lib/arm/libscripting.so
+17552 lib/arm/libicd.so
+58760 lib/arm/libplaceware.so
+1253116 lib/arm/libdbtools.so
+374584 lib/arm/libucbhelper4gcc3.so
+1549840 lib/arm/libcollator_data.so
+361784 lib/arm/libstlport_shared.so
+1685212 lib/arm/libdba.so
+239288 lib/arm/libfilterconfig.so
+7795944 lib/arm/libext_libs.so
+642436 lib/arm/libmsfilter.so
+1140576 lib/arm/libsmb.so
+148956 lib/arm/libreflection.so
+66756 lib/arm/libeps.so
+1138072 lib/arm/libPresenterScreen.so
+142624 lib/arm/liblocaledata_en.so
+691228 lib/arm/libxsec_xmlsec.so
+17444 lib/arm/libipb.so
+1451728 lib/arm/libsb.so
+456856 lib/arm/libfreebl3.so
+13456 lib/arm/libxsec_xmlsec_bridge.so
+17504 lib/arm/libera.so
+1177168 lib/arm/libcomphelpgcc3.so
+17396 lib/arm/libipx.so
+826468 lib/arm/libsm.so
+21824 lib/arm/libi18nisolang1gcc3.so
+236432 lib/arm/libhsqldb.so
+3250600 lib/arm/libcui.so
+34232 lib/arm/libsmd.so
+815036 lib/arm/libbootstrap.so
+25760 lib/arm/libegi.so
+300512 lib/arm/libanalysis.so
+539940 lib/arm/liblng.so
+91900 lib/arm/liblogging.so
+21540 lib/arm/libipd.so
+994372 lib/arm/libpcr.so
+600020 lib/arm/libuno_cppuhelpergcc3.so
+5832164 lib/arm/libsd.so
+75172 lib/arm/libfileacc.so
+30052 lib/arm/libuuresolver.uno.so
+129248 lib/arm/libsmime3.so
+7892772 lib/arm/libxserver.so
+169444 lib/arm/libdbp.so
+1022248 lib/arm/libutl.so
+214548 lib/arm/libsvgfilter.so
+1466984 lib/arm/libdwm.so
+146904 lib/arm/libnspr4.so
+791812 lib/arm/libunordf.so
+186044 lib/arm/libanimcore.so
+3465892 lib/arm/libsvt.so
+2449672 lib/arm/libfwk.so
+71908 lib/arm/libt602filter.so
+173668 lib/arm/libemboleobj.so
+83432 lib/arm/libavmedia_android.so
+21648 lib/arm/libeti.so
+30136 lib/arm/libmcnttype.so
+7466548 lib/arm/libvcl.so
+79440 lib/arm/libsdbt.so
+1213848 lib/arm/libvbaswobj.so
+25744 lib/arm/libips.so
+370644 lib/arm/libconfigmgr.so
+416144 lib/arm/libpackage.so
+1172636 lib/arm/libmsword.so
+136484 lib/arm/libintrospection.so
+17396 lib/arm/libira.so
+337408 lib/arm/libucpchelp1.so
+17552 lib/arm/libepp.so
+255556 lib/arm/libxsltdlg.so
+124404 lib/arm/libvos3gcc3.so
+13624 lib/arm/libuno_salhelpergcc3.so
+1224656 lib/arm/libdeployment.so
+13456 lib/arm/libsolver_bridge.so
+1727380 lib/arm/libi18npool.uno.so
+288468 lib/arm/libembobj.so
+991912 lib/arm/liblocaledata_euro.so
+330708 lib/arm/libunoxml.so
+300912 lib/arm/libxmlsecurity.so
+1818072 lib/arm/libuno_sal.so
+251960 lib/arm/libxof.so
+485960 lib/arm/libtl.so
+3432468 lib/arm/libsfx.so
+1029100 lib/arm/libbasctl.so
+17552 lib/arm/libepg.so
+10677932 lib/arm/libsvx.so
+174292 lib/arm/libstoc.so
+42384 lib/arm/libswd.so
+260060 lib/arm/libfpicker.so
+284552 lib/arm/libuui.so
+259616 lib/arm/libfastsax.so
+3779196 lib/arm/libootk.so
+17396 lib/arm/libitg.so
+11585556 lib/arm/libsw.so
+2410368 lib/arm/libucpdav1.so
+589064 lib/arm/liblingucomponent.so
+46472 lib/arm/libxmlfd.so
+46224 lib/arm/libeme.so
+407304 lib/arm/libdeploymentgui.so
+270616 lib/arm/libdbaxml.so
+46224 lib/arm/libept.so
+128576 lib/arm/libnssutil3.so
+112108 lib/arm/libicg.so
+438424 lib/arm/libnssckbi.so
+5144972 lib/arm/liboox.so
+280448 lib/arm/libsvgio.so
+567700 lib/arm/libbasegfx.so
+10241648 lib/arm/libsc.so
+477460 lib/arm/libfile.so
+263716 lib/arm/libfor.so
+9236 lib/arm/libplds4.so
+37960 lib/arm/libiti.so
+1824588 lib/arm/libvbaobj.uno.so
+563248 lib/arm/libvclcanvas.so
+42288 lib/arm/libsdd.so
+3469072 lib/arm/libwriterfilter.so
+name-app.rsmobile.acecalculator
+versionName=1.019
+versionCode=24 minSdk=16 targetSdk=26
+10165977 base.apk
+42984 lib/arm64/libpl_droidsonroids_gif.so
+name-com.amazon.dee.app
+versionName=2.2.241878.0
+versionCode=833999712 minSdk=21 targetSdk=26
+91186501 base.apk
+1450796 lib/arm/libcrypto_here.so
+13468 lib/arm/libpryon-lite-jni.so
+815020 lib/arm/libLohitIndicFontPkg.so
+132020 lib/arm/libSdkResourcePkg.so
+111860 lib/arm/libos_adaptation.network.so
+13460 lib/arm/libcrashlytics-envelope.so
+2931036 lib/arm/libreactnativejni.so
+2329908 lib/arm/libNanumGothicFontPkg.so
+1303788 lib/arm/libsqlcipher.so
+17145668 lib/arm/libMAPSJNI.so
+2396336 lib/arm/libMapsEngineResourcePkg.so
+324084 lib/arm/libssl_here.so
+7742452 lib/arm/libChineseFontPkg.so
+34944 lib/arm/libCertResourcesPkg.so
+71100 lib/arm/libunwind-crashlytics.so
+816980 lib/arm/libNlpResourcePkg.so
+308724 lib/arm/libcrashlytics.so
+41844 lib/arm/libPositioningResourcePkg.so
+18022840 lib/arm/libpjsua2.so
+870064 lib/arm/libgnustl_shared.so
+4671680 lib/arm/libjingle_peerconnection_so.so
+116280 lib/arm/libpryon_lite.so
+243240 lib/arm/libimagepipeline.so
+1541704 lib/arm/libposclient.so
+9440 lib/arm/libos_adaptation.context.so
+738940 lib/arm/libmobilecrypto.so
+name-com.application_4u.qrcode.barcode
+versionName=2.3.7
+versionCode=237 minSdk=19 targetSdk=27
+1824006 base.apk
+name-com.app.emotes.dances.fortnite
+versionName=1.8
+versionCode=12 minSdk=16 targetSdk=27
+101901684 base.apk
+17916 lib/arm/libmain.so
+2819768 lib/arm/libFirebaseCppApp-5.3.1.so
+75008 lib/arm/libBlueDoveMediaRender.so
+18807064 lib/arm/libunity.so
+3791288 lib/arm/libmono.so
+71292 lib/arm/libFirebaseCppMessaging.so
+43828 lib/arm/libFirebaseCppAnalytics.so
+name-com.apusapps.launcher
+versionName=3.10.4
+versionCode=450 minSdk=16 targetSdk=26
+16273205 base.apk
+58884 lib/arm/libun7zip.so
+18084 lib/arm/libhera.so
+13508 lib/arm/liboshelper.so
+86964 lib/arm/libodin-1.3.25.so
+30548 lib/arm/libmhl.so
+42120 lib/arm/libun7z.so
+17900 lib/arm/libsign.so
+128840 lib/arm/libdu.so
+name-com.apple.android.music
+versionName=2.6.0
+versionCode=712 minSdk=18 targetSdk=27
+43773606 base.apk
+17427268 lib/arm/libmediaplatform.so
+6035172 lib/arm/libCoreLSKD.so
+9345216 lib/arm/libCoreFP.so
+2937452 lib/arm/libandroidappmusic.so
+1734696 lib/arm/libstoreservicescore.so
+657200 lib/arm/libc++_shared.so
+7772304 lib/arm/libmedialibrarycore.so
+54804 lib/arm/libdaapkit.so
+1818404 lib/arm/libCoreADI.so
+14354736 lib/arm/libcorefoundationlite.so
+name-com.apalon.weatherlive.free
+versionName=6.14
+versionCode=165 minSdk=19 targetSdk=26
+30002797 base.apk
+2184400 lib/arm64/libRSSupport.so
+62152 lib/arm64/librsjni_androidx.so
+72000 lib/arm64/librsjni.so
+name-com.apple.movetoios
+versionName=2.10.0
+versionCode=2100 minSdk=14 targetSdk=22
+2451437 base.apk
+1115056 lib/arm/libauthenticator.so
+name-abs.workout.home.belly.fat.loss.fitness
+versionName=1.1.2
+versionCode=13 minSdk=19 targetSdk=26
+27474078 base.apk
+10756440 lib/arm64/libclassifier_jni.so
+name-com.appfarms.monsieurcuisine
+versionName=1.0.10
+versionCode=12 minSdk=15 targetSdk=23
+8083647 base.apk
+886640 lib/arm64/libucrop.so
+name-com.ada.app
+versionName=2.34.0
+versionCode=2010031370 minSdk=19 targetSdk=26
+12739865 base.apk
+922976 lib/arm/libicu_common.so
+9480 lib/arm/libprivatedata.so
+116036 lib/arm/libfolly_json.so
+259856 lib/arm/libimagepipeline.so
+71008 lib/arm/libglog.so
+320848 lib/arm/libreactnativejni.so
+661132 lib/arm/libgnustl_shared.so
+83220 lib/arm/libfb.so
+1910900 lib/arm/libjsc.so
+17672 lib/arm/libglog_init.so
+210328 lib/arm/libconceal.so
+132384 lib/arm/libyoga.so
+name-calculator.scientific.math
+versionName=1.2.4
+versionCode=18 minSdk=14 targetSdk=26
+8107090 base.apk
+14000 lib/arm64/libdaemon.so
+5824 lib/arm64/libcore_utils.so
+name-camera.photo.beauty.editor
+versionName=1.7.1
+versionCode=18 minSdk=19 targetSdk=28
+22191978 base.apk
+9788 lib/arm/libgpuimage-library.so
+34336 lib/arm/libpl_droidsonroids_gif.so
+17824 lib/arm/libdaemon.so
+name-app.qrcode
+versionName=0.99
+versionCode=99 minSdk=15 targetSdk=26
+5789177 base.apk
+name-abs.workout.sixparkabs.fit
+versionName=1.3.3
+versionCode=16 minSdk=14 targetSdk=26
+7569062 base.apk
+14000 lib/arm64/libdaemon.so
+name-com.amazon.avod.thirdpartyclient
+versionName=3.0.240.26841
+versionCode=240026841 minSdk=16 targetSdk=26
+27991897 base.apk
+70964 lib/arm/libAIVMemoryAllocator.so
+421540 lib/arm/libvoH264Dec_OSMP.so
+493188 lib/arm/libsics-3.0.200138.0.so
+38060 lib/arm/libvoAndroidVR_S23_OSMP.so
+462628 lib/arm/libvoH264Dec_v7_OSMP.so
+11 lib/arm/libInit.so
+33996 lib/arm/libvoAndroidVR_S43_OSMP.so
+169112 lib/arm/libAIVVisualOnRenderer.so
+70900 lib/arm/libATVPlaybackSmoothStream.so
+33996 lib/arm/libvoAndroidVR_S41_OSMP.so
+34004 lib/arm/libvoAndroidVR_S50_OSMP.so
+235184 lib/arm/libvoMMCCRRS_v7_OSMP.so
+54540 lib/arm/libvoAudioSpeed_OSMP.so
+288392 lib/arm/libvoH265Dec_v7_OSMP.so
+243356 lib/arm/libvoMMCCRRS_OSMP.so
+25800 lib/arm/libvodl.so
+793492 lib/arm/libAIVDash.so
+243240 lib/arm/libimagepipeline.so
+501056 lib/arm/libvompEngn_OSMP.so
+70892 lib/arm/libvoVidDec_OSMP.so
+295672 lib/arm/libvoAACDec_OSMP.so
+38060 lib/arm/libvoAndroidVR_S22_OSMP.so
+5565304 lib/arm/libAIVPlayReadyLicensing.so
+2238188 lib/arm/libsyendk.so
+2935140 lib/arm/libreactnativejni.so
+38060 lib/arm/libvoAndroidVR_S20_OSMP.so
+46336 lib/arm/libvoOSCEngine.so
+38064 lib/arm/libvoAndroidVR_S40_OSMP.so
+34004 lib/arm/libvoAndroidVR_S60_OSMP.so
+218584 lib/arm/libvoLogSys.so
+735156 lib/arm/libvoOSEng_OSMP.so
+38060 lib/arm/libvoAndroidVR_S16_OSMP.so
+name-com.agminstruments.drumpadmachine
+versionName=1.5.235
+versionCode=235 minSdk=16 targetSdk=28
+35145718 base.apk
+55008 lib/arm64/libadcolony.so
+1595456 lib/arm64/libjs.so
+name-com.android21buttons
+versionName=4.5.8
+versionCode=226 minSdk=19 targetSdk=27
+9298811 base.apk
+42984 lib/arm64/libpl_droidsonroids_gif.so
+name-com.adidas.app
+versionName=2.8.2
+versionCode=195 minSdk=21 targetSdk=27
+76195605 base.apk
+5816 lib/arm64/libtool-checker.so
+864360 lib/arm64/libcardioRecognizer_tegra2.so
+62168 lib/arm64/librsjni_androidx.so
+3115232 lib/arm64/librealm-jni.so
+1284840 lib/arm64/libcardioRecognizer.so
+2402408 lib/arm64/libopencv_imgproc.so
+9904 lib/arm64/libcardioDecider.so
+2184400 lib/arm64/libRSSupport.so
+3073088 lib/arm64/libopencv_core.so
+72000 lib/arm64/librsjni.so
+name-com.aqreadd.lw.clockdown.lite.gle
+versionName=5.5.0
+versionCode=111 minSdk=16 targetSdk=28
+6991299 base.apk
+name-com.applisto.appcloner.premium
+versionName=1.0.0
+versionCode=18111820 minSdk=15 targetSdk=26
+3615262 base.apk
+name-com.anydo
+versionName=4.10.7.3
+versionCode=12143 minSdk=17 targetSdk=26
+32852766 base.apk
+9480 lib/arm/libprivatedata.so
+661132 lib/arm/libgnustl_shared.so
+79124 lib/arm/libfb.so
+17672 lib/arm/libglog_init.so
+103816 lib/arm/libyoga.so
+75108 lib/arm/libglog.so
+91980 lib/arm/libgifimage.so
+922976 lib/arm/libicu_common.so
+111940 lib/arm/libfolly_json.so
+255672 lib/arm/libimagepipeline.so
+59904 lib/arm/librsjni.so
+300364 lib/arm/libreactnativejni.so
+1910900 lib/arm/libjsc.so
+1013364 lib/arm/libRSSupport.so
+name-com.amazon.storm.lightning.client.aosp
+versionName=2.0.7150-aosp
+versionCode=1200007150 minSdk=19 targetSdk=27
+24436388 base.apk
+364720 lib/arm/libgobject-2.0.so
+11016 lib/arm/libgmodule-2.0.so
+1492612 lib/arm/libstargate_jni.so
+2685116 lib/arm/libglib-2.0.so
+1993708 lib/arm/libgio-2.0.so
+1971928 lib/arm/libnice.so
+2956 lib/arm/libgthread-2.0.so
+name-com.adobe.psmobile
+versionName=5.8.561
+versionCode=209 minSdk=19 targetSdk=26
+72216409 base.apk
+31213944 lib/arm64/libpsmobile.so
+465408 lib/arm64/libwebpimage.so
+231048 lib/arm64/libwebp.so
+1058904 lib/arm64/libc++_shared.so
+283696 lib/arm64/libBIBUtils.so
+481792 lib/arm64/libgifimage.so
+5640 lib/arm64/libbitmaps.so
+8756168 lib/arm64/libpsxtextlib.so
+2378448 lib/arm64/libACE.so
+5424264 lib/arm64/libAGM.so
+4769760 lib/arm64/libCoolType.so
+5736 lib/arm64/libmemchunk.so
+297064 lib/arm64/libcrashlytics.so
+808816 lib/arm64/libharmonycolorengine-jni.so
+739280 lib/arm64/libimagepipeline.so
+273424 lib/arm64/libBIB.so
+name-app.mywed.android
+versionName=1.12.36
+versionCode=36 minSdk=16 targetSdk=27
+14862068 base.apk
+2184400 lib/arm64/libRSSupport.so
+72000 lib/arm64/librsjni.so
+62168 lib/arm64/librsjni_androidx.so
+name-com.alexvas.dvr
+versionName=10.2.4 - Google Play
+versionCode=3510 minSdk=19 targetSdk=27
+17251009 base.apk
+3161324 lib/arm/libnative.so
+72176 lib/arm/libfaac.so
+991072 lib/arm/libcrypto.so
+2908388 lib/arm/libFosIPCSdkJni.so
+261588 lib/arm/libssl.so
+1333004 lib/arm/libmp4v2.so
+838336 lib/arm/libp2pJni.so
+161208 lib/arm/libIOTCAPIs.so
+185824 lib/arm/libopenal.so
+214172 lib/arm/libAVAPIs.so
+107764 lib/arm/libopenal_aec.so
+680636 lib/arm/libcooee.so
+33952 lib/arm/libRDTAPIs.so
+name-com.apalon.weatherradar.free
+versionName=1.19
+versionCode=45 minSdk=19 targetSdk=26
+13528965 base.apk
+name-eu.chainfire.supersu
+versionName=2.82
+versionCode=282 minSdk=9 targetSdk=21
+6201401 base.apk
+name-com.apololo.brightest.flashlight
+versionName=1.0.10
+versionCode=10 minSdk=21 targetSdk=26
+5667835 base.apk
+42776 lib/arm64/libpl_droidsonroids_gif.so
+name-cast.video.screenmirroring.casttotv
+versionName=1.1.4.3
+versionCode=35 minSdk=18 targetSdk=26
+8268072 base.apk
+190640 lib/arm64/libpg-lib.so
+name-com.appseleration.android.selfcare
+versionName=8.3.1.0
+versionCode=83100 minSdk=17 targetSdk=26
+52109217 base.apk
+465408 lib/arm64/libwebpimage.so
+231048 lib/arm64/libwebp.so
+481792 lib/arm64/libgifimage.so
+5640 lib/arm64/libbitmaps.so
+1500568 lib/arm64/libRSSupport.so
+4085472 lib/arm64/libvudroid.so
+5736 lib/arm64/libmemchunk.so
+63792 lib/arm64/librsjni.so
+739280 lib/arm64/libimagepipeline.so
+name-com.app.tgtg
+versionName=18.11.2
+versionCode=143 minSdk=16 targetSdk=28
+16427606 base.apk
+2184400 lib/arm64/libRSSupport.so
+62168 lib/arm64/librsjni_androidx.so
+72000 lib/arm64/librsjni.so
+name-co.gocrush
+versionName=1.5.1
+versionCode=46 minSdk=16 targetSdk=26
+16447349 base.apk
+514752 lib/arm64/libstatic-webp.so
+158176 lib/arm64/libgifimage.so
+379048 lib/arm64/libimagepipeline.so
+name-call.flash.screen.app.phone
+versionName=1.1.0.3
+versionCode=37 minSdk=14 targetSdk=26
+7056182 base.apk
+name-com.amitech.allevents
+versionName=8.9
+versionCode=94 minSdk=15 targetSdk=26
+9759621 base.apk
+42984 lib/arm64/libpl_droidsonroids_gif.so
+583664 lib/arm64/libstlport_shared.so
+383192 lib/arm64/libimagepipeline.so
+55000 lib/arm64/libGetLatestString.so
+name-com.apusapps.emo_launcher
+versionName=1.0.0
+versionCode=103 minSdk=19 targetSdk=26
+14308201 base.apk
+58884 lib/arm/libun7zip.so
+18084 lib/arm/libhera.so
+13508 lib/arm/liboshelper.so
+17532 lib/arm/libextend.so
+26200 lib/arm/liblausanne-3.0.2.so
+42120 lib/arm/libun7z.so
+128840 lib/arm/libdu.so
+name-com.amazon.kindle
+versionName=8.14.1.0
+versionCode=1211637760 minSdk=19 targetSdk=26
+60752215 base.apk
+345680 lib/arm/libRSAnalyticsClient.so
+595616 lib/arm/libKindleReaderJNI.so
+4813572 lib/arm/libicudataamzn.so
+308652 lib/arm/libCxImageKRF.so
+493228 lib/arm/libsics-3.0.69.0.so
+12382380 lib/arm/libKRFDirect.so
+566756 lib/arm/libharfbuzzKRF.so
+2108316 lib/arm/libicui18namzn.so
+468300 lib/arm/libft2KRF.so
+1228712 lib/arm/libxml2KRF.so
+767816 lib/arm/libfastmetrics.so
+67116 lib/arm/libunwind.so
+697896 lib/arm/libWebCoreViewerKRF.so
+2931036 lib/arm/libreactnativejni.so
+1025492 lib/arm/libskiaKRF.so
+288052 lib/arm/libAAX_SDK.so
+275688 lib/arm/libpngKRF.so
+374276 lib/arm/libicuioamzn.so
+5783576 lib/arm/libkindlepdf.so
+354012 lib/arm/libfontconfigKRF.so
+91456 lib/arm/libtombstone.so
+136392 lib/arm/libKindleDictionaryJNI.so
+5146452 lib/arm/libKRF.so
+12768392 lib/arm/libWebCoreKRF.so
+243240 lib/arm/libimagepipeline.so
+120012 lib/arm/libexpatKRF.so
+1725876 lib/arm/libicuucamzn.so
+222592 lib/arm/libjpegKRF.so
+513876 lib/arm/libLangDetectorJNI.so

@@ -1,0 +1,173 @@
+name-video.like
+versionName=2.12.3
+versionCode=1165 minSdk=14 targetSdk=26
+48103294 base.apk
+583832 lib/arm/libbigonn.so
+353476 lib/arm/libbvtMobile.so
+42456 lib/arm/libMediaReader.so
+331624 lib/arm/liblocalplayersdk.so
+81316 lib/arm/libnewaudio.so
+17884 lib/arm/libyyutil.so
+62936 lib/arm/libsharedcontext.so
+1066740 lib/arm/libmasquerade.so
+342232 lib/arm/libstatic-webp.so
+710316 lib/arm/libgnustl_shared.so
+83252 lib/arm/libmarsxlog.so
+54788 lib/arm/libImSdk.so
+136672 lib/arm/libvenusjni.so
+105592 lib/arm/libnewvideo.so
+357864 lib/arm/libfire_android.so
+304728 lib/arm/libbigo-spark.so
+2206628 lib/arm/libfiletransfer.so
+103900 lib/arm/libbreakpad.so
+305036 lib/arm/liblocalplayer.so
+13460 lib/arm/libencrypt.so
+7395008 lib/arm/libst_mobile.so
+243164 lib/arm/libautotoucher.so
+38364 lib/arm/libMediaReaderHW.so
+251508 lib/arm/libActionId.so
+861712 lib/arm/libaudiosdk.so
+573440 lib/arm/libexchangekey.so
+321188 lib/arm/libturbojpeg.so
+255952 lib/arm/libimagepipeline.so
+2285336 lib/arm/libvpsdk.so
+38312 lib/arm/libRecorderSdk.so
+206308 lib/arm/libtlsWrapper_android.so
+402080 lib/arm/libstlport_shared.so
+448024 lib/arm/libluajit.so
+38364 lib/arm/libsdkLog.so
+7590384 lib/arm/libyycommonlib.so
+190032 lib/arm/libCnnSegment.so
+964076 lib/arm/libstatistics_android.so
+1104564 lib/arm/libvideosdk.so
+116232 lib/arm/libstmobile_jni.so
+121508 lib/arm/librcalc.so
+202320 lib/arm/libSegUpper.so
+21752 lib/arm/libweibosdkcore.so
+5302776 lib/arm/libvenus.so
+112172 lib/arm/libst_sensear.so
+name-com.whatsapp
+versionName=2.18.377
+versionCode=452617 minSdk=15 targetSdk=27
+24432020 base.apk
+5321808 lib/arm64/libwhatsapp.so
+268936 lib/arm64/libcodec2.so
+42864 lib/arm64/libpl_droidsonroids_gif.so
+514752 lib/arm64/libstatic-webp.so
+119520 lib/arm64/libcurve25519.so
+5752 lib/arm64/libvlc.so
+name-net.wordbit.deen
+versionName=0.0.8
+versionCode=8 minSdk=17 targetSdk=26
+28277637 base.apk
+1303788 lib/arm/libsqlcipher.so
+name-step.tracker.stepcounter.walking
+versionName=1.6.8
+versionCode=168 minSdk=16 targetSdk=26
+23861403 base.apk
+214528 lib/arm/libijksdl.so
+202660 lib/arm/libdeatting.so
+240212 lib/arm/libijkplayer.so
+13504 lib/arm/libdaemon_api20.so
+3751976 lib/arm/libijkffmpeg.so
+13504 lib/arm/libdaemon_api21.so
+name-tv.peel.app
+versionName=10.5.9.3
+versionCode=1812061727 minSdk=23 targetSdk=26
+23579755 base.apk
+1248896 lib/arm/libmsc.so
+91980 lib/arm/libgifimage.so
+40076 lib/arm/libvad.dnn.so
+255672 lib/arm/libimagepipeline.so
+740304 lib/arm/libBaiduSpeechSDK.so
+21920 lib/arm/libsound-engine.so
+name-tv.peel.mobile.app
+versionName=10.5.9.4
+versionCode=1812081130 minSdk=16 targetSdk=26
+24758405 base.apk
+1248896 lib/arm/libmsc.so
+91980 lib/arm/libgifimage.so
+40076 lib/arm/libvad.dnn.so
+255672 lib/arm/libimagepipeline.so
+740304 lib/arm/libBaiduSpeechSDK.so
+21920 lib/arm/libsound-engine.so
+name-ru.ok.android
+versionName=18.12.26
+versionCode=465000 minSdk=16 targetSdk=26
+49289929 base.apk
+1746924 lib/arm/liblum.so
+5120 lib/arm/librs.amaro.so
+5180 lib/arm/librs.valencia.so
+5028 lib/arm/librs.willow.so
+5120 lib/arm/librs.bi_script.so
+91956 lib/arm/libgifimage.so
+223032 lib/arm/libnative-net.so
+5028 lib/arm/librs.sepia.so
+9361600 lib/arm/libimgp.so
+59888 lib/arm/librsjni.so
+5036 lib/arm/librs.saturation.so
+5168 lib/arm/librs.vignette.so
+4250292 lib/arm/libjingle_peerconnection_so.so
+1783824 lib/arm/libRSSupport.so
+521164 lib/arm/libavformat-56.so
+357764 lib/arm/libavutil-54.so
+5028 lib/arm/librs.brightness.so
+5424 lib/arm/librs.mist.so
+5120 lib/arm/librs.vesta.so
+333736 lib/arm/libstatic-webp.so
+17860 lib/arm/libnative-filters.so
+702720 lib/arm/libodnoklassniki-android.so
+5028 lib/arm/librs.brightness_contrast.so
+5192 lib/arm/librs.toaster.so
+71236 lib/arm/librotate-png-sprite.so
+2432396 lib/arm/libavcodec-56.so
+251552 lib/arm/libimagepipeline.so
+5120 lib/arm/librs.xproii.so
+5120 lib/arm/librs.luna.so
+5120 lib/arm/librs.vesper.so
+30008 lib/arm/libnativemedia.so
+5028 lib/arm/librs.contrast.so
+202172 lib/arm/libodnoklassniki-android-glv2.so
+357748 lib/arm/libswscale-3.so
+29860 lib/arm/libpl_droidsonroids_gif.so
+5028 lib/arm/librs.ludwig.so
+59280 lib/arm/librsjni_androidx.so
+name-mahjong.games.mahjong.classic.free
+versionName=1.50.3935 
+versionCode=51 minSdk=15 targetSdk=26
+41199415 base.apk
+16920208 lib/arm/libcocos2djs.so
+name-vsin.t16_funny_photo
+versionName=3.4.0
+versionCode=4304 minSdk=16 targetSdk=28
+25758217 base.apk
+91944 lib/arm64/libandroidndkgif.so
+42984 lib/arm64/libpl_droidsonroids_gif.so
+9464 lib/arm64/libImageBlur.so
+587784 lib/arm64/libstlport_shared.so
+259776 lib/arm64/libjpegwrap.so
+name-panda.keyboard.emoji.theme
+versionName=4.32.0
+versionCode=432003 minSdk=16 targetSdk=26
+28299868 base.apk
+243856 lib/arm64/libandroidndkgif.so
+11730016 lib/arm64/libnama.so
+239464 lib/arm64/libgdx-box2d.so
+1058904 lib/arm64/libc++_shared.so
+83720 lib/arm64/libmmkv.so
+161776 lib/arm64/libkcmutil.so
+1394640 lib/arm64/libjni_latinimecm.so
+1399008 lib/arm64/librnnwrapper.so
+141176 lib/arm64/libnative-lib.so
+297064 lib/arm64/libcrashlytics.so
+name-wp.wattpad
+versionName=7.19.0
+versionCode=2012 minSdk=19 targetSdk=27
+16072278 base.apk
+55008 lib/arm64/libadcolony.so
+42776 lib/arm64/libpl_droidsonroids_gif.so
+1595456 lib/arm64/libjs.so
+name-eu.chainfire.supersu
+versionName=2.82
+versionCode=282 minSdk=9 targetSdk=21
+6201401 base.apk
