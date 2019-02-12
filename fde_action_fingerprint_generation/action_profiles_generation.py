@@ -109,8 +109,8 @@ if __name__ == '__main__':
 	sql_create_action_combination_fingerprints_table = """create TABLE action_combination_fingerprints (
 				    ID INTEGER PRIMARY KEY NOT NULL,
 				    app_name TEXT NOT NULL,
-				    action_name TEXT NOT NULL,
 				    included_actions TEXT NOT NULL,
+				    excluded_actions TEXT NOT NULL,
 				    path TEXT NOT NULL, 
 				    changed TEXT NOT NULL
 				);"""
