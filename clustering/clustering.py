@@ -186,15 +186,18 @@ def output_result(result):
 
 if __name__ == '__main__':
 	if len(sys.argv) < 3:
-		print "Usage: python clustering.py <xml_dump_name> </data/WA_inode> <output_filename>"
+		print "Usage: python clustering.py <xml_dump_name> <file_containing_wa_inode> <output_filename>"
 		exit()
 
 	xml_dump = sys.argv[1]
-	wa_inode = int(sys.argv[2])
+	wa_inode_filename = sys.argv[2]
 	output_filename = sys.argv[3] + ".json"	
 
 	tree_root = ET.parse(xml_dump).getroot()
 	output = {}
+
+	with open(wa_inode_filename) as f:
+		wa_inode = f.readline().strip()
 
 	# get inode of /data/WA/databases folder
 	wa_db_folder_inode = find_wa_db_folder(tree_root, wa_inode)
