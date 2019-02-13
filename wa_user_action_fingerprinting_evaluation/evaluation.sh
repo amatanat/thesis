@@ -41,6 +41,7 @@ identify_user_action_script_name=$IDENTIFY_USER_ACTION_SCRIPT
 threshold=$THRESHOLD
 identified_user_actions=$IDENTIFIED_USER_ACTION_NAME
 WA_inode_filename=$WA_INODE_FILENAME
+emulator_script_path=$EMULATOR_SCRIPT
 
 
 boot_twrp () {
@@ -114,6 +115,8 @@ extract_fs_metadata () {
 	check_file_existence "$1.xml"
 }
 
+#source "$emulator_script_path" &
+#wait
 
 # implement WhatsApp action
 cd $whatsapp_action_script_dir
@@ -122,6 +125,8 @@ cd $whatsapp_action_script_dir
 sleep 10
 ./$whatsapp_action_text
 echo "whatsapp_action end.."
+
+sleep 10
 
 # extract FS metadata to an XML file
 extract_fs_metadata "$fs_metadata_output_file_name"
