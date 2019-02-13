@@ -3,6 +3,8 @@
 import xml.etree.ElementTree as ET
 import sys
 import collections
+import json
+import os
 
 def get_app_folder_inode ():
 	return root.find("./fileobject/[filename='app']").find('inode').text
@@ -40,7 +42,6 @@ def link_folders (dict1, dict2, threshold):
 		for key_d, value_d in dict2.items():
 			if (key_d > key_a 			and 	# genIdDataFolder > genIdAppFolder1
 			    key_d < link_next[2] 		and	# genIdDataFolder < genIdAppFolder2
-			    #value_a[0] == value_d[0] 	        and 	# crdateAppFolder == crdateDataFolder
 			    key_d - key_a <= threshold):		# genIdDataFolder - genIdAppFolder1 <= threshold
 					linked_inodes[value_a[1]] = value_d[1]
 					break
@@ -70,12 +71,18 @@ def get_pre_installed_data_folders (data_folder_data):
 			pre_installed_apps.append(value[1])
 	return pre_installed_apps
 
+def output_result(result):
+	with open(os.path.expanduser(os.path.join(output_file_dir, output_filename + ".json")), 'w+') as f:
+     		f.write(json.dumps(result))
+
 if __name__ == "__main__":
-	if len(sys.argv) < 2:
-		print "Usage: python link_folders.py <xml_dump_name>"
+	if len(sys.argv) < 4:
+		print "Usage: python link_folders.py <xml_dump_name> <output_file_dir> <output_file_name>"
 		exit()
 
 	xml_dump = sys.argv[1] 
+	output_file_dir = sys.argv[2]
+	output_filename = sys.argv[3]
 	root = ET.parse(xml_dump).getroot()
 	xmlstr = ET.tostring(root, encoding='utf8', method='xml')
 	e = ET.fromstring(xmlstr)
@@ -87,25 +94,19 @@ if __name__ == "__main__":
 	data_folder_data = get_folder_data(data_folder_inode)
 	
 	linked_data_user_de = link_data_folders(data_folder_data, 3,"user_de")
-	print "data->user_de"
-	for k,v in linked_data_user_de.items():
-		print k,v
 
 	linked_data_misc_cur = link_data_folders(data_folder_data, 6,"misc/")
-	print "data->misc/profiles/cur/0"
-	for k,v in linked_data_misc_cur.items():
-		print k,v
 	
 	linked_data_misc_ref = link_data_folders(data_folder_data, 8,"misc/")
-	print "data->misc/profiles/ref/"
-	for k,v in linked_data_misc_ref.items():
-		print k,v
 
 	threshold = 130
 	linked_folders = link_folders(app_folder_data,data_folder_data, threshold)
-	print "app->data"
-	for k,v in linked_folders.items():
-		print k, v
 	
-
+	result = {}
+	result["/data/app/->/data/data/"] = linked_folders
+	result["/data/->/data/user_de/"] = linked_data_user_de
+	result["/data/->/data/misc/profiles/cur/0"] = linked_data_misc_cur
+	result["/data/->/data/misc/profiles/ref/"] = linked_data_misc_ref
+	
+	output_result(result)
 
