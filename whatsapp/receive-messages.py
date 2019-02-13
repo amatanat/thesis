@@ -6,6 +6,7 @@ import logging
 import logging.config
 import time
 import sys
+from datetime import datetime
 
 def get_previous_view_unique_id (unique_id):
 	unique_id = unique_id.split("/")
@@ -23,12 +24,12 @@ def find_message_type (dump, view_id):
 def get_device_time ():
 	import time
 	ts = device.shell("echo $EPOCHREALTIME")
-	return time.strftime("%F %T",time.gmtime(float(ts)))
+	return datetime.fromtimestamp(float(ts)).strftime('%Y-%m-%d %H:%M:%S')
 
 def get_extra_data ():
 	return {'datetime': get_device_time(), 'version': app_version, 'action': 'receive-message'}
 
-device, serialno = ViewClient.connectToDeviceOrExit(serialno = sys.argv[1])
+device, serialno = ViewClient.connectToDeviceOrExit()
 vc = ViewClient(device,serialno)
 
 app_version = device.shell("dumpsys package com.whatsapp | grep versionName").strip().split("=")[1]

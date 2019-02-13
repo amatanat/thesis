@@ -4,6 +4,7 @@
 from com.dtmilano.android.viewclient import ViewClient
 import logging
 import logging.config
+from datetime import datetime
 
 def get_first_contact_unique_id (unique_id):
 	unique_id = unique_id.split("/")
@@ -12,7 +13,7 @@ def get_first_contact_unique_id (unique_id):
 def get_device_time ():
 	import time
 	ts = device.shell("echo $EPOCHREALTIME")
-	return time.strftime("%F %T",time.gmtime(float(ts)))
+	return datetime.fromtimestamp(float(ts)).strftime('%Y-%m-%d %H:%M:%S')
 
 def get_extra_data ():
 	return {'datetime': get_device_time(), 'version': app_version, 'action': 'conversation-send-photo'}
@@ -71,7 +72,7 @@ try:
 					no_id7 = vc.findViewWithContentDescriptionOrRaise(u'''Photo''')
 					no_id7.touch()
 					logger.info('select photo',extra=get_extra_data())
-					ViewClient.sleep(10)
+					#ViewClient.sleep(10)
 					
 					vc.dump()
 					ViewClient.sleep(5)
