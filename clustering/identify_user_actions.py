@@ -1,7 +1,7 @@
+#!/usr/bin/env python 
 import sys
 import json
 from datetime import datetime
-
 from xml.etree.ElementTree import Element, SubElement, Comment, tostring
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
@@ -13,7 +13,6 @@ C_TIME = "ctime"
 M_TIME = "mtime"
 SEND_OR_RECEIVE_PHOTO = "send_or_receive_photo"
 SEND_OR_RECEIVE_TEXT = "send_or_receive_text"
-
 
 def total_seconds (time):
 	"""Convert input time to seconds since epoch"""
@@ -145,7 +144,7 @@ if __name__ == '__main__':
 	output_filename = sys.argv[3] 
 
 	with open(input_data, "r") as f:
-  			data = json.loads(f.read())
-			actions = find_actions(data)
-			generate_XML(actions, output_filename, data)
+		data = json.loads(f.read())
+		actions = find_actions(data)
+		generate_XML(actions, output_filename, data)
 	
