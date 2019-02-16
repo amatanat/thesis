@@ -1,0 +1,23 @@
+2019-02-15 09:30:38 WhatsApp 2.19.34 conversation-send-message INFO open application
+2019-02-15 09:30:50 WhatsApp 2.19.34 conversation-send-message INFO click first conversation
+2019-02-15 09:30:53 WhatsApp 2.19.34 conversation-send-message INFO click entry
+2019-02-15 09:30:54 WhatsApp 2.19.34 conversation-send-message INFO type message
+2019-02-15 09:30:56 WhatsApp 2.19.34 conversation-send-message INFO send message
+2019-02-15 09:31:00 WhatsApp 2.19.34 conversation-send-message INFO stop the application
+2019-02-15 09:31:01 WhatsApp 2.19.34 conversation-send-message INFO remove an app from the recent list
+2019-02-15 09:31:01 WhatsApp 2.19.34 conversation-send-message INFO return HOME
+2019-02-15 09:31:11 WhatsApp 2.18.377 receive-message INFO open application
+2019-02-15 09:31:26 WhatsApp 2.18.377 receive-message INFO click new message received conversation
+2019-02-15 09:31:29 WhatsApp 2.18.377 receive-message INFO last received message is a text
+2019-02-15 09:31:30 WhatsApp 2.18.377 receive-message INFO navigate to main screen
+2019-02-15 09:31:34 WhatsApp 2.18.377 receive-message INFO stop the application
+2019-02-15 09:31:36 WhatsApp 2.18.377 receive-message INFO remove an app from the recent list
+2019-02-15 09:31:37 WhatsApp 2.18.377 receive-message INFO return HOME
+2019-02-15 09:31:51 WhatsApp 2.18.377 conversation-send-message INFO open application
+2019-02-15 09:32:05 WhatsApp 2.18.377 conversation-send-message INFO click first conversation
+2019-02-15 09:32:10 WhatsApp 2.18.377 conversation-send-message INFO click entry
+2019-02-15 09:32:11 WhatsApp 2.18.377 conversation-send-message INFO type message
+2019-02-15 09:32:15 WhatsApp 2.18.377 conversation-send-message INFO send message
+2019-02-15 09:32:18 WhatsApp 2.18.377 conversation-send-message INFO stop the application
+2019-02-15 09:32:21 WhatsApp 2.18.377 conversation-send-message INFO remove an app from the recent list
+2019-02-15 09:32:22 WhatsApp 2.18.377 conversation-send-message INFO return HOME
