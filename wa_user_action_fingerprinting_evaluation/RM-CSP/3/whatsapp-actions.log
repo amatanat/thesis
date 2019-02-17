@@ -1,0 +1,25 @@
+2019-02-15 12:01:12 WhatsApp 2.19.34 conversation-send-message INFO open application
+2019-02-15 12:01:25 WhatsApp 2.19.34 conversation-send-message INFO click first conversation
+2019-02-15 12:01:28 WhatsApp 2.19.34 conversation-send-message INFO click entry
+2019-02-15 12:01:28 WhatsApp 2.19.34 conversation-send-message INFO type message
+2019-02-15 12:01:31 WhatsApp 2.19.34 conversation-send-message INFO send message
+2019-02-15 12:01:34 WhatsApp 2.19.34 conversation-send-message INFO stop the application
+2019-02-15 12:01:35 WhatsApp 2.19.34 conversation-send-message INFO remove an app from the recent list
+2019-02-15 12:01:36 WhatsApp 2.19.34 conversation-send-message INFO return HOME
+2019-02-15 12:01:43 WhatsApp 2.18.377 receive-message INFO open application
+2019-02-15 12:01:58 WhatsApp 2.18.377 receive-message INFO click new message received conversation
+2019-02-15 12:02:01 WhatsApp 2.18.377 receive-message INFO last received message is a text
+2019-02-15 12:02:02 WhatsApp 2.18.377 receive-message INFO navigate to main screen
+2019-02-15 12:02:06 WhatsApp 2.18.377 receive-message INFO stop the application
+2019-02-15 12:02:08 WhatsApp 2.18.377 receive-message INFO remove an app from the recent list
+2019-02-15 12:02:09 WhatsApp 2.18.377 receive-message INFO return HOME
+2019-02-15 12:02:23 WhatsApp 2.18.377 conversation-send-photo INFO open application
+2019-02-15 12:02:38 WhatsApp 2.18.377 conversation-send-photo INFO click first conversation
+2019-02-15 12:02:42 WhatsApp 2.18.377 conversation-send-photo INFO click attachment button
+2019-02-15 12:02:46 WhatsApp 2.18.377 conversation-send-photo INFO click Gallery
+2019-02-15 12:02:51 WhatsApp 2.18.377 conversation-send-photo INFO click Camera folder
+2019-02-15 12:02:55 WhatsApp 2.18.377 conversation-send-photo INFO select photo
+2019-02-15 12:03:04 WhatsApp 2.18.377 conversation-send-photo INFO click send button
+2019-02-15 12:03:18 WhatsApp 2.18.377 conversation-send-photo INFO stop the application
+2019-02-15 12:03:20 WhatsApp 2.18.377 conversation-send-photo INFO remove an app from the recent list
+2019-02-15 12:03:21 WhatsApp 2.18.377 conversation-send-photo INFO return HOME
