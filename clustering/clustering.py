@@ -117,7 +117,7 @@ def find_media_db (root, db_files_data):
 		cluster_count = elbow_criterian(data)
 	else:
 		cluster_count = 1
-	
+
 	labels = create_k_means_clusters(data, cluster_count)
 	plot_clusters(data, labels)
 	
