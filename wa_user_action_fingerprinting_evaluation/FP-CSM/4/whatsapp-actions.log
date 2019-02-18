@@ -1,0 +1,19 @@
+2019-02-18 19:34:44 WhatsApp 2.18.377 fab-photo INFO open application
+2019-02-18 19:34:58 WhatsApp 2.18.377 fab-photo INFO click fab
+2019-02-18 19:35:01 WhatsApp 2.18.377 fab-photo INFO select first contact
+2019-02-18 19:35:05 WhatsApp 2.18.377 fab-photo INFO click attachment button
+2019-02-18 19:35:09 WhatsApp 2.18.377 fab-photo INFO click Gallery
+2019-02-18 19:35:12 WhatsApp 2.18.377 fab-photo INFO click Camera folder
+2019-02-18 19:35:16 WhatsApp 2.18.377 fab-photo INFO select photo
+2019-02-18 19:35:24 WhatsApp 2.18.377 fab-photo INFO click send button
+2019-02-18 19:35:37 WhatsApp 2.18.377 fab-photo INFO stop the application
+2019-02-18 19:35:38 WhatsApp 2.18.377 fab-photo INFO remove an app from the recent list
+2019-02-18 19:35:39 WhatsApp 2.18.377 fab-photo INFO return HOME
+2019-02-18 19:35:53 WhatsApp 2.18.377 conversation-send-message INFO open application
+2019-02-18 19:36:06 WhatsApp 2.18.377 conversation-send-message INFO click first conversation
+2019-02-18 19:36:10 WhatsApp 2.18.377 conversation-send-message INFO click entry
+2019-02-18 19:36:10 WhatsApp 2.18.377 conversation-send-message INFO type message
+2019-02-18 19:36:14 WhatsApp 2.18.377 conversation-send-message INFO send message
+2019-02-18 19:36:17 WhatsApp 2.18.377 conversation-send-message INFO stop the application
+2019-02-18 19:36:18 WhatsApp 2.18.377 conversation-send-message INFO remove an app from the recent list
+2019-02-18 19:36:19 WhatsApp 2.18.377 conversation-send-message INFO return HOME
