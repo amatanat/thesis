@@ -1,0 +1,13 @@
+2019-02-17 20:03:10 WhatsApp 2.19.34 conversation-send-photo INFO open application
+2019-02-17 20:03:23 WhatsApp 2.19.34 conversation-send-photo INFO click first conversation
+2019-02-17 20:03:25 WhatsApp 2.19.34 conversation-send-photo INFO click attachment button
+2019-02-17 20:03:28 WhatsApp 2.19.34 conversation-send-photo INFO click Gallery
+2019-02-17 20:03:31 WhatsApp 2.19.34 conversation-send-photo INFO click Camera folder
+2019-02-17 20:03:33 WhatsApp 2.19.34 conversation-send-photo INFO select photo
+2019-02-17 20:03:41 WhatsApp 2.19.34 conversation-send-photo INFO click send button
+2019-02-17 20:03:55 WhatsApp 2.19.34 conversation-send-photo INFO stop the application
+2019-02-17 20:03:56 WhatsApp 2.19.34 conversation-send-photo INFO remove an app from the recent list
+2019-02-17 20:03:56 WhatsApp 2.19.34 conversation-send-photo INFO return HOME
+2019-02-17 20:04:03 WhatsApp 2.18.377 push-notification INFO open Navigation Bar
+2019-02-17 20:04:06 WhatsApp 2.18.377 push-notification INFO A user received a new photo
+2019-02-17 20:04:07 WhatsApp 2.18.377 push-notification INFO return HOME

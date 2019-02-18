@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<xml>
+   <info>
+      <app_installation_date>17-Feb-2019, 08:16:29</app_installation_date>
+      <app_registration_date>17-Feb-2019, 08:18:24</app_registration_date>
+   </info>
+   <match>
+      <action_name>send_or_receive_photo</action_name>
+      <date>17-Feb-2019, 20:03:39</date>
+      <accuracy_percentage>100</accuracy_percentage>
+      <correct_timestamps>
+         <correct_timestamp>
+            <filename>media.db</filename>
+            <timestamp>17-Feb-2019, 20:03:39</timestamp>
+         </correct_timestamp>
+         <correct_timestamp>
+            <filename>axolotl.db</filename>
+            <timestamp>17-Feb-2019, 20:03:39</timestamp>
+         </correct_timestamp>
+      </correct_timestamps>
+      <wrong_timestamps/>
+   </match>
+</xml>
