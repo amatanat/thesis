@@ -14,7 +14,6 @@ counter=0
 while [ $counter -le 9 ]
 do
 	./$validation_script_name "${identified_actions_xml_path}/${counter}/identified_user_actions.xml" "${log_file_path}/${counter}/whatsapp-actions.log" "$threshold" "$action_name_1" "$action_name_2" "$counter"
-	echo $counter
 	((counter++))
 done
 echo "All done"
