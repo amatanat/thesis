@@ -49,7 +49,7 @@ def find_offset (element, timestamp_name, action_datetime_in_seconds, result, fo
 	for ts in element:
 		if ts.tag == 'filename':
 			result[found_action][timestamp_name].append(('filename', ts.text))
-		if ts.tag == 'timestamp':
+		if ts.tag == 'date':
 			result[found_action][timestamp_name].append(('offset', total_seconds(ts.text) - action_datetime_in_seconds))
 	return result
 
@@ -69,7 +69,7 @@ def evaluate_timestamps (match, action_datetime_in_seconds, found_action):
 			result = find_offset(elem, 'wrong_timestamp', action_datetime_in_seconds, result, found_action)
 	return result
 
-def validate_action_time (root, threshold, first_action, second_action):
+def validate_action_time (root, first_action, second_action):
 	for match in root.findall('match'):
 		found_action = match.find('action_name').text
 
@@ -86,16 +86,15 @@ def validate_action_time (root, threshold, first_action, second_action):
 				output.append(evaluate_timestamps(match, select_photo_in_seconds, found_action))
 
 if __name__ == '__main__':
-	if len(sys.argv) < 6:
-		print "Usage: python validation.py <identified_actions_xml> <log_filename> <threshold> <action_name_1> <action_name_2> <run_count>"
+	if len(sys.argv) < 5:
+		print "Usage: python validation.py <identified_actions_xml> <log_filename> <action_name_1> <action_name_2> <run_count>"
 		exit()
 
 	identified_actions_xml = sys.argv[1] 
 	log_filename = sys.argv[2] 
-	threshold = int(sys.argv[3])
-	first_action = sys.argv[4]
-	second_action = sys.argv[5]
-	run_count = sys.argv[6]
+	first_action = sys.argv[3]
+	second_action = sys.argv[4]
+	run_count = sys.argv[5]
 
 	output = list()
 
@@ -103,7 +102,7 @@ if __name__ == '__main__':
 
 	validate_identified_actions (root, first_action, second_action)
 
-	validate_action_time (root, threshold, first_action, second_action)
+	validate_action_time (root, first_action, second_action)
 
 	with open(first_action + "-" + second_action + "-output.json", 'a') as f:
      		f.write(json.dumps(output, indent=4))
