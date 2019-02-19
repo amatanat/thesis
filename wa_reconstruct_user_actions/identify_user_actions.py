@@ -70,19 +70,19 @@ def find_actions (data):
 			is_passes_threshold = passes_threshold(data[AXOLOTL_DB_FILE][C_TIME], data[MEDIA_DB_FILE][C_TIME])
 			if is_passes_threshold:
 				accuracy = find_accuracy(data, is_passes_threshold, 2)
-				result.append((SEND_OR_RECEIVE_PHOTO, data[MEDIA_DB_FILE][C_TIME], accuracy))
+				result.append((SEND_OR_RECEIVE_PHOTO, accuracy))
 			else:
 				accuracy = find_accuracy(data, is_passes_threshold, 1)
-				result.append((SEND_OR_RECEIVE_TEXT, data[AXOLOTL_DB_FILE][C_TIME], accuracy))
+				result.append((SEND_OR_RECEIVE_TEXT, accuracy))
 				accuracy = find_accuracy(data, is_passes_threshold, 2)
-				result.append((SEND_OR_RECEIVE_PHOTO, data[MEDIA_DB_FILE][C_TIME], accuracy))
+				result.append((SEND_OR_RECEIVE_PHOTO, accuracy))
 		else:
 			accuracy = find_accuracy(data, True, 1)
-			result.append((SEND_OR_RECEIVE_TEXT, data[AXOLOTL_DB_FILE][C_TIME], accuracy))
+			result.append((SEND_OR_RECEIVE_TEXT, accuracy))
 
 	elif media_changed:
 		accuracy = find_accuracy(data, False, 2)
-		result.append((SEND_OR_RECEIVE_PHOTO, data[MEDIA_DB_FILE][C_TIME], accuracy))
+		result.append((SEND_OR_RECEIVE_PHOTO, accuracy))
 	return result
 
 def generate_XML(result, output_filename, input_data):
@@ -101,8 +101,8 @@ def create_timestamp_tag (parent, child_tag_name, key, value):
 	child_tag = SubElement(parent, child_tag_name)
 	filename_tag = SubElement (child_tag, 'filename')
 	filename_tag.text = key
-	timestamp_tag = SubElement(child_tag, 'timestamp')
-	timestamp_tag.text = str(value)
+	date_tag = SubElement(child_tag, 'date')
+	date_tag.text = str(value)
 
 def create_info_tag (top, input_data):
 	info = SubElement(top, 'info')
@@ -119,18 +119,15 @@ def create_match_tag (top, result):
 		match = SubElement(top, 'match')
 		action_name = SubElement(match, 'action_name')
 		action_name.text = action[0]
-		action_date = SubElement(match, 'date')
-		action_date.text = str(action[1])
 		accuracy_percentage = SubElement(match, 'accuracy_percentage')
-		accuracy_percentage.text = str(action[2][0])
-
+		accuracy_percentage.text = str(action[1][0])
 		correct_timestamps = SubElement(match, 'correct_timestamps')
-		for key, value in action[2][1].items():
+		for key, value in action[1][1].items():
 			create_timestamp_tag (correct_timestamps, 'correct_timestamp', key, value)
 
 		wrong_timestamps = SubElement(match, 'wrong_timestamps')
-		if len(action[2][2]) > 0:
-			for key, value in action[2][2].items():
+		if len(action[1][2]) > 0:
+			for key, value in action[1][2].items():
 				create_timestamp_tag (wrong_timestamps, 'wrong_timestamp', key, value)
 		
 
