@@ -6,30 +6,28 @@
    </info>
    <match>
       <action_name>send_or_receive_text</action_name>
-      <date>15-Feb-2019, 08:30:07</date>
       <accuracy_percentage>100</accuracy_percentage>
       <correct_timestamps>
          <correct_timestamp>
             <filename>axolotl.db</filename>
-            <timestamp>15-Feb-2019, 08:30:07</timestamp>
+            <date>15-Feb-2019, 08:30:07</date>
          </correct_timestamp>
       </correct_timestamps>
       <wrong_timestamps/>
    </match>
    <match>
       <action_name>send_or_receive_photo</action_name>
-      <date>15-Feb-2019, 08:26:54</date>
       <accuracy_percentage>50</accuracy_percentage>
       <correct_timestamps>
          <correct_timestamp>
             <filename>media.db</filename>
-            <timestamp>15-Feb-2019, 08:26:54</timestamp>
+            <date>15-Feb-2019, 08:26:54</date>
          </correct_timestamp>
       </correct_timestamps>
       <wrong_timestamps>
          <wrong_timestamp>
             <filename>axolotl.db</filename>
-            <timestamp>15-Feb-2019, 08:30:07</timestamp>
+            <date>15-Feb-2019, 08:30:07</date>
          </wrong_timestamp>
       </wrong_timestamps>
    </match>

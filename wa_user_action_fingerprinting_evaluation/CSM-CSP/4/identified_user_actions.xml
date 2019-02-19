@@ -6,16 +6,15 @@
    </info>
    <match>
       <action_name>send_or_receive_photo</action_name>
-      <date>14-Feb-2019, 21:06:20</date>
       <accuracy_percentage>100</accuracy_percentage>
       <correct_timestamps>
          <correct_timestamp>
             <filename>media.db</filename>
-            <timestamp>14-Feb-2019, 21:06:20</timestamp>
+            <date>14-Feb-2019, 21:06:20</date>
          </correct_timestamp>
          <correct_timestamp>
             <filename>axolotl.db</filename>
-            <timestamp>14-Feb-2019, 21:06:29</timestamp>
+            <date>14-Feb-2019, 21:06:29</date>
          </correct_timestamp>
       </correct_timestamps>
       <wrong_timestamps/>
