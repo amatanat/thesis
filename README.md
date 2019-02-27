@@ -64,7 +64,7 @@ Folder contains the following scripts:
 - [Tool](https://github.com/amatanat/thesis/blob/master/automation_tools/automated_tool_device_emulator.sh) that is similar to the :point_up: . However, it calls an [emulator script](https://github.com/amatanat/thesis/blob/master/automation_tools/send_message_emulator.sh) after extracting FS metadata. Example configuration file for the tool can be found [here](https://github.com/amatanat/thesis/blob/master/automation_tools/config_2.conf.example). We have used this tool to extract XML dumps before and after implementing a user action (RM, RP, PN, PN-text) in WhatsApp in an Android device. 
 The [emulator script](https://github.com/amatanat/thesis/blob/master/automation_tools/send_message_emulator.sh) is used to start an emulator, run passed python script and kill an emulator. Example configuration file for the emulator script can be found [here](https://github.com/amatanat/thesis/blob/master/automation_tools/emulator.conf.example).
 
-- Used OpenRecoveryScripts can be found [here](https://github.com/amatanat/thesis/blob/master/automation_tools/openrecoveryscript) and [here](https://github.com/amatanat/thesis/blob/master/automation_tools/openrecoveryscript2).
+- Used [OpenRecoveryScripts](https://twrp.me/faq/openrecoveryscript.html) can be found [here](https://github.com/amatanat/thesis/blob/master/automation_tools/openrecoveryscript) and [here](https://github.com/amatanat/thesis/blob/master/automation_tools/openrecoveryscript2).
 
 ## [FDE XML dumps](https://github.com/amatanat/thesis/tree/master/fde_xml_dumps)
 
