@@ -98,7 +98,7 @@ Extracted XML dumps for the following user actions in WhatsApp in the **FDE** An
 
 ## [File description in FDE](https://github.com/amatanat/thesis/tree/master/fde_generated_tree_structures)
 
-This folder contains file description for files located inside */data/data/com.whatsapp/* folder in XML dumps extracted from the **FDE** Android device.
+This folder contains file description (together with timestamp metadata) for files located inside */data/data/com.whatsapp/* folder in XML dumps extracted from the **FDE** Android device.
 
 ## [FDE - diff_jsons](https://github.com/amatanat/thesis/tree/master/fde_diff_by_filename)
 
