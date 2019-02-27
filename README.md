@@ -50,6 +50,17 @@ This folder contains reports for all selected user actions that displays which f
 - Fingerprints those are unique to each action are inserted into [characteristic-fingerprints](https://github.com/amatanat/thesis/blob/master/fde_action_fingerprint_generation/action_cfingerprints_generation.py) table in a DB.
 - Fingerprints for the different action combinations are inserted into [combination-fingerprints](https://github.com/amatanat/thesis/blob/master/fde_action_fingerprint_generation/action_combination_fingerprints.py) table in a DB.
 
+## FBE XML dumps
+
+- Extracted [XML dumps](https://github.com/amatanat/thesis/tree/master/xml_dumps) for the selected user actions in WhatsApp in the **FBE** Android device. Corresponding WhatsApp [log file](https://github.com/amatanat/thesis/blob/master/xml_dumps/whatsapp.log).
+- Extracted [XML dumps](https://github.com/amatanat/thesis/tree/master/new-fbe/fbe_xml_dumps) for the selected user actions in WhatsApp in the **FBE** Android device. Corresponding WhatsApp [log file](https://github.com/amatanat/thesis/blob/master/new-fbe/fbe-whatsapp.log). Extracted [unencrypted data](https://github.com/amatanat/thesis/tree/master/new-fbe/fbe_extracted_unencrypted_data) while generating XML dumps.
+
+## File description in FBE
+
+This [script](https://github.com/amatanat/thesis/blob/master/generate_tree_structures/generate_tree_structure.py) is used to describe files using counts of relatives in XML dumps.
+
+- [File description](https://github.com/amatanat/thesis/tree/master/generate_tree_structures/tree_structure_with_encrypted_filename) for files in FBE XML dumps. It also contains encrypted filename.
+- [File description](https://github.com/amatanat/thesis/tree/master/generate_tree_structures/tree_structure_without_filename) for files in FBE XML dumps.
 
 License
 -------
