@@ -32,8 +32,23 @@ Extracted XML dumps for the following user actions in WhatsApp in the **FDE** An
 - [push-notification-text](https://github.com/amatanat/thesis/tree/master/fde_xml_dumps/push-notification-text)
 - [open-close](https://github.com/amatanat/thesis/tree/master/fde_xml_dumps/open-close)
 
-[Log file](https://github.com/amatanat/thesis/blob/master/fde_xml_dumps/whatsapp.log) contains execution time of all steps in all performed actions in WhatsApp.   
+[Log file](https://github.com/amatanat/thesis/blob/master/fde_xml_dumps/whatsapp.log) contains execution time of all steps in all performed actions in WhatsApp.  
 
+## [FDE - generated tree structures](https://github.com/amatanat/thesis/tree/master/fde_generated_tree_structures)
+
+This folder contains generated tree structures for XML dumps extracted from the **FDE** Android device.
+
+## [FDE - diff_jsons](https://github.com/amatanat/thesis/tree/master/fde_diff_by_filename)
+
+This folder contains reports for all selected user actions that displays which files have updated timestamp metadata after the execution of the action. [diff_json](https://github.com/amatanat/thesis/blob/master/fde_diff_by_filename/diff_jsons.py) tool generates these reports by comparing the state of each file, located inside */data/data/com.whatsapp* folder, before and after performing an action.
+
+## [FDE - user action fingerprints](https://github.com/amatanat/thesis/tree/master/fde_action_fingerprint_generation)
+
+- WhatsApp user action fingerprints DB can be found [here](https://github.com/amatanat/thesis/blob/master/fde_action_fingerprint_generation/fde-action-fingerprints.db)
+- All [diff_json](https://github.com/amatanat/thesis/blob/master/fde_diff_by_filename/diff_jsons.py) reports are inserted into [profiles](https://github.com/amatanat/thesis/blob/master/fde_action_fingerprint_generation/action_profiles_generation.py) table in a DB.
+- Changes these happened in each run of the selected actions are inserted into [fingerprints](https://github.com/amatanat/thesis/blob/master/fde_action_fingerprint_generation/action_fingerprints_generation.py) table in a DB.
+- Fingerprints those are unique to each action are inserted into [characteristic-fingerprints](https://github.com/amatanat/thesis/blob/master/fde_action_fingerprint_generation/action_cfingerprints_generation.py) table in a DB.
+- Fingerprints for the different action combinations are inserted into [combination-fingerprints](https://github.com/amatanat/thesis/blob/master/fde_action_fingerprint_generation/action_combination_fingerprints.py) table in a DB.
 
 
 License
