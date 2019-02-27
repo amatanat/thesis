@@ -8,7 +8,7 @@
 - [Evaluate](https://github.com/amatanat/thesis/blob/master/fingerprint_generation/evaluate_fingerprints_db.py) [fingerprints DB](https://github.com/amatanat/thesis/blob/master/fingerprint_generation/fingerprints.db). 
   - Evaluation [results](https://github.com/amatanat/thesis/blob/master/fingerprint_generation/evaluation_result.txt).
   
-## Match installed applications in FBE 
+## Match installed applications (and their folders) in FBE 
 
 - [Bash script](https://github.com/amatanat/thesis/blob/master/matcher/matcher.sh) is used to extract the FS metadata to an XML file and then call the [matcher script](https://github.com/amatanat/thesis/blob/master/matcher/identify_installed_apps.py) by passing extracting XML dump.
 - [matcher script](https://github.com/amatanat/thesis/blob/master/matcher/identify_installed_apps.py) performs the following steps:
@@ -22,10 +22,11 @@
     - [Script](https://github.com/amatanat/thesis/blob/master/matcher/automated_evaluation/evaluate_matcher_result.py)  to evaluate the matcher result.
     - [First](https://github.com/amatanat/thesis/tree/master/matcher/automated_evaluation/evaluation-1), [second](https://github.com/amatanat/thesis/tree/master/matcher/automated_evaluation/evaluation-2) and [third](https://github.com/amatanat/thesis/tree/master/matcher/automated_evaluation/evaluation-3) evaluation experiments.
     - Other evaluation [experiments](https://github.com/amatanat/thesis/tree/master/matcher/evaluation).
-  
-  
+    
+- [Tool](https://github.com/amatanat/thesis/blob/master/link_folders.py) for linking folders of newly installed apps.
+    
 
-## WhatsApp UI automation
+## [WhatsApp](https://www.whatsapp.com/) UI automation
 
 - [AndroidViewClient](https://github.com/dtmilano/AndroidViewClient/wiki) UI automation scripts:
    - conversation-send-message
@@ -115,6 +116,17 @@ This [script](https://github.com/amatanat/thesis/blob/master/generate_tree_struc
 ## [WhatsApp user action reconstruction in FBE](https://github.com/amatanat/thesis/tree/master/wa_reconstruct_user_actions)
 
 The folder contains used scripts for the user action reconstruction. Evaluation results can be found [here](https://github.com/amatanat/thesis/tree/master/wa_user_action_fingerprinting_evaluation). Furthermore, implemented validation test can be found [here](https://github.com/amatanat/thesis/blob/master/wa_user_action_fingerprinting_evaluation/validation-test/validation.py) and test results [here](https://github.com/amatanat/thesis/tree/master/wa_user_action_fingerprinting_evaluation/validation-test).
+
+## Implemented but not used 
+
+- [Signal private messenger](https://signal.org/) conversation-send-message action [implementation](https://github.com/amatanat/thesis/blob/master/signal/signal-androidviewclient.py) using AndroidViewClient.
+- [Viber](https://www.viber.com/) UI automation scripts using AndroidViewClient:
+  - [conversation-send-message](https://github.com/amatanat/thesis/blob/master/viber/conversation-send-message.py).
+  - [conversation-send-photo](https://github.com/amatanat/thesis/blob/master/viber/conversation-send-photo.py).
+  - [fab-message](https://github.com/amatanat/thesis/blob/master/viber/fab-message.py).
+  - [open-close](https://github.com/amatanat/thesis/blob/master/viber/open-close.py).
+  - [receive-message](https://github.com/amatanat/thesis/blob/master/viber/receive-message.py).
+- [VF2](https://networkx.github.io/documentation/stable/reference/algorithms/isomorphism.vf2.html) algorithm usage for finding [subgraph isomorphism](https://github.com/amatanat/thesis/blob/master/VF2/graph_matching.py).
 
 License
 -------
