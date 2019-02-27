@@ -7,7 +7,7 @@
 - [WhatsApp UI automation](#whatsapp-ui-automation)
 - [automation_tools](#automation_tools)
 - [FDE XML dumps](#fde-xml-dumps)
-- [File description in FDE](##file-description-in-fde)
+- [File description in FDE](#file-description-in-fde)
 - [FDE - diff_jsons](#fde---diff_jsons)
 - [FDE - user action fingerprints](#fde---user-action-fingerprints)
 - [FBE XML dumps](#fbe-xml-dumps)
