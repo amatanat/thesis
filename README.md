@@ -7,7 +7,7 @@
 - [WhatsApp UI automation](#whatsapp-ui-automation)
 - [automation_tools](#automation_tools)
 - [FDE XML dumps](#fde-xml-dumps)
-- [FDE - generated tree structures](#fde---generated-tree-structures)
+- [File description in FDE](##file-description-in-fde)
 - [FDE - diff_jsons](#fde---diff_jsons)
 - [FDE - user action fingerprints](#fde---user-action-fingerprints)
 - [FBE XML dumps](#fbe-xml-dumps)
@@ -96,9 +96,9 @@ Extracted XML dumps for the following user actions in WhatsApp in the **FDE** An
 
 [Log file](https://github.com/amatanat/thesis/blob/master/fde_xml_dumps/whatsapp.log) contains execution time of all steps in all performed actions in WhatsApp.  
 
-## [FDE - generated tree structures](https://github.com/amatanat/thesis/tree/master/fde_generated_tree_structures)
+## [File description in FDE](https://github.com/amatanat/thesis/tree/master/fde_generated_tree_structures)
 
-This folder contains generated tree structures :christmas_tree: for XML dumps extracted from the **FDE** Android device.
+This folder contains file description for files located inside */data/data/com.whatsapp/* folder in XML dumps extracted from the **FDE** Android device.
 
 ## [FDE - diff_jsons](https://github.com/amatanat/thesis/tree/master/fde_diff_by_filename)
 
