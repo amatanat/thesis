@@ -1,5 +1,20 @@
-# This repo contains the following source codes those are implemented during the researched project.
+# This repo contains source codes those are implemented during the researched project.
 ---
+
+## Table of Contents
+- [Fingerprint generation for third-party applications](#fingerprint-generation-for-third-party-applications)
+- [Match installed applications (and their folders) in FBE](#match-installed-applications-and-their-folders-in-fbe)
+- [WhatsApp UI automation](#whatsapp-ui-automation)
+- [automation_tools](#automation_tools)
+- [FDE XML dumps](#fde-xml-dumps)
+- [FDE - generated tree structures](#fde---generated-tree-structures)
+- [FDE - diff_jsons](#fde---diff_jsons)
+- [FDE - user action fingerprints](#fde---user-action-fingerprints)
+- [FBE XML dumps](#fbe-xml-dumps)
+- [File description in FBE](#file-description-in-fbe)
+- [K-means clustering](#k-means-clustering)
+- [Implemented but not used](#implemented-but-not-used)
+- [License](#license)
 
 ## Fingerprint generation for third-party applications
 
