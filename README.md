@@ -32,6 +32,7 @@ Extracted XML dumps for the following user actions in WhatsApp in the **FDE** An
 - [push-notification-text](https://github.com/amatanat/thesis/tree/master/fde_xml_dumps/push-notification-text)
 - [open-close](https://github.com/amatanat/thesis/tree/master/fde_xml_dumps/open-close)
 
+[Log file](https://github.com/amatanat/thesis/blob/master/fde_xml_dumps/whatsapp.log) contains execution time of all steps in all performed actions in WhatsApp.   
 
 
 
