@@ -2,6 +2,29 @@
 
 ---
 
+## WhatsApp UI automation
+
+- [AndroidViewClient](https://github.com/dtmilano/AndroidViewClient/wiki) UI automation scripts:
+   - conversation-send-message
+     - used [script](https://github.com/amatanat/thesis/blob/master/whatsapp/conversation-send-message.py) when only one device is connected.
+     - used [script](https://github.com/amatanat/thesis/blob/master/whatsapp/conversation-send-message-device_id.py) when more devices are connected.
+   - conversation-send-photo
+     - used [script](https://github.com/amatanat/thesis/blob/master/whatsapp/conversation-send-photo.py) when only one device is connected. Screen [video record](https://github.com/amatanat/thesis/blob/master/whatsapp/conversation-send-photo.webm) of the device while running the script.
+     - used [script](https://github.com/amatanat/thesis/blob/master/whatsapp/conversation-send-photo-device_id.py) when more devices are connected.
+   - fab-message
+     - used [script](https://github.com/amatanat/thesis/blob/master/whatsapp/fab-message.py).
+     - Screen [video record](https://github.com/amatanat/thesis/blob/master/whatsapp/fab-message.webm) of the device while running the script.
+   - [fab-photo](https://github.com/amatanat/thesis/blob/master/whatsapp/fab-photo.py).
+   - [open-close](https://github.com/amatanat/thesis/blob/master/whatsapp/open-close.py)
+   - push-notification
+     - used [script](https://github.com/amatanat/thesis/blob/master/whatsapp/push-notification.py).
+     - Screen [video record](https://github.com/amatanat/thesis/blob/master/whatsapp/push-notification.webm) of the device while running the script.
+   - receive-message
+     - used [script](https://github.com/amatanat/thesis/blob/master/whatsapp/receive-messages.py).
+     - Screen [video record](https://github.com/amatanat/thesis/blob/master/whatsapp/receive-message.webm) of the device while running the script.
+- [monkeyrunner](https://developer.android.com/studio/test/monkeyrunner/) conversation-send-message [implementation](https://github.com/amatanat/thesis/blob/master/whatsapp/whatsapp-monkeyrunner.py). 
+- :exclamation:  AndroidViewClient is used in our experiments. Used log configuration file can be found [here](https://github.com/amatanat/thesis/blob/master/whatsapp/logging.conf). 
+
 ## [automation_tools](https://github.com/amatanat/thesis/tree/master/automation_tools)
 
 Folder contains the following scripts:
@@ -14,7 +37,7 @@ Folder contains the following scripts:
     
     Example configuration file for the tool can be found [here](https://github.com/amatanat/thesis/blob/master/automation_tools/config.conf.example). We have used this tool to extract XML dumps before and after implementing a user action (CSM, CSP, FM, FP, OC) in WhatsApp in an Android device.
 
-- [Tool](https://github.com/amatanat/thesis/blob/master/automation_tools/automated_tool_device_emulator.sh) that is similar to the above one. However, it calls an [emulator script](https://github.com/amatanat/thesis/blob/master/automation_tools/send_message_emulator.sh) after extracting FS metadata. Example configuration file for the tool can be found [here](https://github.com/amatanat/thesis/blob/master/automation_tools/config_2.conf.example). We have used this tool to extract XML dumps before and after implementing a user action (RM, RP, PN, PN-text) in WhatsApp in an Android device. 
+- [Tool](https://github.com/amatanat/thesis/blob/master/automation_tools/automated_tool_device_emulator.sh) that is similar to the :point_up: . However, it calls an [emulator script](https://github.com/amatanat/thesis/blob/master/automation_tools/send_message_emulator.sh) after extracting FS metadata. Example configuration file for the tool can be found [here](https://github.com/amatanat/thesis/blob/master/automation_tools/config_2.conf.example). We have used this tool to extract XML dumps before and after implementing a user action (RM, RP, PN, PN-text) in WhatsApp in an Android device. 
 The [emulator script](https://github.com/amatanat/thesis/blob/master/automation_tools/send_message_emulator.sh) is used to start an emulator, run passed python script and kill an emulator. Example configuration file for the emulator script can be found [here](https://github.com/amatanat/thesis/blob/master/automation_tools/emulator.conf.example).
 
 - Used OpenRecoveryScripts can be found [here](https://github.com/amatanat/thesis/blob/master/automation_tools/openrecoveryscript) and [here](https://github.com/amatanat/thesis/blob/master/automation_tools/openrecoveryscript2).
@@ -61,6 +84,14 @@ This [script](https://github.com/amatanat/thesis/blob/master/generate_tree_struc
 
 - [File description](https://github.com/amatanat/thesis/tree/master/generate_tree_structures/tree_structure_with_encrypted_filename) for files in FBE XML dumps. It also contains encrypted filename.
 - [File description](https://github.com/amatanat/thesis/tree/master/generate_tree_structures/tree_structure_without_filename) for files in FBE XML dumps.
+
+## K-means clustering
+- [clustering](https://github.com/amatanat/thesis/blob/master/clustering/clustering.py) tool creates clusters of WhatsApp DB files and extracts timestamp metadata of required files.
+- [Example](https://github.com/amatanat/thesis/blob/master/clustering/k-means-clustering.png) generated clusters
+
+## [WhatsApp user action reconstruction in FBE](https://github.com/amatanat/thesis/tree/master/wa_reconstruct_user_actions)
+
+The folder contains used scripts for the user action reconstruction. Evaluation results can be found [here](https://github.com/amatanat/thesis/tree/master/wa_user_action_fingerprinting_evaluation). Furthermore, implemented validation test can be found [here](https://github.com/amatanat/thesis/blob/master/wa_user_action_fingerprinting_evaluation/validation-test/validation.py) and test results [here](https://github.com/amatanat/thesis/tree/master/wa_user_action_fingerprinting_evaluation/validation-test).
 
 License
 -------
