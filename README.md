@@ -8,6 +8,23 @@
 - [Insert](https://github.com/amatanat/thesis/blob/master/fingerprint_generation/fingerprint_generation.py) extracted fingerprints into a [fingerprints DB](https://github.com/amatanat/thesis/blob/master/fingerprint_generation/fingerprints.db).
 - [Evaluate](https://github.com/amatanat/thesis/blob/master/fingerprint_generation/evaluate_fingerprints_db.py) [fingerprints DB](https://github.com/amatanat/thesis/blob/master/fingerprint_generation/fingerprints.db). 
   - Evaluation [results](https://github.com/amatanat/thesis/blob/master/fingerprint_generation/evaluation_result.txt).
+  
+## Match installed applications in FBE 
+
+- [Bash script](https://github.com/amatanat/thesis/blob/master/matcher/matcher.sh) is used to extract the FS metadata to an XML file and then call the [matcher script](https://github.com/amatanat/thesis/blob/master/matcher/identify_installed_apps.py) by passing extracting XML dump.
+- [matcher script](https://github.com/amatanat/thesis/blob/master/matcher/identify_installed_apps.py) performs the following steps:
+  1. This [script](https://github.com/amatanat/thesis/blob/master/matcher/xml_fingerprints_extractor.py) is used to extract fingerprints of applications from an XML dump.
+  2. Then, extracted data is matched with the [fingerprints DB](https://github.com/amatanat/thesis/blob/master/fingerprint_generation/fingerprints.db).
+  
+  Example configuration file for the matcher script can be found [here](https://github.com/amatanat/thesis/blob/master/matcher/example_matcher_config.conf).
+
+- Evaluation of fingerprints matching
+  - [This folder](https://github.com/amatanat/thesis/tree/master/matcher/automated_evaluation) contains all the required scripts and evaluation results. 
+    - [Script](https://github.com/amatanat/thesis/blob/master/matcher/automated_evaluation/evaluate_matcher_result.py)  to evaluate the matcher result.
+    - [First](https://github.com/amatanat/thesis/tree/master/matcher/automated_evaluation/evaluation-1), [second](https://github.com/amatanat/thesis/tree/master/matcher/automated_evaluation/evaluation-2) and [third](https://github.com/amatanat/thesis/tree/master/matcher/automated_evaluation/evaluation-3) evaluation experiments.
+    - Other evaluation [experiments](https://github.com/amatanat/thesis/tree/master/matcher/evaluation).
+  
+  
 
 ## WhatsApp UI automation
 
