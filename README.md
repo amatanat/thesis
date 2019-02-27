@@ -2,6 +2,13 @@
 
 ---
 
+## Fingerprint generation for third-party applications
+
+- [Extract fingerprints](https://github.com/amatanat/thesis/blob/master/fingerprint_generation/device_app_fingerprints_extractor.sh) of third-party applications those are installed to a device.
+- [Insert](https://github.com/amatanat/thesis/blob/master/fingerprint_generation/fingerprint_generation.py) extracted fingerprints into a [fingerprints DB](https://github.com/amatanat/thesis/blob/master/fingerprint_generation/fingerprints.db).
+- [Evaluate](https://github.com/amatanat/thesis/blob/master/fingerprint_generation/evaluate_fingerprints_db.py) [fingerprints DB](https://github.com/amatanat/thesis/blob/master/fingerprint_generation/fingerprints.db). 
+  - Evaluation [results](https://github.com/amatanat/thesis/blob/master/fingerprint_generation/evaluation_result.txt).
+
 ## WhatsApp UI automation
 
 - [AndroidViewClient](https://github.com/dtmilano/AndroidViewClient/wiki) UI automation scripts:
