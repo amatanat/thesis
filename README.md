@@ -1,5 +1,4 @@
-# Thesis source codes
-
+# This repo contains the following source codes those are implemented during the researched project.
 ---
 
 ## Fingerprint generation for third-party applications
