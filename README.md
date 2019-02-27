@@ -98,7 +98,7 @@ Extracted XML dumps for the following user actions in WhatsApp in the **FDE** An
 
 ## [FDE - generated tree structures](https://github.com/amatanat/thesis/tree/master/fde_generated_tree_structures)
 
-This folder contains generated tree structures for XML dumps extracted from the **FDE** Android device.
+This folder contains generated tree structures :christmas_tree: for XML dumps extracted from the **FDE** Android device.
 
 ## [FDE - diff_jsons](https://github.com/amatanat/thesis/tree/master/fde_diff_by_filename)
 
